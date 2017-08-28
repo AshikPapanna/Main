@@ -6,7 +6,7 @@ var profile=require('./server/routes/profile.js');
 
 var app=express();
 global.__base = __dirname + '/';
-app.set('port',(process.env.Port||3000));
+app.set('port',(process.env.Port||5000));
 app.set('directorypath',__dirname);
 
 app.use(bodyparser.json());
