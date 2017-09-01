@@ -10,8 +10,12 @@
   "author": "Ashik P",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "jsonwebtoken": "^7.4.3",
+    "jwt-simple": "^0.5.1",
+    "morgan": "^1.8.2"
   },
   "engines": {
     "node": "6.11.1"
