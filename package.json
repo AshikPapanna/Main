@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon":"nodemon server"
   },
   "keywords": [],
   "author": "Ashik P",
@@ -12,10 +13,12 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
+    "core-js": "^2.5.1",
     "express": "^4.15.4",
     "jsonwebtoken": "^7.4.3",
     "jwt-simple": "^0.5.1",
-    "morgan": "^1.8.2"
+    "morgan": "^1.8.2",
+    "nodemon": "^1.12.0"
   },
   "engines": {
     "node": "6.11.1"

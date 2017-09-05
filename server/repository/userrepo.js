@@ -50,4 +50,15 @@ else{
     return res.status(401).json({message:'Unauthorized user!'})
 }
 }
+exports.userslist=function(req,res,next)
+{
+    if(req.user)
+        {
+    User.find({}, function(err, users) {
+     return   res.json(users);
+      });
+    }else{
+        return res.status(401).json({message:'Unauthorized user!'});
+    }
+}
 
