@@ -5,12 +5,13 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "nodemon":"nodemon server"
+    "nodemon": "nodemon server"
   },
   "keywords": [],
   "author": "Ashik P",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^8.0.26",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "core-js": "^2.5.1",
@@ -22,5 +23,10 @@
   },
   "engines": {
     "node": "6.11.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-typescript": "^3.2.2"
   }
 }
