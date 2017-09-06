@@ -9,6 +9,20 @@
             "problemMatcher": [
                 "$go"
             ]
+        },
+        {
+            "type": "gulp",
+            "task": "watch",
+            "problemMatcher": [
+                "$go"
+            ]
+        },
+        {
+            "type": "gulp",
+            "task": "compile",
+            "problemMatcher": [
+                "$go"
+            ]
         }
     ]
 }
