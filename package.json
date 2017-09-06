@@ -3,13 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "nodemon": "nodemon server",
     "start": "node server.js"
-=======
-    "test": "echo \"Error: no test specified\" && exit 1"
->>>>>>> f0a77f3fef1a49fe76cab138f217a92fbbb84cfc
   },
   "keywords": [],
   "author": "Ashik P",
@@ -20,26 +16,18 @@
     "body-parser": "^1.17.2",
     "core-js": "^2.5.1",
     "express": "^4.15.4",
-    "gulp-nodemon": "^2.2.1",
     "jsonwebtoken": "^7.4.3",
     "jwt-simple": "^0.5.1",
-<<<<<<< HEAD
     "mongoose": "^4.11.10",
     "morgan": "^1.8.2",
     "nodemon": "^1.12.0"
-=======
-    "morgan": "^1.8.2"
->>>>>>> f0a77f3fef1a49fe76cab138f217a92fbbb84cfc
   },
   "engines": {
     "node": "6.11.1"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "del": "^3.0.0",
-=======
     "browser-sync": "^2.18.13",
->>>>>>> f0a77f3fef1a49fe76cab138f217a92fbbb84cfc
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-sourcemaps": "^2.6.1",
