@@ -46,7 +46,7 @@ gulp.task('clean',function(){
 });
 
 gulp.task('copy-html',['clean'],function(){
-  return gulp.src('./client/app/**/*.html')
+  return gulp.src('./client/app/*.{html,css}')
   .pipe(gulp.dest('./client/dist/app'));
   
 });
