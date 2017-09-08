@@ -5,13 +5,13 @@ var jsonwebtoken=require('jsonwebtoken');
 
 var app=express();
 global.__base = __dirname + '/';
-app.set('port',(process.env.Port||3000));
+app.set('port',(process.env.PORT||3000));
 app.set('directorypath',__dirname);
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extends:false}));
 
-app.use(express.static(path.join(__dirname,'/public')));
+//app.use(express.static(path.join(__dirname,'/public')));
 app.use(express.static(path.join(__dirname,'/client')));
 app.use(function(req,res,next){
 if(req.headers&&req.headers.authorization 
