@@ -1,7 +1,7 @@
 var gulp=require('gulp');
 var typescript=require('gulp-typescript');
 var del=require('del');
-var tsconfig=require('./client/tsconfig.json');
+var tsconfig=require('./tsconfig.json');
 var sourcemaps=require('gulp-sourcemaps');
 var browsersync=require('browser-sync').create();
 var nodemon=require('gulp-nodemon');
@@ -46,35 +46,35 @@ gulp.task('clean',function(){
 });
 
 gulp.task('copy-html',['clean'],function(){
-  return gulp.src('./client/app/*.{html,css}')
-  .pipe(gulp.dest('./client/dist/app'));
+  return gulp.src('./client/*.{html,css}')
+  .pipe(gulp.dest('./dist/app'));
   
 });
 gulp.task('compile-main',function(){
-  return gulp.src('./client/main.ts')
+  return gulp.src('./main.ts')
   .pipe(sourcemaps.init())
   .pipe(typescript(tsconfig.compilerOptions))
   .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest('./client/dist/'));
+  .pipe(gulp.dest('./dist/'));
   
 })
 
 
 gulp.task('compile',['copy-html','compile-main'],function(){
-  return gulp.src('./client/app/**/*.ts')
+  return gulp.src('./client/**/*.ts')
   .pipe(sourcemaps.init())
   .pipe(typescript(tsconfig.compilerOptions))
   .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest('./client/dist/app')).pipe(browsersync.reload({stream:true}));
+  .pipe(gulp.dest('./dist/app')).pipe(browsersync.reload({stream:true}));
 
 
 });
 
 gulp.task('watch',['build','nodemon'],function()
 {
-  gulp.watch('./client/app/**/*.html',['build']);
-  gulp.watch('./client/app/**/*.ts',['build']);
-  gulp.watch('./client/main.ts',['build']); 
+  gulp.watch('./client/**/*.html',['build']);
+  gulp.watch('./client/**/*.ts',['build']);
+  gulp.watch('./main.ts',['build']); 
 
 });
 

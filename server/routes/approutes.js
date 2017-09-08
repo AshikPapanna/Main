@@ -7,7 +7,7 @@ module.exports=function(app){
     router.post('/auth/signin',userHandler.signin);
     router.post('/auth/users',userHandler.userslist);
     router.get('/',function(req,res){
-        res.sendFile(__base+'client/index.html');
+        res.sendFile(__base+'index.html');
         
     })      
     app.use('/',router);

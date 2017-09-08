@@ -1,0 +1,27 @@
+<head>
+    <meta charset="UTF-8">
+    <title>My Angular 2 App!</title>
+
+    <!-- css -->
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.css">
+    
+    <style>body { padding: 0px 0;margin: 0px; }</style>
+<link href=’http://fonts.googleapis.com/css?family=Merriweather&#8217;
+rel=’stylesheet’ type=’text/css’>
+ <style>html { font-family: ‘Merriweather’, Georgia, serif;  }</style>
+    <!-- js -->
+    <!-- load the dependencies -->
+   <script  src="/node_modules/core-js/client/shim.min.js"></script>
+    <script src="/node_modules/zone.js/dist/zone.js"></script>
+    <script src="/node_modules/reflect-metadata/Reflect.js"></script>
+
+    <!-- load our angular app with systemjs -->
+   <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="public/systemjs.config.js"></script>
+    <script>
+        System.import('app').catch(function(err) { console.error(err); });
+    </script>
+</head>
+<body>
+    <my-app></my-app>
+</body>
