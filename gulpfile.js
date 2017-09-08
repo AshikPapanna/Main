@@ -47,7 +47,7 @@ gulp.task('clean',function(){
 
 gulp.task('copy-html',['clean'],function(){
   return gulp.src('./client/*.{html,css}')
-  .pipe(gulp.dest('./dist/app'));
+  .pipe(gulp.dest('./dist/client'));
   
 });
 gulp.task('compile-main',function(){
@@ -65,7 +65,7 @@ gulp.task('compile',['copy-html','compile-main'],function(){
   .pipe(sourcemaps.init())
   .pipe(typescript(tsconfig.compilerOptions))
   .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest('./dist/app')).pipe(browsersync.reload({stream:true}));
+  .pipe(gulp.dest('./dist/client')).pipe(browsersync.reload({stream:true}));
 
 
 });
