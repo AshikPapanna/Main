@@ -46,8 +46,8 @@ gulp.task('clean',function(){
 });
 
 gulp.task('copy-html',['clean'],function(){
-  return gulp.src('./client/*.{html,css}')
-  .pipe(gulp.dest('./dist/client'));
+  return gulp.src(['./client/**/*.{html,css}','./client/components/login/*.{html,css}'])
+  .pipe(gulp.dest('./dist/client')); 
   
 });
 gulp.task('compile-main',function(){
@@ -61,7 +61,7 @@ gulp.task('compile-main',function(){
 
 
 gulp.task('compile',['copy-html','compile-main'],function(){
-  return gulp.src('./client/**/*.ts')
+  return gulp.src(['./client/**/*.ts'])
   .pipe(sourcemaps.init())
   .pipe(typescript(tsconfig.compilerOptions))
   .pipe(sourcemaps.write('.'))
@@ -72,8 +72,7 @@ gulp.task('compile',['copy-html','compile-main'],function(){
 
 gulp.task('watch',['build','nodemon'],function()
 {
-  gulp.watch('./client/**/*.html',['build']);
-  gulp.watch('./client/**/*.ts',['build']);
+  gulp.watch('./client/**/*.{css,html,ts}',['build']);
   gulp.watch('./main.ts',['build']); 
 
 });

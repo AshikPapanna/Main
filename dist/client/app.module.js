@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var app_component_1 = require("./app.component");
+//import{LoginComponent} from './components/login/login.component'
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }

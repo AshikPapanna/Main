@@ -12,8 +12,9 @@ var LoginComponent = /** @class */ (function () {
     }
     LoginComponent = __decorate([
         core_1.Component({
-            selector: 'login',
-            templateUrl: './app/components/login/login.component.html'
+            moduleId: module.id,
+            selector: 'my-login'
+            // templateUrl:'./login.component.html'
         })
     ], LoginComponent);
     return LoginComponent;
