@@ -7,9 +7,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var profile_1 = require("./../models/profile");
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = "Hi Ashik";
+        this.profiles = [
+            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/piano.png'),
+            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/piano.png'),
+            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/piano.png'),
+            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/piano.png'),
+        ];
     }
     AppComponent = __decorate([
         core_1.Component({

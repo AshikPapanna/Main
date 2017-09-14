@@ -51,16 +51,27 @@ gulp.task('copy-html',['clean'],function(){
   
 });
 gulp.task('compile-main',function(){
-  return gulp.src('./main.ts')
+  return gulp.src(['./main.ts'])
   .pipe(sourcemaps.init())
   .pipe(typescript(tsconfig.compilerOptions))
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('./dist/'));
   
-})
+});
+
+gulp.task('compile-models',function(){
+  return gulp.src(['./models/**/*.ts'])
+  .pipe(sourcemaps.init())
+  .pipe(typescript(tsconfig.compilerOptions))
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest('./dist/models'));
+  
+});
 
 
-gulp.task('compile',['copy-html','compile-main'],function(){
+
+
+gulp.task('compile',['copy-html','compile-main','compile-models'],function(){
   return gulp.src(['./client/**/*.ts'])
   .pipe(sourcemaps.init())
   .pipe(typescript(tsconfig.compilerOptions))
