@@ -12,10 +12,9 @@ var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = "Hi Ashik";
         this.profiles = [
-            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/piano.png'),
-            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/piano.png'),
-            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/piano.png'),
-            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/piano.png'),
+            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/gravatar1.jpg'),
+            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/gravatar1.jpg'),
+            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/gravatar1.jpg'),
         ];
     }
     AppComponent = __decorate([

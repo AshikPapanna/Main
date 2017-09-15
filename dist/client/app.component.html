@@ -1,5 +1,4 @@
 <div class="navbar-fixed">
-
 <nav>
     <div class="nav-wrapper">          
         <a href="#" id="logo" class="brand-logo">Logo</a>        
@@ -12,23 +11,43 @@
     </div>
  
 </nav>
-<my-login style="width:200px;"></my-login>
 </div>
 
-<div class="row">
-    <div id="covercontainer" class="col s12">
-        <div class="container">
-                <a href="#" data-activates="slide-out" class="btn button-collapse">Side nav demo</a>
-            <p class="section center-align">kjshdklns sdslds <br>sdjlsdj sdljsdl</p>
+  <div class="parallax">
+      <div class="row" style="padding-top:10%;padding-bottom:10%;">
+         <div class="col s12">
+           <p class="center-align vb-qoute" >dsfdf dsfdsf dsfdsf dfdsf dsfdfs <br>
+            cddsfdf dfdsf dfDf fbggewere gfsfsdf
+           </p>
+         </div>
+      </div>
+      <div class="conatiner"  style="background-color:rgba(0, 0, 0, 0.5);">
+   <div class="row valign-wrapper">
+        <div class="col s2 valign">
+            <a class="btn-floating btn-large waves-effect waves-light red " style="float:right;" ><i class="material-icons">add</i></a>
         </div>
-    </div>
+        <div class="col s8">
+            <div class="row">
+          <div class="col s4" *ngFor="let profile of profiles">      
+                <my-profile [profile]="profile">
+                </my-profile>
+          </div>
+        </div>
+        </div>
+         <div class="col s2">
+                    <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+          </div>
+   </div> 
 </div>
-<div class="row">
-    <div class="col s4" *ngFor="let profile of profiles">      
-<my-profile [profile]="profile"></my-profile>
-    </div>
+    
+            
 </div>
+
 <style>
+    .vb-qoute{
+        color: white;
+        font-size:200%;
+    }
 nav{
     
     background-color:  #009900;
@@ -38,5 +57,17 @@ nav{
 }
 #covercontainer{
     background-image:url('/public/images/piano.png');
+}
+.parallax{
+    background-image: url("/public/images/gravatar.jpg");
+opacity: 0.8;
+    /* Full height */
+    height: 200%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 </style>
