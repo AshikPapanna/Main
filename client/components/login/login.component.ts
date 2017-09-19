@@ -2,11 +2,10 @@ import {Component} from '@angular/core'
 
 @Component({
     moduleId:module.id,
-    selector:'my-login',
-    template:`<h1></h1>
-    <`
-   //templateUrl:'./login.component.html'
+    selector:'my-login',   
+   templateUrl:'./login.component.html',
+   styleUrls:['./login.component.css']
 })
 export class LoginComponent{
-    
+   
 }

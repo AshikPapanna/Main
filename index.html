@@ -28,11 +28,19 @@ rel=’stylesheet’ type=’text/css’>
         System.import('app').catch(function(err) { console.error(err); });
         $(document).ready(function(){
               $('.button-collapse').sideNav();
-        
+              $('input#input_text, textarea#textarea1').characterCounter();
         }
        
         )
-          
+        
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+  
          
     </script>
 </head>

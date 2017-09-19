@@ -14,8 +14,8 @@ var LoginComponent = /** @class */ (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'my-login',
-            template: "<h1></h1>\n    <"
-            //templateUrl:'./login.component.html'
+            templateUrl: './login.component.html',
+            styleUrls: ['./login.component.css']
         })
     ], LoginComponent);
     return LoginComponent;

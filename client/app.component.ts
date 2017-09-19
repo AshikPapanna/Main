@@ -15,4 +15,7 @@ export class AppComponent{
     /*new Profile('asdasd', 'Windstorm','sdfsadsd','public/images/gravatar1.jpg'),
     new Profile('asdasd', 'Windstorm','sdfsadsd','public/images/gravatar1.jpg'),*/
   ];
+  OpenNav()   {
+    document.getElementById("mySidenav").style.width = "30%";
+}
 }

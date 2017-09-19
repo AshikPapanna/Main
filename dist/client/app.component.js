@@ -17,6 +17,9 @@ var AppComponent = /** @class */ (function () {
             new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/gravatar1.jpg'),
         ];
     }
+    AppComponent.prototype.OpenNav = function () {
+        document.getElementById("mySidenav").style.width = "30%";
+    };
     AppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
