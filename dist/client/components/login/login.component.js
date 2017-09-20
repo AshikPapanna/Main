@@ -10,6 +10,13 @@ var core_1 = require("@angular/core");
 var LoginComponent = /** @class */ (function () {
     function LoginComponent() {
     }
+    LoginComponent.prototype.closeNav = function () {
+        document.getElementById("mySidenav").style.width = "0%";
+    };
+    LoginComponent.prototype.registerclick = function () {
+        document.getElementById("mySidenav").style.width = "0%";
+        document.getElementById("mySidenavforregister").style.width = "30%";
+    };
     LoginComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

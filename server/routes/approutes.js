@@ -9,7 +9,8 @@ module.exports=function(app){
     router.get('/',function(req,res){
         res.sendFile(__base+'index.html');
         
-    })      
+    });
+          
     app.use('/',router);
 }
   

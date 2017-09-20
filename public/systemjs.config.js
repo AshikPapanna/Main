@@ -2,10 +2,27 @@
     // map tells the System loader where to look for things
     main:'main.js'
     var map = {
-      'app':                        'dist', // 'dist',
+      'app':                        'dist', // 'dist',  
+      '@angular/cdk': 'node_modules/@angular/cdk/bundles/cdk.umd.js',
+      '@angular/cdk/a11y': 'node_modules/@angular/cdk/bundles/cdk-a11y.umd.js',
+      '@angular/cdk/bidi': 'node_modules/@angular/cdk/bundles/cdk-bidi.umd.js',
+      '@angular/cdk/coercion': 'node_modules/@angular/cdk/bundles/cdk-coercion.umd.js',
+      '@angular/cdk/collections': 'node_modules/@angular/cdk/bundles/cdk-collections.umd.js',
+      '@angular/cdk/keycodes': 'node_modules/@angular/cdk/bundles/cdk-keycodes.umd.js',
+      '@angular/cdk/observers': 'node_modules/@angular/cdk/bundles/cdk-observers.umd.js',
+      '@angular/cdk/overlay': 'node_modules/@angular/cdk/bundles/cdk-overlay.umd.js',
+      '@angular/cdk/platform': 'node_modules/@angular/cdk/bundles/cdk-platform.umd.js',
+      '@angular/cdk/portal': 'node_modules/@angular/cdk/bundles/cdk-portal.umd.js',
+      '@angular/cdk/rxjs': 'node_modules/@angular/cdk/bundles/cdk-rxjs.umd.js',
+      '@angular/cdk/table': 'node_modules/@angular/cdk/bundles/cdk-table.umd.js',
+      '@angular/cdk/scrolling': 'node_modules/@angular/cdk/bundles/cdk-scrolling.umd.js',
+
+
       '@angular':                   'node_modules/@angular',
+      
       'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
       'rxjs':                       'node_modules/rxjs'
+      
     };
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
@@ -16,7 +33,9 @@
     var ngPackageNames = [
       'common',
       'compiler',
-      'core',
+      'core',  
+      'animations' ,  
+      'material',         
       'forms',
       'http',
       'platform-browser',

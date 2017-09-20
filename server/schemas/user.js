@@ -21,6 +21,12 @@ var userschema= new schema({
   createddate:{
       type:Date,
       default:Date.now
+  },
+  resetPasswordToken:{
+      type:String      
+  },
+  resetPasswordExpiresOn:{
+type:Date
   }
 });
 userschema.methods.comparepassword=function(password){

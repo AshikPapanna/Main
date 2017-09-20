@@ -1,7 +1,9 @@
 var express=require('express');
+var session=require('express-session');
 var bodyparser=require('body-parser');
 var path=require('path');
 var jsonwebtoken=require('jsonwebtoken');
+var cookieParser=require('cookie-parser');
 
 var app=express();
 global.__base = __dirname + '/';
@@ -10,6 +12,8 @@ app.set('port',(process.env.PORT||3000));
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extends:false}));
+app.use(cookieParser());
+app.use(session({ secret: 'session secret key' }));
 
 app.use('/node_modules',express.static(path.join(__dirname,'node_modules')));
 app.use('/public',express.static(path.join(__dirname,'public')));

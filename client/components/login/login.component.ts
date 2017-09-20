@@ -7,5 +7,11 @@ import {Component} from '@angular/core'
    styleUrls:['./login.component.css']
 })
 export class LoginComponent{
-   
+    closeNav(){
+        document.getElementById("mySidenav").style.width = "0%";        
+    }
+    registerclick(){
+        document.getElementById("mySidenav").style.width = "0%";
+        document.getElementById("mySidenavforregister").style.width = "30%";
+    }
 }
