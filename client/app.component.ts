@@ -8,6 +8,12 @@ styleUrls:['./app.component.css']
 })
 export class AppComponent{
   title="Hi Ashik";
+  isblur=false;
+  navclass={
+    'navbar-fixed':true,
+    'vb-blur':true
+
+  }
   profiles:Profile[]= [
     new Profile('asdasd', 'Windstorm','sdfsadsd','public/images/gravatar1.jpg'),
     new Profile('asdasd', 'Windstorm','sdfsadsd','public/images/gravatar1.jpg'),
@@ -17,5 +23,7 @@ export class AppComponent{
   ];
   OpenNav()   {
     document.getElementById("mySidenav").style.width = "30%";
+    document.getElementById("body").style.filter = "blur(20%)";
+    this.isblur=true;
 }
 }

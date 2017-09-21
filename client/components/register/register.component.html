@@ -1,31 +1,33 @@
-<div id="mySidenavforregister" class="mySidenavforregister">
-  <div class="row">
-    <div class="col s12">
-         <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-  </div>  
+<div id="mySidenavforregister" class="mySidenavforregister" >
+
+   <div class="row">
+     <div class="col s12">
+          <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+     </div>  
     </div>  
+     <form  (ngSubmit)="onSubmit()" #registrationForm="ngForm">
          <div class="container">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="last_name" type="text" class="validate">
+                        <input id="last_name" type="text" [(ngModel)]="register.firstName" name="firstName" class="validate">
                         <label for="last_name">First Name</label>
                       </div>
                 </div>
              <div class="row">
                 <div class="input-field col s12">
-                    <input id="last_name" type="text" class="validate">
+                    <input id="last_name" type="text" [(ngModel)]="register.lastName" name="lastName" class="validate">
                     <label for="last_name">Last Name</label>
                   </div>
-                </div>
-           <div class="row">
-                       <div class="input-field col s12">
-                         <input id="email" type="email" class="validate">
-                         <label for="email" data-error="wrong" data-success="right">Email</label>
-                       </div>
             </div>
            <div class="row">
+                <div class="input-field col s12">
+                         <input id="email" type="email" [(ngModel)]="register.emailId" name="emailId" class="validate">
+                         <label for="email" data-error="wrong" data-success="right">Email</label>
+                  </div>
+          </div>
+           <div class="row">
                        <div class="input-field col s12">
-                         <input id="password" type="password" class="validate">
+                         <input id="password" type="password" [(ngModel)]="register.password" name="password" class="validate">
                          <label for="password">Password</label>
                        </div>
            </div>
@@ -33,12 +35,13 @@
              <div class="container">
                  <div class="col s12 ">
                 
-                     <a class="waves-effect waves-light btn" style="text-align:center;display:inline-block;padding:0.85rem 2.13rem;">Button</a>
+                    <button type="submit" class="btn btn-success" [disabled]="!registrationForm.form.valid">Submit</button>
                      
                    </div>
              </div>
-           </div>        
-    
+           </div>       
+         </div> 
+          </form>
  
  </div>
          

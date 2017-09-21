@@ -11,6 +11,11 @@ var profile_1 = require("./../models/profile");
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = "Hi Ashik";
+        this.isblur = false;
+        this.navclass = {
+            'navbar-fixed': true,
+            'vb-blur': true
+        };
         this.profiles = [
             new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/gravatar1.jpg'),
             new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/gravatar1.jpg'),
@@ -19,6 +24,8 @@ var AppComponent = /** @class */ (function () {
     }
     AppComponent.prototype.OpenNav = function () {
         document.getElementById("mySidenav").style.width = "30%";
+        document.getElementById("body").style.filter = "blur(20%)";
+        this.isblur = true;
     };
     AppComponent = __decorate([
         core_1.Component({

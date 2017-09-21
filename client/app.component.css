@@ -58,3 +58,6 @@ body{
     background-image:url('/public/images/piano.png');
   
 }
+.vb-blur{
+    filter: blur(20%);
+}
