@@ -1,16 +1,17 @@
  <div id="mySidenav" class="sidenav">
 
       <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+      <form  (ngSubmit)="onSubmit()" #loginForm="ngForm">
       <div class="container">
       <div class="row">
                   <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
+                    <input id="email" type="email" [(ngModel)]="login.email" name="email" class="validate">
                     <label for="email" data-error="wrong" data-success="right">Email</label>
                   </div>
        </div>
       <div class="row">
                   <div class="input-field col s12">
-                    <input id="password" type="password" class="validate">
+                    <input id="password" type="password" [(ngModel)]="login.password" name="password" class="validate">
                     <label for="password">Password</label>
                   </div>
       </div>
@@ -30,7 +31,7 @@
              </div>       
         </div>
 
-
+      </form>
     </div>
     
     
