@@ -26,6 +26,7 @@ exports.register=function(req,res,next)
     });
 }
 exports.signin=function(req,res){
+    console.log(res+req.body.emailId);
 User.findOne({
     email:req.body.email
              },function(err,user){

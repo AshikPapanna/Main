@@ -7,6 +7,8 @@ import { FormsModule }   from '@angular/forms';
 
 import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 
+import{HttpModule} from '@angular/http'
+
 
      
 
@@ -19,7 +21,7 @@ import {ProfileComponent} from './components/profile/profile.component';
 import{RegisterComponent} from './components/register/register.component';
 
 @NgModule({
-    imports:[BrowserModule,FormsModule,MdButtonModule, MdCheckboxModule],
+    imports:[BrowserModule,FormsModule,MdButtonModule, MdCheckboxModule,HttpModule],
 declarations:[AppComponent,LoginComponent,ProfileComponent,RegisterComponent],
 
 bootstrap:[AppComponent]

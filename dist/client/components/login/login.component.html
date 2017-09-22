@@ -1,23 +1,24 @@
  <div id="mySidenav" class="sidenav">
 
       <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+      <form  (ngSubmit)="onSubmit()" #loginForm="ngForm">
       <div class="container">
       <div class="row">
                   <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
+                    <input id="email" type="email" [(ngModel)]="login.emailId" name="email" class="validate">
                     <label for="email" data-error="wrong" data-success="right">Email</label>
                   </div>
        </div>
       <div class="row">
                   <div class="input-field col s12">
-                    <input id="password" type="password" class="validate">
+                    <input id="password" type="password" [(ngModel)]="login.password" name="password" class="validate">
                     <label for="password">Password</label>
                   </div>
-      </div>
+        </div>
       <div class="row">
         <div class="container">
             <div class="col s12 ">
-           <a class="waves-effect waves-light btn" style="text-align:center;display:inline-block;padding:0.85rem 2.13rem;">Button</a>
+                <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Submit</button>
               </div>
         </div>
       </div>
@@ -29,8 +30,8 @@
                <a style="font-size:12px;padding:0px;color:blue;" (click)="registerclick()">Register</a>
              </div>       
         </div>
-
-
+      </div>
+      </form>
     </div>
     
     
