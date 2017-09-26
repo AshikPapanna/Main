@@ -9,19 +9,19 @@
          <div class="container">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="last_name" type="text" [(ngModel)]="register.firstName" name="firstName" class="validate">
+                        <input id="last_name" type="text" [(ngModel)]="register.firstname" name="firstName" class="validate">
                         <label for="last_name">First Name</label>
                       </div>
                 </div>
              <div class="row">
                 <div class="input-field col s12">
-                    <input id="last_name" type="text" [(ngModel)]="register.lastName" name="lastName" class="validate">
+                    <input id="last_name" type="text" [(ngModel)]="register.lastname" name="lastName" class="validate">
                     <label for="last_name">Last Name</label>
                   </div>
             </div>
            <div class="row">
                 <div class="input-field col s12">
-                         <input id="email" type="email" [(ngModel)]="register.emailId" name="emailId" class="validate">
+                         <input id="email" type="email" [(ngModel)]="register.email" name="emailId" class="validate">
                          <label for="email" data-error="wrong" data-success="right">Email</label>
                   </div>
           </div>
@@ -31,6 +31,13 @@
                          <label for="password">Password</label>
                        </div>
            </div>
+           <div class="row">
+                       <div class="input-field col s12">
+                         <input id="confirmpassword" type="password" [(ngModel)]="register.confirmpassword" name="confirmpassword" class="validate">
+                         <label for="confirmpassword">Confirm Password</label>
+                       </div>
+           </div>
+
            <div class="row">
              <div class="container">
                  <div class="col s12 ">

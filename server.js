@@ -20,8 +20,7 @@ app.use('/dist',express.static(path.join(__dirname,'dist')));
 
 
 app.use(function(req,res,next){
-if(req.headers&&req.headers.authorization 
-    
+if(req.headers&&req.headers.authorization    
     &&req.headers.authorization.split(' ')[0]==='JWT')    {
 jsonwebtoken.verify(req.headers.authorization.split(' ')[1],'RESTFULLAPIs'
 ,function(err,decode){

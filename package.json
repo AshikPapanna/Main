@@ -52,6 +52,9 @@
     "npm": "3.10.10"
   },
   "devDependencies": {
+    "@types/bcrypt-nodejs": "0.0.30",
+    "@types/mongodb": "^2.2.11",
+    "@types/mongoose": "^4.7.23",
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",
     "gulp": "^3.9.1",

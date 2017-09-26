@@ -1,7 +1,7 @@
 //var mongoose=require('mongoose');
 var jwt=require('jsonwebtoken');
 var bcrypt=require('bcrypt-nodejs');
-var User=require('../schemas/user.js');
+var User=require('../../schemas/user.js');
 var mongo=require('./mongo.js');
 var appconfig=require('../../appconfig.js');
 
@@ -9,7 +9,8 @@ exports.register=function(req,res,next)
 {  
     mongo.connect();
     console.log(req.body);
-    var newUser=new User(req.body);
+    console.log(User);
+    var newUser=new User.User(req.body); 
     newUser.hash_password=bcrypt.hashSync(req.body.password,bcrypt.genSaltSync(10));    
     console.log(newUser.hash_password);
     newUser.save(function(err,user){
