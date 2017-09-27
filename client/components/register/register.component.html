@@ -5,23 +5,23 @@
           <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
      </div>  
     </div>  
-     <form  (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+     <form id="reg-form" (ngSubmit)="onSubmit()" #registrationForm="ngForm">
          <div class="container">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="last_name" type="text" [(ngModel)]="register.firstname" name="firstName" class="validate">
-                        <label for="last_name">First Name</label>
+                        <input id="first_name" type="text" [(ngModel)]="register.firstname" name="firstName" class="validate"  required="" aria-required="true">
+                        <label for="first_name" data-error="please enter firstname" data-success="good">First Name</label>
                       </div>
                 </div>
              <div class="row">
                 <div class="input-field col s12">
-                    <input id="last_name" type="text" [(ngModel)]="register.lastname" name="lastName" class="validate">
-                    <label for="last_name">Last Name</label>
+                    <input id="last_name" type="text" [(ngModel)]="register.lastname" [class]="currentclass" [minLength]="5" name="lastName" (onerror)="displayerror($event)">
+                    <label for="last_name" data-error="wrong">Last Name</label>
                   </div>
             </div>
            <div class="row">
                 <div class="input-field col s12">
-                         <input id="email" type="email" [(ngModel)]="register.email" name="emailId" class="validate">
+                         <input id="email" required type="email" [(ngModel)]="register.email" name="emailId" class="invalid">
                          <label for="email" data-error="wrong" data-success="right">Email</label>
                   </div>
           </div>

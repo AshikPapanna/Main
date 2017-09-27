@@ -1,7 +1,10 @@
 <head>
     <meta charset="UTF-8">
     <title>My Angular 2 App!</title>
+    
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
@@ -27,38 +30,13 @@ rel=’stylesheet’ type=’text/css’>
     <script>
         System.import('app').catch(function(err) { console.error(err); });
         $(document).ready(function(){
-              $('.button-collapse').sideNav();
-              $('input#input_text, textarea#textarea1').characterCounter();
-
-    
-       
-
-  var $ripple = $('.js-ripple');
-
-  $ripple.on('click.ui.ripple', function(e) {
-
-    var $this = $(this);
-    var $offset = $this.parent().offset();
-    var $circle = $this.find('.c-ripple__circle');
-
-    var x = e.pageX - $offset.left;
-    var y = e.pageY - $offset.top;
-
-    $circle.css({
-      top: y + 'px',
-      left: x + 'px'
-    });
-
-    $this.addClass('is-active');
-
-  });
-
-  $ripple.on('animationend webkitAnimationEnd oanimationend MSAnimationEnd', function(e) {
-  	$(this).removeClass('is-active');
-  });
+           
+        }
+             
+        
 
 
-}
+
         );
         
     

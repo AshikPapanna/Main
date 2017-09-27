@@ -16,6 +16,7 @@
       '@angular/cdk/rxjs': 'node_modules/@angular/cdk/bundles/cdk-rxjs.umd.js',
       '@angular/cdk/table': 'node_modules/@angular/cdk/bundles/cdk-table.umd.js',
       '@angular/cdk/scrolling': 'node_modules/@angular/cdk/bundles/cdk-scrolling.umd.js',
+      '@angular/cdk/stepper': 'node_modules/@angular/cdk/bundles/cdk-stepper.umd.js',
 
 
       '@angular':                   'node_modules/@angular',

@@ -8,6 +8,7 @@ import { FormsModule }   from '@angular/forms';
 import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 
 import{HttpModule} from '@angular/http'
+import{Minlength} from './directives/minlength.directive'
 
 
      
@@ -22,7 +23,7 @@ import{RegisterComponent} from './components/register/register.component';
 
 @NgModule({
     imports:[BrowserModule,FormsModule,MdButtonModule, MdCheckboxModule,HttpModule],
-declarations:[AppComponent,LoginComponent,ProfileComponent,RegisterComponent],
+declarations:[AppComponent,LoginComponent,ProfileComponent,RegisterComponent,Minlength],
 
 bootstrap:[AppComponent]
 })
