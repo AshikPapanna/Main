@@ -10,7 +10,8 @@ exports.connect=function()
     mongoose.connection.on("error", function(err) {
         console.log("Could not connect to mongo server!");
         console.log(err);
-      });     
+      }); 
+    
     mongoose.connect(appconfig.database);
     mongoose.connection;
 };

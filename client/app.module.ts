@@ -18,8 +18,14 @@ import {AppComponent} from './app.component';
 import{LoginComponent} from './components/login/login.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import{RegisterComponent} from './components/register/register.component';
+import{HomeComponent} from './components/home/home.component';
+import {ForgotpasswordComponent} from './components/forgotpassword/forgotpassword.component';
 
 const approutes:Routes=[
+    {
+     path:'home',
+     component:HomeComponent
+    },
     {
         path:'login',
         component:LoginComponent
@@ -28,7 +34,19 @@ const approutes:Routes=[
         path:'register',
         component:RegisterComponent
     },
-    
+    {
+        path:'forgotpassword',
+        component:ForgotpasswordComponent
+    },
+    {
+path:'profiles',
+component:ProfileComponent
+    },
+    {
+        path:'',
+        redirectTo:'/home',
+        pathMatch:'full'
+    }
 ]
 
 
@@ -39,11 +57,17 @@ const approutes:Routes=[
         MdButtonModule,
          MdCheckboxModule,
          HttpModule,
-        RouterModule.forRoot(approutes,{enableTracing:true})],
-    declarations:[AppComponent,LoginComponent,ProfileComponent,RegisterComponent,Minlength],
+        RouterModule.forRoot(approutes)],
+    declarations:[AppComponent
+        ,LoginComponent
+        ,ProfileComponent,RegisterComponent
+        ,ForgotpasswordComponent
+        ,HomeComponent
+        ,Minlength],
 
      bootstrap:[AppComponent]
 })
 export class AppModule{
+
 
 }

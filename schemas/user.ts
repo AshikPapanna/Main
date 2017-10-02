@@ -5,6 +5,8 @@ import {compareSync} from 'bcrypt-nodejs'
 
 
 
+
+
  var UserSchema:Schema =new Schema({
     firstname:{
         type:String,
@@ -19,8 +21,8 @@ import {compareSync} from 'bcrypt-nodejs'
         type:String,
         required:true,
         trim:true,
-        lowercase:true,
-        unique:true
+        lowercase:true
+       
     },
     hash_password:{
         type:String,

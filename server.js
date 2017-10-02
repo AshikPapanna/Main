@@ -3,6 +3,7 @@ var bodyparser=require('body-parser');
 var path=require('path');
 var jsonwebtoken=require('jsonwebtoken');
 var cookieParser=require('cookie-parser');
+var appconfig=require('./appconfig.js');
 
 var app=express();
 global.__base = __dirname + '/';
@@ -22,13 +23,36 @@ app.use('/dist',express.static(path.join(__dirname,'dist')));
 app.use(function(req,res,next){
 if(req.headers&&req.headers.authorization    
     &&req.headers.authorization.split(' ')[0]==='JWT')    {
-jsonwebtoken.verify(req.headers.authorization.split(' ')[1],'RESTFULLAPIs'
+jsonwebtoken.verify(req.headers.authorization.split(' ')[1],appconfig.secrete
 ,function(err,decode){
-    if(err) req.user=undefined;
-    req.user=decode;
-    next();  
+    if(err){ 
+               console.log(err);
+              req.user=undefined;
+           }
+    else   {
+              console.log(decode);
+              console.log('decoded');
+              req.user=decode;
+           }
+              next();  
         });
-    }else{
+    }else if(req.query && req.query.token &&req.query.token.split('.')[0]==='jwt')
+    {
+        console.log(req.query.token);
+        jsonwebtoken.verify(req.query.token.split('.')[1],appconfig.secrete
+        ,function(err,decode){
+            if(err) 
+           {
+            console.log(err);
+        req.user=undefined;
+        }else{   console.log(decode); 
+            req.user=decode;}
+    next();  
+    })
+    }
+    else
+    {
+        console.log('no auth pro');
         req.user=undefined;
         next();
     }    

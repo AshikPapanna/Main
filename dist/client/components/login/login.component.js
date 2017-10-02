@@ -12,23 +12,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var login_1 = require("../../../models/login");
 var login_service_1 = require("./login.service");
+var router_1 = require("@angular/router");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(loginservice) {
+    function LoginComponent(loginservice, route) {
         this.loginservice = loginservice;
+        this.route = route;
         this.login = new login_1.Login('', '', '');
     }
     ;
-    LoginComponent.prototype.closeNav = function () {
-        document.getElementById("mySidenav").style.width = "0%";
-    };
-    LoginComponent.prototype.registerclick = function () {
-        document.getElementById("mySidenav").style.width = "0%";
-        document.getElementById("mySidenavforregister").style.width = "30%";
-    };
+    /* closeNav(){
+         document.getElementById("mySidenav").style.width = "0%";
+     }
+     registerclick(){
+         document.getElementById("mySidenav").style.width = "0%";
+         document.getElementById("mySidenavforregister").style.width = "30%";
+     }*/
     LoginComponent.prototype.onSubmit = function () {
+        var _this = this;
         console.log(this.login);
         this.loginservice.login(this.login).subscribe(function (user) {
             console.log(user);
+            _this.route.navigate(['/profiles']);
         }, function (err) {
             console.log(err);
         });
@@ -41,7 +45,8 @@ var LoginComponent = /** @class */ (function () {
             styleUrls: ['./login.component.css'],
             providers: [login_service_1.LoginService]
         }),
-        __metadata("design:paramtypes", [login_service_1.LoginService])
+        __metadata("design:paramtypes", [login_service_1.LoginService,
+            router_1.Router])
     ], LoginComponent);
     return LoginComponent;
 }());

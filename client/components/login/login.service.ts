@@ -9,14 +9,35 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class LoginService{
-    constructor(private http:Http){}
-     login(body:Object):Observable<Login>{
+  public token:string;
+    constructor(private http:Http){
+      var user=JSON.parse(localStorage.getItem('user'));
+      this.token=user&& user.token;
+
+    }
+     login(body:Login):Observable<Login>{
         let bodyString = JSON.stringify(body); // Stringify payload
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request optio
-      return this.http.post('http://localhost:3000/login',body,options)
-                               .map((res:Response)=>res.json())
+      return this.http.post('http://localhost:5000/login',body,options)
+                               .map((res:Response)=>
+                               {let token =res.json()&&res.json().token
+                                if(token)
+                                  {
+                                    
+                                    this.token=token;
+                                    localStorage.setItem('user',JSON.stringify({user:body.emailId,token:token}))
+                                  return res;
+                                  }
+                                else{
+                                  return res;
+                                }
+                              })
       .catch((error:any)=>Observable.throw(error.json().error||'server error'))
 
      }
+    logout():void{
+      this.token=null;
+      localStorage.removeItem('user');
+    }
 }

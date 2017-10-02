@@ -4,6 +4,8 @@ var bcrypt=require('bcrypt-nodejs');
 var User=require('../../schemas/user.js');
 var mongo=require('./mongo.js');
 var appconfig=require('../../appconfig.js');
+var mailhelper=require('../helpers/confirmationsendgrid.js');
+
 
 exports.register=function(req,res,next)
 {  
@@ -22,21 +24,33 @@ exports.register=function(req,res,next)
         }
         else{
                 user.hash_password=undefined; 
+        mailhelper.sendconfirmationmail(user.email,jwt.sign({
+                                         email:user.email,
+                                         fullname:user.fullname,
+                                         _id:user._id
+                                         }
+                                        ,appconfig.secrete
+                                        ,{ expiresIn:250
+                                          }));
+                                        
                 return res.json(user);
             }
     });
 }
+
 exports.signin=function(req,res){
     console.log(res+req.body.emailId);
     console.log(User);
     mongo.connect();
-User.findOne({
-    email:req.body.email
+User.User.findOne({
+    email:req.body.emailId
              },function(err,user){
-if(err){throw err;}
+if(err){ console.log(err);}
 if(!user||!user.comparepassword(req.body.password)){
+    console.log('error');
     return res.status(401).json({message:"Authentication failed. Invalid user or password"});
 }
+console.log(user);
 return res.json({token:jwt.sign({
     email:user.email,
     fullname:user.fullname,
@@ -64,5 +78,16 @@ exports.userslist=function(req,res,next)
     }else{
         return res.status(401).json({message:'Unauthorized user!'});
     }
+}
+exports.forgotpassword=function(req,res){
+    User.findOne({email:req.body.email},function(err,user){
+        if(user)
+            {
+
+            }
+            else{
+                
+            }
+    })
 }
 

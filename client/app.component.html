@@ -1,4 +1,4 @@
-<div [ngClass]="navclass" >
+
 <nav>
     <div class="nav-wrapper">          
         <a href="#" id="logo" class="brand-logo">Logo</a>        
@@ -6,49 +6,17 @@
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="badges.html">Components</a></li>
                 <li><a href="collapsible.html">JavaScript</a></li>
-                <li><a (click)="OpenNav()" >login</a></li>
+                <li><a routerLink="/login" >login</a></li>
         </ul>
-    </div>
- 
+    </div> 
 </nav>
-</div>
-<my-login></my-login>
-<my-register></my-register>
-  <div class="parallax" >
-      <div class="row" style="padding-top:10%;padding-bottom:10%;">
-         <div class="col s12">
-           <p class="center-align vb-qoute" >dsfdf dsfdsf dsfdsf dfdsf dsfdfs <br>
-            cddsfdf dfdsf dfDf fbggewere gfsfsdf
-           </p>
-         </div>
-      </div>
-      <div class="conatiner"  style="background-color:rgba(0, 0, 0, 0.5);">
-   <div class="row valign-wrapper" >
-        <div class="col s2 valign">
-            <a class="btn-floating btn-large waves-effect waves-light red " style="float:right;" ><i class="material-icons">add</i></a>
-        </div>
-        <div class="col s8">
-            <div class="row" >
-          <div class="col s4" *ngFor="let profile of profiles">      
-                <my-profile [profile]="profile">
-                </my-profile>
-          </div>
-        </div>
-        </div>
-         <div class="col s2">
-                    <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-          </div>
-   </div> 
-</div>
-    
-            
-</div>
+
+  <div class="parallax" >     
+    <router-outlet></router-outlet>            
+ </div>
 
 <style>
-    .vb-qoute{
-        color: white;
-        font-size:200%;
-    }
+    
 nav{
     
     background-color:  #009900;
