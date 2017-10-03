@@ -18,13 +18,14 @@ exports.register=function(req,res,next)
     newUser.save(function(err,user){
         console.log(err);
         if(err){
-           return res.status(400).send(
-               {message:err}
-           );
-        }
+            return res.json({
+              'lastname': err.errors && err.errors.lastname && err.errors.lastname.message,
+              'firstname':err.errors && err.errors.firstname && err.errors.firstname.message,
+              'email':err.errors && err.errors.email && err.errors.email.message});
+            }
         else{
-                user.hash_password=undefined; 
-        mailhelper.sendconfirmationmail(user.email,jwt.sign({
+            user.hash_password=undefined; 
+            mailhelper.sendconfirmationmail(user.email,jwt.sign({
                                          email:user.email,
                                          fullname:user.fullname,
                                          _id:user._id

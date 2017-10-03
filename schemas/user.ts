@@ -2,16 +2,14 @@ import{Document,Schema,Model,model }from 'mongoose'
 
 import {compareSync} from 'bcrypt-nodejs'
 
-
-
-
-
+import {validators} from 'mongoose-validators'
 
  var UserSchema:Schema =new Schema({
     firstname:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        validate:[validators.isLength(4,10)]
     },
     lastname:{
         type:String,       
