@@ -11,9 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var profile_1 = require("../../../models/profile");
+var profile_service_1 = require("./profile.service");
 var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent() {
+    function ProfileComponent(profileservice) {
+        this.profileservice = profileservice;
     }
+    ;
+    ProfileComponent.prototype.ngOnInit = function () {
+        this.profileservice.getprofiles().subscribe(function (user) {
+            console.log('success');
+        }, function (err) {
+            console.log(err);
+        });
+    };
     __decorate([
         core_1.Input(),
         __metadata("design:type", profile_1.Profile)
@@ -22,8 +32,10 @@ var ProfileComponent = /** @class */ (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'my-profile',
-            templateUrl: './profile.component.html'
-        })
+            templateUrl: './profile.component.html',
+            providers: [profile_service_1.ProfileService]
+        }),
+        __metadata("design:paramtypes", [profile_service_1.ProfileService])
     ], ProfileComponent);
     return ProfileComponent;
 }());
