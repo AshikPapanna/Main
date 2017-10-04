@@ -25,7 +25,7 @@ exports.register=function(req,res,next)
             }
         else{
             user.hash_password=undefined; 
-            mailhelper.sendconfirmationmail(user.email,jwt.sign({
+          var error= mailhelper.sendconfirmationmail(user.email,jwt.sign({
                                          email:user.email,
                                          fullname:user.fullname,
                                          _id:user._id
@@ -33,6 +33,9 @@ exports.register=function(req,res,next)
                                         ,appconfig.secrete
                                         ,{ expiresIn:250
                                           }));
+           if(error){
+            return res.json({email:'not valid'}); 
+           }
                                         
                 return res.json(user);
             }

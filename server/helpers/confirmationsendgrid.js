@@ -21,13 +21,14 @@ var request = sg.emptyRequest({
 
   sg.API(request, function (error, response) {
   if (error) {
-    console.log('Error response received');
-    console.log(error);
+   return true;
+   
+  }
+  else{
+    return false;
   }
  
 
-  console.log(response.statusCode);
- console.log(response.body);
- console.log(response.headers);
+ 
  
  })};

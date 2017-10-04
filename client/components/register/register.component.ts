@@ -19,6 +19,7 @@ export class RegisterComponent {
     hi:string='ghs';
     lastnameclass:string='';
     emailvalidateclass:string='';
+    IsSuccess:boolean=false;
    register=new Register('','','','','','','','');
    displayerror(evn:any){
 console.log('error');
@@ -75,6 +76,9 @@ if(!(this.validatefirstname(this.register.firstname)
                 console.log(user.email);
                 if(user.email){
                     this.emailvalidateclass='invalid';
+                 }
+                 else{
+                    this.IsSuccess=true;
                  }
             },
             err=>{
