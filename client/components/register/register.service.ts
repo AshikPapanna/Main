@@ -21,7 +21,7 @@ export class RegisterService{
         let options = new RequestOptions({ headers: headers }); // Create a request optio
         return this.http.post('http://localhost:5000/register',body,options)
         .map((res:Response)=>res.json())
-         .catch((error:any)=>Observable.throw(error.json()))
+         .catch((error:any)=>error.json())
     }
 }
 

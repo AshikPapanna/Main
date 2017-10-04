@@ -16,65 +16,94 @@ export class RegisterComponent {
     firstNamevalidateclass:string='';
     confirmpasswordclass:string='';
     passwordclass:string='';
+    hi:string='ghs';
     lastnameclass:string='';
+    emailvalidateclass:string='';
    register=new Register('','','','','','','','');
    displayerror(evn:any){
 console.log('error');
    }
-comparePassword(password:string,confirmpassword:string){
+comparePassword(password:string,confirmpassword:string):boolean{
     if(password!==confirmpassword)
-        {
-             console.log(this.register.password);
+        {          
 this.confirmpasswordclass='invalid';
+return false;
         }
-else{
-     console.log(this.register.password);
+else{     
    this.confirmpasswordclass='valid';
+   return true;
 }
 }
-validatelastname(lastname:string){
+validatelastname(lastname:string):boolean{
     if( lastname.length<2||lastname.length>20)
                 {
                  
                     this.lastnameclass='invalid';
+                    return false;
                 }
                 else{
                    
                     this.lastnameclass='valid';
+                    return true;
                 }
 }
- Validatepasswordlength(password:string)
+ Validatepasswordlength(password:string):boolean
  {
       if( password.length<8||password.length>20)
                 {
                  
                     this.passwordclass='invalid';
+                    return false;
                 }
                 else{
                    
                     this.passwordclass='valid';
+                    return true;
                 }
  }
    onSubmit(){
+if(!(this.validatefirstname(this.register.firstname)
+&&  this.Validatepasswordlength(this.register.password)
+&& this.comparePassword(this.register.password,this.register.confirmpassword)
+&& this.validatelastname(this.register.lastname)&& this.validateemail(this.register.email)) )
+{
+    return false;    
+}
          this.registerService.register(this.register).subscribe(
             user=>
             {
-                console.log(user);
+                console.log(user.email);
+                if(user.email){
+                    this.emailvalidateclass='invalid';
+                 }
             },
             err=>{
+                console.log('eds');
                 console.log(err);
+               
             }   
          )
    };
-        validatefirstname(firstname:string){
+        validatefirstname(firstname:string):boolean{
             if( firstname.length<4||firstname.length>20)
                 {
-                 
-                    this.firstNamevalidateclass='invalid';
+                   this.firstNamevalidateclass='invalid';
+                    return false;
                 }
                 else{
                    
                     this.firstNamevalidateclass='valid';
+                    return true;
                 }
+        }
+        validateemail(email:string):boolean{
+            if(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+                this.emailvalidateclass='valid'
+                return true;
+            }
+        else{
+            this.emailvalidateclass='invalid'
+            return false;
+        }
         }
 }

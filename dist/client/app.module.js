@@ -41,6 +41,10 @@ var approutes = [
         component: profile_component_1.ProfileComponent
     },
     {
+        path: 'profiles/:tokenId',
+        component: profile_component_1.ProfileComponent
+    },
+    {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'

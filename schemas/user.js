@@ -37,6 +37,10 @@ var UserSchema = new mongoose_1.Schema({
     },
     resetPasswordExpiresOn: {
         type: Date
+    },
+    isemailverified:{
+        type:Boolean,
+        default:false
     }
 });
 UserSchema.pre('save', function (next) {

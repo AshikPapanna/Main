@@ -36,10 +36,10 @@ jsonwebtoken.verify(req.headers.authorization.split(' ')[1],appconfig.secrete
            }
               next();  
         });
-    }else if(req.query && req.query.token)
+    }else if(req.query && req.query.tokenId)
     {
-        console.log(req.query.token);
-        jsonwebtoken.verify(req.query.token,appconfig.secrete
+        console.log(req.query.tokenId);
+        jsonwebtoken.verify(req.query.tokenId,appconfig.secrete
         ,function(err,decode){
             if(err) 
            {

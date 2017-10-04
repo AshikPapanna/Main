@@ -11,14 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var profile_1 = require("../../../models/profile");
+var router_1 = require("@angular/router");
+require("rxjs/add/operator/switchMap");
 var profile_service_1 = require("./profile.service");
 var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent(profileservice) {
+    function ProfileComponent(profileservice, route) {
         this.profileservice = profileservice;
+        this.route = route;
     }
     ;
     ProfileComponent.prototype.ngOnInit = function () {
-        this.profileservice.getprofiles().subscribe(function (user) {
+        var _this = this;
+        console.log('success');
+        this.route.params
+            .switchMap(function (params) { return _this.profileservice.getprofiles(params['tokenId']); })
+            .subscribe(function (user) {
             console.log('success');
         }, function (err) {
             console.log(err);
@@ -35,7 +42,8 @@ var ProfileComponent = /** @class */ (function () {
             templateUrl: './profile.component.html',
             providers: [profile_service_1.ProfileService]
         }),
-        __metadata("design:paramtypes", [profile_service_1.ProfileService])
+        __metadata("design:paramtypes", [profile_service_1.ProfileService,
+            router_1.ActivatedRoute])
     ], ProfileComponent);
     return ProfileComponent;
 }());

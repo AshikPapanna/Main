@@ -43,6 +43,10 @@ path:'profiles',
 component:ProfileComponent
     },
     {
+        path:'profiles/:tokenId',
+        component:ProfileComponent
+            },
+    {
         path:'',
         redirectTo:'/home',
         pathMatch:'full'

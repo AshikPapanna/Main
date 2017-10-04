@@ -3,18 +3,8 @@ var express=require('express');
 module.exports=function(app){
     var router=express.Router();
     var userHandler=require('../repository/userrepo.js');
-    router.get('/profiles', function(req, res) {
-     if(req.user){
-  res.sendfile(__base+'index.html');
-     }else{
-         console.log('cannotget');
-         res.send('cannotget');
-     }
-})
-    router.get('*', function(req, res) {
-  res.sendfile(__base+'index.html');
-});
- 
+    var profileHandler=require('../repository/profilerepo');
+    router.get('/profiles', profileHandler.getprofiles ); 
     router.post('/forgotpassword',userHandler.forgotpassword);
     router.post('/register',userHandler.register);
     router.post('/login',userHandler.signin);
@@ -22,7 +12,10 @@ module.exports=function(app){
     router.get('/',function(req,res){
         res.sendFile(__base+'index.html');
         
-    });          
+    }); 
+    router.get('*', function(req, res) {
+        res.sendfile(__base+'index.html');
+      });         
     app.use('/',router);
 }
   

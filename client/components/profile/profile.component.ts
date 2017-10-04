@@ -1,8 +1,10 @@
 import {Component,Input,OnInit} from '@angular/core'
 import {Profile} from '../../../models/profile'
+import {ActivatedRoute,ParamMap} from '@angular/router'
 
 import {CommonModule} from '@angular/common'
 import{Observable} from 'rxjs/Rx'
+import 'rxjs/add/operator/switchMap'
 import {ProfileService} from './profile.service';
 
 
@@ -16,11 +18,14 @@ import {ProfileService} from './profile.service';
 export class ProfileComponent {
    
   @Input()  profile:Profile;
-  constructor(private profileservice:ProfileService){};
+  constructor(private profileservice:ProfileService,
+private route:ActivatedRoute){};
  profiles:Profile[];
  ngOnInit(){
-      this.profileservice.getprofiles().subscribe(
-          user=>{
+    console.log('success'); 
+this.route.params
+.switchMap((params:ParamMap)=>this.profileservice.getprofiles(params['tokenId']))
+.subscribe(user=>{
               console.log('success');
              
           },
@@ -28,7 +33,7 @@ export class ProfileComponent {
                 console.log(err)
             }
             
-      );
+ ) ;
   }
    // console.log(profile1);
   
