@@ -33,9 +33,7 @@ exports.register=function(req,res,next)
                                         ,appconfig.secrete
                                         ,{ expiresIn:250
                                           }));
-           if(error){
-            return res.json({email:'not valid'}); 
-           }
+           
                                         
                 return res.json(user);
             }

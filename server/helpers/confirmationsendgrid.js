@@ -20,13 +20,8 @@ var request = sg.emptyRequest({
 
 
   sg.API(request, function (error, response) {
-  if (error) {
-   return true;
-   
-  }
-  else{
-    return false;
-  }
+ 
+ 
  
 
  
