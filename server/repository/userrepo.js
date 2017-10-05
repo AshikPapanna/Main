@@ -2,14 +2,14 @@
 var jwt=require('jsonwebtoken');
 var bcrypt=require('bcrypt-nodejs');
 var User=require('../../schemas/user.js');
-var mongo=require('./mongo.js');
+var mongo=require('./mongo.js').connect();
 var appconfig=require('../../appconfig.js');
 var mailhelper=require('../helpers/confirmationsendgrid.js');
 
 
 exports.register=function(req,res,next)
 {  
-    mongo.connect();
+   // mongo.connect();
     console.log(req.body);
     console.log(User);
     var newUser=new User.User(req.body); 
@@ -18,14 +18,14 @@ exports.register=function(req,res,next)
     newUser.save(function(err,user){
         console.log(err);
         if(err){
-            return res.json({
+            return res.status(401).json({ message:{
               'lastname': err.errors && err.errors.lastname && err.errors.lastname.message,
               'firstname':err.errors && err.errors.firstname && err.errors.firstname.message,
-              'email':err.errors && err.errors.email && err.errors.email.message});
-            }
+              'email':err.errors && err.errors.email && err.errors.email.message}});
+          }
         else{
             user.hash_password=undefined; 
-          var error= mailhelper.sendconfirmationmail(user.email,jwt.sign({
+            var error= mailhelper.sendconfirmationmail(user.email,jwt.sign({
                                          email:user.email,
                                          fullname:user.fullname,
                                          _id:user._id
@@ -42,14 +42,13 @@ exports.register=function(req,res,next)
 
 exports.signin=function(req,res){
     console.log(res+req.body.emailId);
-    console.log(User);
-    mongo.connect();
-User.User.findOne({
-    email:req.body.emailId
-             },function(err,user){
+    console.log(User.User);
+   // mongo.connect();
+    User.User.find({},function(err,user){
+                 console.log(req.body);
 if(err){ console.log(err);}
-if(!user||!user.comparepassword(req.body.password)){
-    console.log('error');
+if(!user||!user.user.comparepassword(bcrypt.hashSync(req.body.password,bcrypt.genSaltSync(10)))){
+    console.log(user);
     return res.status(401).json({message:"Authentication failed. Invalid user or password"});
 }
 console.log(user);

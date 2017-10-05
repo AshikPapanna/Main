@@ -73,17 +73,15 @@ if(!(this.validatefirstname(this.register.firstname)
          this.registerService.register(this.register).subscribe(
             user=>
             {
-                console.log(user.email);
-                if(user.email){
-                    this.emailvalidateclass='invalid';
-                 }
-                 else{
-                    this.IsSuccess=true;
-                 }
-            },
+              this.IsSuccess=true;
+             },
             err=>{
-                console.log('eds');
-                console.log(err);
+             
+             if(err._body&& JSON.parse(err._body).message&& JSON.parse(err._body).message.email ){
+                this.emailvalidateclass='invalid';    
+                this.IsSuccess=false;            
+             }
+                
                
             }   
          )

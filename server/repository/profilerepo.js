@@ -10,12 +10,25 @@ var mailhelper=require('../helpers/confirmationsendgrid.js');
 
 
 exports.getprofiles=function(req,res){
-    //mongo.connect();
+ 
     console.log('sucess');
+   
     
    if(req.user && req.user._id)
     {
-        User.User.update({ _id:req.user._id }, { $set: { isemailverified: true }});
+        
+        User.User.findByIdAndUpdate(req.user._id ,  
+            { $set: { isemailverified: true }}
+            ,{new:true},function(err,user){
+                if(err)
+                    {
+                        console.log(err);
+                    }
+                    else{
+                        console.log(user);
+                      
+                    }
+            });
         res.json({email:req.user.email});
     }
     else{

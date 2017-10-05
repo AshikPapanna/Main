@@ -11,6 +11,8 @@ import 'rxjs/add/operator/map';
 
 import 'rxjs/add/operator/catch';
 
+import 'rxjs/add/observable/throw'
+
 @Injectable()
 export class RegisterService{
     constructor(private http:Http){};
@@ -21,7 +23,7 @@ export class RegisterService{
         let options = new RequestOptions({ headers: headers }); // Create a request optio
         return this.http.post('http://localhost:5000/register',body,options)
         .map((res:Response)=>res.json())
-         .catch((error:any)=>error.json())
+         .catch(error=>{ return Observable.throw(error)})
     }
 }
 

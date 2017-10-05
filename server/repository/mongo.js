@@ -11,10 +11,11 @@ exports.connect=function()
         console.log("Could not connect to mongo server!");
         console.log(err);
       }); 
-    
-    mongoose.connect(appconfig.database);
+      mongoose.Promise = global.Promise;
+   mongoose.connect(appconfig.database);
     mongoose.connection;
 };
+
 
 
 
