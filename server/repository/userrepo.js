@@ -1,22 +1,18 @@
-//var mongoose=require('mongoose');
+
 var jwt=require('jsonwebtoken');
-var bcrypt=require('bcrypt-nodejs');
 var User=require('../../schemas/user.js');
 var mongo=require('./mongo.js').connect();
 var appconfig=require('../../appconfig.js');
 var mailhelper=require('../helpers/confirmationsendgrid.js');
+var bcrypt = require("bcrypt-nodejs");
+
 
 
 exports.register=function(req,res,next)
 {  
-   // mongo.connect();
-    console.log(req.body);
-    console.log(User);
-    var newUser=new User.User(req.body); 
-    newUser.hash_password=bcrypt.hashSync(req.body.password,bcrypt.genSaltSync(10));    
-    console.log(newUser.hash_password);
-    newUser.save(function(err,user){
-        console.log(err);
+     var newUser=new User(req.body); 
+     newUser.hash_password=bcrypt.hashSync(req.body.password,bcrypt.genSaltSync(10));    
+     newUser.save(function(err,user){
         if(err){
             return res.status(401).json({ message:{
               'lastname': err.errors && err.errors.lastname && err.errors.lastname.message,
@@ -40,18 +36,20 @@ exports.register=function(req,res,next)
     });
 }
 
-exports.signin=function(req,res){
-    console.log(res+req.body.emailId);
-    console.log(User.User);
-   // mongo.connect();
-    User.User.find({},function(err,user){
+exports.signin=function(req,res){     
+    User.findOne({email:req.body.emailId,isemailverified:true},function(err,user){
                  console.log(req.body);
 if(err){ console.log(err);}
-if(!user||!user.user.comparepassword(bcrypt.hashSync(req.body.password,bcrypt.genSaltSync(10)))){
+if(!user){
     console.log(user);
     return res.status(401).json({message:"Authentication failed. Invalid user or password"});
+}else if(user)
+{
+  if  (!user.comparepassword(req.body.password))
+    {
+        return res.status(401).json({message:"Authentication failed. Invalid user or password"});
+     }
 }
-console.log(user);
 return res.json({token:jwt.sign({
     email:user.email,
     fullname:user.fullname,
@@ -62,13 +60,13 @@ return res.json({token:jwt.sign({
 )});
 })
 }
-
+/*
 exports.loginrequired=function(req,res,next){
 if(req.user){next();}
 else{
     return res.status(401).json({message:'Unauthorized user!'})
 }
-}
+}*/
 exports.userslist=function(req,res,next)
 {
     if(req.user)

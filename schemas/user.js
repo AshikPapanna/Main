@@ -1,10 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose_1 = require("mongoose");
-var bcrypt_nodejs_1 = require("bcrypt-nodejs");
+
+var mongoose = require("mongoose");
+var bcrypt = require("bcrypt-nodejs");
 var validators = require("mongoose-validators");
 var uniqueValidators=require("mongoose-unique-validator");
-var UserSchema = new mongoose_1.Schema({
+var UserSchema = new mongoose.Schema({
     firstname: {
         type: String,
         required: true,
@@ -58,7 +57,8 @@ UserSchema.methods.fullname = function () {
     return this.firstname + ' ' + this.lastname;
 };
 UserSchema.methods.comparepassword = function (password) {
-    return bcrypt_nodejs_1.compareSync(password, this.hash_password);
+    return bcrypt.compareSync(password, this.hash_password);
 };
-exports.User = mongoose_1.model("User", UserSchema);
+ mongoose.model("User",UserSchema);
+ module.exports=mongoose.model('User');
 //# sourceMappingURL=user.js.map

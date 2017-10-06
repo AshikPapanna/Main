@@ -9,15 +9,10 @@ var mailhelper=require('../helpers/confirmationsendgrid.js');
 
 
 
-exports.getprofiles=function(req,res){
- 
-    console.log('sucess');
-   
-    
-   if(req.user && req.user._id)
+exports.getprofiles=function(req,res){  
+  if(req.user && req.user._id)
     {
-        
-        User.User.findByIdAndUpdate(req.user._id ,  
+     User.findByIdAndUpdate(req.user._id ,  
             { $set: { isemailverified: true }}
             ,{new:true},function(err,user){
                 if(err)
