@@ -33,6 +33,10 @@ var approutes = [
         component: register_component_1.RegisterComponent
     },
     {
+        path: 'forgotpassword/:emailid',
+        component: forgotpassword_component_1.ForgotpasswordComponent
+    },
+    {
         path: 'forgotpassword',
         component: forgotpassword_component_1.ForgotpasswordComponent
     },

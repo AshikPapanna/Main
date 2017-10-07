@@ -15,15 +15,12 @@ export class RegisterComponent {
     constructor(private registerService:RegisterService){} 
     firstNamevalidateclass:string='';
     confirmpasswordclass:string='';
-    passwordclass:string='';
-    hi:string='ghs';
+    passwordclass:string='';  
     lastnameclass:string='';
     emailvalidateclass:string='';
     IsSuccess:boolean=false;
    register=new Register('','','','','','','','');
-   displayerror(evn:any){
-console.log('error');
-   }
+ 
 comparePassword(password:string,confirmpassword:string):boolean{
     if(password!==confirmpassword)
         {          
