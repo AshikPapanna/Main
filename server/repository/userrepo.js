@@ -27,7 +27,7 @@ exports.register=function(req,res,next)
                                          fullname:user.fullname,
                                          _id:user._id
                                          }
-                                        ,process.env.JWT_KEY
+                                        ,process.env.JWT_KEY||require('../../appconfig.js').secrete
                                         ,{ expiresIn:250
                                           }));
            
@@ -54,7 +54,7 @@ return res.json({token:jwt.sign({
     email:user.email,
     fullname:user.fullname,
     _id:user._id
-       },process.env.JWT_KEY,{
+       },process.env.JWT_KEY||require('../../appconfig.js').secrete,{
            expiresIn:250
        }
 )});
@@ -89,7 +89,7 @@ exports.forgotpassword=function(req,res){
                                          fullname:user.fullname,
                                          _id:user._id
                                          }
-                                        ,process.env.JWT_KEY
+                                        ,process.env.JWT_KEY||require('../../appconfig.js').secrete
                                         ,{ expiresIn:250
                                           }
                         ));

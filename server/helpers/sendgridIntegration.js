@@ -6,7 +6,7 @@ var subject = 'Sending with SendGrid is Fun';
 var content = new helper.Content('text/html', '<h1>and easy to do anywhere, even with Node.js</h1>');
 var mail = new helper.Mail(fromEmail, subject, toEmail, content);
  
-var sg = require('sendgrid')(process.env.SENDGRID_KEY);
+var sg = require('sendgrid')(process.env.SENDGRID_KEY||require('../../appconfig.js').sendgridkey);
 var request = sg.emptyRequest({
   method: 'POST',
   path: '/v3/mail/send',
