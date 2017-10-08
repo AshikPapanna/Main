@@ -21,7 +21,7 @@ export class RegisterService{
         let bodyString = JSON.stringify(body); // Stringify payload
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request optio
-        return this.http.post('http://localhost:5000/register',body,options)
+        return this.http.post('https://ashikp.herokuapp.com/register',body,options)
         .map((res:Response)=>res.json())
          .catch(error=>{ return Observable.throw(error)})
     }

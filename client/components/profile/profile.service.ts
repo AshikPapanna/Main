@@ -31,7 +31,7 @@ export class ProfileService {
         let options = new RequestOptions({ headers: headers });
  
         // get users from api
-      return this.http.get('http://localhost:5000/profiles',options)
+      return this.http.get('https://ashikp.herokuapp.com/profiles',options)
         .map((res:Response)=>{console.log(res);res || res.json()})
          .catch((error:any)=>Observable.throw(error))
     }

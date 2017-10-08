@@ -24,7 +24,7 @@ var RegisterService = /** @class */ (function () {
         var bodyString = JSON.stringify(body); // Stringify payload
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         var options = new http_1.RequestOptions({ headers: headers }); // Create a request optio
-        return this.http.post('http://localhost:5000/register', body, options)
+        return this.http.post('https://ashikp.herokuapp.com/register', body, options)
             .map(function (res) { return res.json(); })
             .catch(function (error) { return Rx_1.Observable.throw(error); });
     };

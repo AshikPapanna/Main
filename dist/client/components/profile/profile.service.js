@@ -32,7 +32,7 @@ var ProfileService = /** @class */ (function () {
         var headers = new http_1.Headers({ 'authorization': 'JWT ' + this.localtoken });
         var options = new http_1.RequestOptions({ headers: headers });
         // get users from api
-        return this.http.get('http://localhost:5000/profiles', options)
+        return this.http.get('https://ashikp.herokuapp.com/profiles', options)
             .map(function (res) { console.log(res); res || res.json(); })
             .catch(function (error) { return Rx_1.Observable.throw(error); });
     };
