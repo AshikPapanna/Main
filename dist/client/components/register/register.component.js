@@ -18,15 +18,11 @@ var RegisterComponent = /** @class */ (function () {
         this.firstNamevalidateclass = '';
         this.confirmpasswordclass = '';
         this.passwordclass = '';
-        this.hi = 'ghs';
         this.lastnameclass = '';
         this.emailvalidateclass = '';
         this.IsSuccess = false;
         this.register = new registration_1.Register('', '', '', '', '', '', '', '');
     }
-    RegisterComponent.prototype.displayerror = function (evn) {
-        console.log('error');
-    };
     RegisterComponent.prototype.comparePassword = function (password, confirmpassword) {
         if (password !== confirmpassword) {
             this.confirmpasswordclass = 'invalid';

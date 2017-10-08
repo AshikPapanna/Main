@@ -93,6 +93,7 @@ exports.forgotpassword=function(req,res){
                                         ,{ expiresIn:250
                                           }
                         ));
+
                        return res.json({email:user.email});
                     }
                   
