@@ -1,5 +1,5 @@
 var mongoose=require('mongoose');
-var appconfig=require('../../appconfig.js');
+//var appconfig=require('../../appconfig.js');
 
 
 exports.connect=function()
