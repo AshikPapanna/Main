@@ -3,7 +3,7 @@ var jwt=require('jsonwebtoken');
 var bcrypt=require('bcrypt-nodejs');
 var User=require('../../schemas/user.js');
 var mongo=require('./mongo.js');
-var appconfig=require('../../appconfig.js');
+//var appconfig=require('../../appconfig.js');
 var mailhelper=require('../helpers/confirmationsendgrid.js');
 
 
