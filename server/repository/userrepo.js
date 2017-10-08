@@ -15,6 +15,7 @@ exports.register=function(req,res,next)
      newUser.hash_password=bcrypt.hashSync(req.body.password,bcrypt.genSaltSync(10));    
      newUser.save(function(err,user){
         if(err){
+            console.log(err);
             return res.status(401).json({ message:{
               'lastname': err.errors && err.errors.lastname && err.errors.lastname.message,
               'firstname':err.errors && err.errors.firstname && err.errors.firstname.message,
