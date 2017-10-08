@@ -27,7 +27,7 @@ exports.register=function(req,res,next)
                                          fullname:user.fullname,
                                          _id:user._id
                                          }
-                                        ,appconfig.secrete
+                                        ,process.env.JWT_KEY
                                         ,{ expiresIn:250
                                           }));
            
@@ -54,7 +54,7 @@ return res.json({token:jwt.sign({
     email:user.email,
     fullname:user.fullname,
     _id:user._id
-       },appconfig.secrete,{
+       },process.env.JWT_KEY,{
            expiresIn:250
        }
 )});
