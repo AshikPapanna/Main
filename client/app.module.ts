@@ -35,8 +35,12 @@ const approutes:Routes=[
         component:RegisterComponent
     },
     {
-        path:'forgotpassword',
+        path:'forgotpassword/:emailid',
         component:ForgotpasswordComponent
+    },
+    {
+        path:'forgotpassword',
+          component:ForgotpasswordComponent
     },
     {
 path:'profiles',
