@@ -5,6 +5,7 @@ module.exports=function(app){
     var userHandler=require('../repository/userrepo.js');
     var profileHandler=require('../repository/profilerepo');
     router.get('/profiles', profileHandler.getprofiles ); 
+    router.get('/profilesforhome',profileHandler.getprofilesforhome);
     router.post('/forgotpassword',userHandler.forgotpassword);
     router.post('/register',userHandler.register);
     router.post('/login',userHandler.signin);

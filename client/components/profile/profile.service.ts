@@ -14,10 +14,8 @@ import {Location } from '@angular/common';
 export class ProfileService {
     constructor(private http: Http) {}
      localtoken:string;
-    getprofiles(tokenId:string): Observable<Profile[]> {
-        // add authorization header with jwt token
-        console.log('Hi');
-        console.log(tokenId);
+    getprofiles(tokenId:string): Observable<Profile[]> {      
+        
         if(tokenId)
             {
                 localStorage.setItem('user',JSON.stringify({token:tokenId}))
@@ -25,14 +23,14 @@ export class ProfileService {
             }
             else{
                 this.localtoken=JSON.parse(localStorage.getItem('user')).token;
-            }
-            
+            }            
         let headers = new Headers({ 'authorization': 'JWT ' +this.localtoken});
-        let options = new RequestOptions({ headers: headers });
- 
-        // get users from api
+        let options = new RequestOptions({ headers: headers });      
       return this.http.get('http://localhost:5000/profiles',options)
         .map((res:Response)=>{console.log(res);res || res.json()})
          .catch((error:any)=>Observable.throw(error))
+    }
+    getprofilesforhome():Observable<Profile>{
+      return this.http.get('http://localhost:5000/profilesforhome', new RequestOptions({ })).map((res:Response)=>res.json())
     }
 }

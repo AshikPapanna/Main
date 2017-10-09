@@ -13,16 +13,21 @@ import {ProfileService} from './profile.service';
     moduleId:module.id,
     selector:'my-profile',
     templateUrl:'./profile.component.html',
-    providers:[ProfileService]
+    providers:[ProfileService],
+    inputs:['isfromhomeview']
 })
 export class ProfileComponent {
    
   @Input()  profile:Profile;
+  @Input() isfromhomeview:boolean;
   constructor(private profileservice:ProfileService,
 private route:ActivatedRoute){};
  profiles:Profile[];
  ngOnInit(){
-    console.log('success'); 
+ if(this.isfromhomeview)
+    {
+     this.profiles=this.profileservice.getprofilesforhome();
+    }
 this.route.params
 .switchMap((params:ParamMap)=>this.profileservice.getprofiles(params['tokenId']))
 .subscribe(user=>{
