@@ -26,7 +26,14 @@ private route:ActivatedRoute){};
  ngOnInit(){
  if(this.isfromhomeview)
     {
-     this.profiles=this.profileservice.getprofilesforhome();
+      this.profileservice.getprofilesforhome().subscribe(
+          profiles=>{
+             this.profiles=profiles;
+          },
+          err=>{
+               console.log(err);
+          }
+      );
     }
 this.route.params
 .switchMap((params:ParamMap)=>this.profileservice.getprofiles(params['tokenId']))

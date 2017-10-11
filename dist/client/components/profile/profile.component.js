@@ -22,7 +22,13 @@ var ProfileComponent = /** @class */ (function () {
     ;
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log('success');
+        if (this.isfromhomeview) {
+            this.profileservice.getprofilesforhome().subscribe(function (profiles) {
+                _this.profiles = profiles;
+            }, function (err) {
+                console.log(err);
+            });
+        }
         this.route.params
             .switchMap(function (params) { return _this.profileservice.getprofiles(params['tokenId']); })
             .subscribe(function (user) {
@@ -35,12 +41,17 @@ var ProfileComponent = /** @class */ (function () {
         core_1.Input(),
         __metadata("design:type", profile_1.Profile)
     ], ProfileComponent.prototype, "profile", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ProfileComponent.prototype, "isfromhomeview", void 0);
     ProfileComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'my-profile',
             templateUrl: './profile.component.html',
-            providers: [profile_service_1.ProfileService]
+            providers: [profile_service_1.ProfileService],
+            inputs: ['isfromhomeview']
         }),
         __metadata("design:paramtypes", [profile_service_1.ProfileService,
             router_1.ActivatedRoute])

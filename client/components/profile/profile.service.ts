@@ -30,7 +30,7 @@ export class ProfileService {
         .map((res:Response)=>{console.log(res);res || res.json()})
          .catch((error:any)=>Observable.throw(error))
     }
-    getprofilesforhome():Observable<Profile>{
+    getprofilesforhome():Observable<Profile[]>{
       return this.http.get('http://localhost:5000/profilesforhome', new RequestOptions({ })).map((res:Response)=>res.json())
     }
 }
