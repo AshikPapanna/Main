@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Profile = /** @class */ (function () {
-    function Profile(id, name, stream, imagesrc) {
+    function Profile(id, name, stream, imageurl) {
         this.id = id;
         this.name = name;
         this.stream = stream;
-        this.imagesrc = imagesrc;
+        this.imageurl = imageurl;
     }
     return Profile;
 }());

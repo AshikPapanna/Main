@@ -23,8 +23,10 @@ var ProfileComponent = /** @class */ (function () {
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         if (this.isfromhomeview) {
-            this.profileservice.getprofilesforhome().subscribe(function (profiles) {
-                _this.profiles = profiles;
+            this.profileservice.getprofilesforhome().subscribe(function (profile) {
+                _this.profiles = profile;
+                _this.filteredprofile = _this.profiles.slice(0, 3);
+                console.log(_this.filteredprofile);
             }, function (err) {
                 console.log(err);
             });

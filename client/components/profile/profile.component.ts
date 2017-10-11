@@ -23,12 +23,15 @@ export class ProfileComponent {
   constructor(private profileservice:ProfileService,
 private route:ActivatedRoute){};
  profiles:Profile[];
+ filteredprofile:Profile[];
  ngOnInit(){
  if(this.isfromhomeview)
     {
       this.profileservice.getprofilesforhome().subscribe(
-          profiles=>{
-             this.profiles=profiles;
+          profile=>{
+             this.profiles=profile;
+             this.filteredprofile=this.profiles.slice(0,3);
+             console.log( this.filteredprofile);
           },
           err=>{
                console.log(err);
