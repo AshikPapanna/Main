@@ -20,7 +20,7 @@ import {ProfileComponent} from './components/profile/profile.component';
 import{RegisterComponent} from './components/register/register.component';
 import{HomeComponent} from './components/home/home.component';
 import {ForgotpasswordComponent} from './components/forgotpassword/forgotpassword.component';
-
+import {FaqsComponent} from './components/faqs/faqs.component';
 const approutes:Routes=[
     {
      path:'home',
@@ -30,6 +30,10 @@ const approutes:Routes=[
         path:'login',
         component:LoginComponent
     },
+    {
+        path:'faqs',
+        component:FaqsComponent
+                    },
     {
         path:'register',
         component:RegisterComponent
@@ -50,6 +54,7 @@ component:ProfileComponent
         path:'profiles/:tokenId',
         component:ProfileComponent
             },
+      
     {
         path:'',
         redirectTo:'/home',
@@ -71,7 +76,8 @@ component:ProfileComponent
         ,ProfileComponent,RegisterComponent
         ,ForgotpasswordComponent
         ,HomeComponent
-        ,Minlength],
+        ,Minlength
+    ,FaqsComponent],
 
      bootstrap:[AppComponent]
 })

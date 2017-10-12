@@ -18,6 +18,8 @@ var ProfileComponent = /** @class */ (function () {
     function ProfileComponent(profileservice, route) {
         this.profileservice = profileservice;
         this.route = route;
+        this.higherindex = 3;
+        this.lowerindex = 0;
     }
     ;
     ProfileComponent.prototype.ngOnInit = function () {
@@ -25,7 +27,7 @@ var ProfileComponent = /** @class */ (function () {
         if (this.isfromhomeview) {
             this.profileservice.getprofilesforhome().subscribe(function (profile) {
                 _this.profiles = profile;
-                _this.filteredprofile = _this.profiles.slice(0, 3);
+                _this.filteredprofile = _this.profiles.slice(_this.lowerindex, _this.higherindex);
                 console.log(_this.filteredprofile);
             }, function (err) {
                 console.log(err);
@@ -39,6 +41,22 @@ var ProfileComponent = /** @class */ (function () {
             console.log(err);
         });
     };
+    ProfileComponent.prototype.rotar = function (isadd) {
+        if (isadd) {
+            if (this.higherindex != this.profiles.length) {
+                this.lowerindex = this.lowerindex + 1;
+                this.higherindex = this.higherindex + 1;
+            }
+        }
+        else {
+            if (this.lowerindex != 0) {
+                this.lowerindex = this.lowerindex - 1;
+                this.higherindex = this.higherindex - 1;
+            }
+        }
+        this.filteredprofile = this.profiles.slice(this.lowerindex, this.higherindex);
+    };
+    ;
     __decorate([
         core_1.Input(),
         __metadata("design:type", profile_1.Profile)

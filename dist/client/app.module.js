@@ -19,6 +19,7 @@ var profile_component_1 = require("./components/profile/profile.component");
 var register_component_1 = require("./components/register/register.component");
 var home_component_1 = require("./components/home/home.component");
 var forgotpassword_component_1 = require("./components/forgotpassword/forgotpassword.component");
+var faqs_component_1 = require("./components/faqs/faqs.component");
 var approutes = [
     {
         path: 'home',
@@ -27,6 +28,10 @@ var approutes = [
     {
         path: 'login',
         component: login_component_1.LoginComponent
+    },
+    {
+        path: 'faqs',
+        component: faqs_component_1.FaqsComponent
     },
     {
         path: 'register',
@@ -70,7 +75,8 @@ var AppModule = /** @class */ (function () {
                 profile_component_1.ProfileComponent, register_component_1.RegisterComponent,
                 forgotpassword_component_1.ForgotpasswordComponent,
                 home_component_1.HomeComponent,
-                minlength_directive_1.Minlength],
+                minlength_directive_1.Minlength,
+                faqs_component_1.FaqsComponent],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

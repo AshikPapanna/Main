@@ -24,13 +24,15 @@ export class ProfileComponent {
 private route:ActivatedRoute){};
  profiles:Profile[];
  filteredprofile:Profile[];
+ higherindex:number=3;
+ lowerindex:number=0;
  ngOnInit(){
  if(this.isfromhomeview)
     {
       this.profileservice.getprofilesforhome().subscribe(
           profile=>{
              this.profiles=profile;
-             this.filteredprofile=this.profiles.slice(0,3);
+             this.filteredprofile=this.profiles.slice(this.lowerindex,this.higherindex);            
              console.log( this.filteredprofile);
           },
           err=>{
@@ -50,6 +52,23 @@ this.route.params
             
  ) ;
   }
+  rotar(isadd:boolean){  
+  if(isadd)
+    {
+      if(this.higherindex!=this.profiles.length)
+        {
+      this.lowerindex=this.lowerindex+1
+      this.higherindex=this.higherindex+1
+        }
+    }else{
+      if(this.lowerindex!=0)
+        {
+      this.lowerindex=this.lowerindex-1
+      this.higherindex=this.higherindex-1
+        }
+    }
+    this.filteredprofile=this.profiles.slice(this.lowerindex,this.higherindex);
+  };
    // console.log(profile1);
   
  /*   ngOnInit: 
