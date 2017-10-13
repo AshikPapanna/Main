@@ -20,6 +20,7 @@ var register_component_1 = require("./components/register/register.component");
 var home_component_1 = require("./components/home/home.component");
 var forgotpassword_component_1 = require("./components/forgotpassword/forgotpassword.component");
 var faqs_component_1 = require("./components/faqs/faqs.component");
+var faqschild_component_1 = require("./components/faqs/child/faqschild.component");
 var approutes = [
     {
         path: 'home',
@@ -76,6 +77,7 @@ var AppModule = /** @class */ (function () {
                 forgotpassword_component_1.ForgotpasswordComponent,
                 home_component_1.HomeComponent,
                 minlength_directive_1.Minlength,
+                faqschild_component_1.FaqsChildComponent,
                 faqs_component_1.FaqsComponent],
             bootstrap: [app_component_1.AppComponent]
         })

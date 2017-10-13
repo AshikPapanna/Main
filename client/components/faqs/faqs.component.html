@@ -1,9 +1,77 @@
-<div class="row">
-    <div class="col s12">
-<ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-</ul>
-    </div></div>
+
+
+<div class="row" *ngFor="let faq of faqs">
+    <div class="col s12">  
+     <span style="background-color:white">{{faq.answer}}</span>>  
+      <vb-faqschild [faqs]="faq"></vb-faqschild>
+    </div>
+</div>
+
+ 
+    <style>
+  .collapsiblebody{  background-color:rgb(255, 255, 255)
+;
+border-bottom-color:
+rgb(221, 221, 221)
+;
+border-bottom-style: 
+solid
+;
+border-bottom-width:
+1px
+;
+box-sizing:
+border-box
+;
+color:
+rgba(0, 0, 0, 0.87)
+;
+cursor:
+pointer
+;
+display:
+flex
+;
+font-family:
+Roboto, sans-serif
+;
+font-size:
+15px
+;
+font-weight:
+300
+;
+height:
+55px
+;
+line-height:
+22.5px
+;
+list-style-type:
+none
+;
+padding-bottom:
+15px
+;
+padding-left:
+15px
+;
+padding-right:
+15px
+;
+padding-top:
+15px
+;
+text-align:
+left
+;
+text-size-adjust:
+100%
+;
+width:
+1324.5px
+;
+-webkit-tap-highlight-color:
+rgba(0, 0, 0, 0)
+;
+  }</style>

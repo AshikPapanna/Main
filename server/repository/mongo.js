@@ -12,7 +12,7 @@ exports.connect=function()
         console.log(err);
       }); 
       mongoose.Promise = global.Promise;
-   mongoose.connect(appconfig.database);
+   mongoose.connect(appconfig.database,{useMongoClient:true});
     mongoose.connection;
 };
 

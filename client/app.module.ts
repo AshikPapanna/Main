@@ -21,6 +21,7 @@ import{RegisterComponent} from './components/register/register.component';
 import{HomeComponent} from './components/home/home.component';
 import {ForgotpasswordComponent} from './components/forgotpassword/forgotpassword.component';
 import {FaqsComponent} from './components/faqs/faqs.component';
+import{FaqsChildComponent} from './components/faqs/child/faqschild.component'
 const approutes:Routes=[
     {
      path:'home',
@@ -77,6 +78,7 @@ component:ProfileComponent
         ,ForgotpasswordComponent
         ,HomeComponent
         ,Minlength
+        ,FaqsChildComponent
     ,FaqsComponent],
 
      bootstrap:[AppComponent]
