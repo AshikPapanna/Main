@@ -1,14 +1,17 @@
 
-
+<div class="container">
 <div class="row" *ngFor="let faq of faqs">
-    <div class="col s12">  
-     <span style="background-color:white">{{faq.answer}}</span>>  
+    <div class="col s12">   
       <vb-faqschild [faqs]="faq"></vb-faqschild>
     </div>
+</div>
 </div>
 
  
     <style>
+      .row{
+        margin:0px;
+      }
   .collapsiblebody{  background-color:rgb(255, 255, 255)
 ;
 border-bottom-color:
@@ -65,9 +68,7 @@ padding-top:
 text-align:
 left
 ;
-text-size-adjust:
-100%
-;
+
 width:
 1324.5px
 ;

@@ -13,8 +13,7 @@ var Faqs = new mongoose.Schema({
         trim: true,
         required:true
        // validate: [validators.isLength({message:'FirstName should be >=2 and <=6'},4, 10)]
-    },
-    comments: [String],
+    }
    
    
 });

@@ -10,17 +10,13 @@ import {Faqschild} from '../../../../models/faqs'
 export class FaqsChildComponent{
     @Input() faqs:Faqschild;
     showanswer:boolean=false;
-    showcomment:boolean=false;
+
   constructor(){
       console.log(this.faqs)
   }
     
     toggalanswer(){
-       this.showanswer=!this.showanswer;
-       this.showcomment=false;
+       this.showanswer=!this.showanswer;      
     }
-    toggalcomment(){
-        this.showanswer=false;
-        this.showcomment=!this.showcomment;
-     }
+ 
 }
