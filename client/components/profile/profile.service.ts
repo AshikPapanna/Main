@@ -1,18 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Inject } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+
  
 import { LoginService } from '../login/login.service';
 import { Profile } from '../../../models/profile';
-import {Location } from '@angular/common';
+import {DOCUMENT} from '@angular/platform-browser';
+import {Location} from '@angular/common';
+
 
 
 @Injectable( 
 )
 export class ProfileService {
-    constructor(private http: Http) {}
+    constructor(private http: Http,@Inject(DOCUMENT) document:any ,private location:Location) {}
      localtoken:string;
     getprofiles(tokenId:string): Observable<Profile[]> {      
         
@@ -26,11 +29,11 @@ export class ProfileService {
             }            
         let headers = new Headers({ 'authorization': 'JWT ' +this.localtoken});
         let options = new RequestOptions({ headers: headers });      
-      return this.http.get('http://localhost:5000/profiles',options)
+      return this.http.get(document.location.href,options)
         .map((res:Response)=>{console.log(res);res || res.json()})
          .catch((error:any)=>Observable.throw(error))
     }
-    getprofilesforhome():Observable<Profile[]>{
-      return this.http.get('http://localhost:5000/profilesforhome', new RequestOptions({ })).map((res:Response)=>res.json())
+    getprofilesforhome():Observable<Profile[]>{       
+      return this.http.get(location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '')+'/profilesforhome', new RequestOptions({ })).map((res:Response)=>res.json())
     }
 }
