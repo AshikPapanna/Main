@@ -1,32 +1,19 @@
-       <div *ngIf="isfromhomeview" class="card z-depth-1"> 
-
-          <div class="conatiner"  style="background-color:rgba(0, 0, 0, 0.5);">
-                <div class="row valign-wrapper" >
+           
+                <div  *ngIf="isfromhomeview" class="row valign-wrapper"  style="background-color:rgb(254, 237, 253);" >
                      <div class="col s2 valign">
-                        <a href="javascript:void(0)" class="openbtn" (click)="rotar(false)">&lt;&lt;</a>  </div>
-                     <div class="col s8">
-                         <div class="row" >
-                       <div class="col s4" *ngFor="let profile of filteredprofile">      
-                           
-                <div class="row" style="height:15%;padding-top:20%">
-                      <div class="col s12" style="margin-top:2%;" >
-                          <div style="padding-left:30%;padding-right:30%">
+                          <img src="../../../public/images/arrows.svg" style="height:25px;transform:rotate(180deg);float:right"  (click)="rotar(false)"/>
+                    </div>
+                    <div class="col s4" *ngFor="let profile of filteredprofile">      
+                        <div style="padding-left:30%;padding-right:30%;padding-top:10%">
                               <img class="circle responsive-img" style="border-radius:50%; " src="{{profile.imageurl}}"/>
-                          </div>
-                  </div>
-              </div>
-                  <div class="row">
-                  <div class="col s12">
-                 <h2>{{profile.firstname+profile.lastname}}</h2>
-                  <p>{{profile.skills}}</p>
+                        </div>
+                    <div style="text-align:center">
+                        <h5>{{profile.firstname+' '+profile.lastname}}</h5>
+                        <p>{{profile.skills}}</p>
+                    </div>
                    </div>
-                  </div>
-                       </div>
-                     </div>
-                     </div>
-                      <div class="col s2">
-                        <a href="javascript:void(0)" class="openbtn" (click)="rotar(true)">&gt;&gt;</a>
+                   <div class="col s2">
+                    <img src="../../../public/images/arrows.svg" style="height:25px;"  (click)="rotar(true)"/>
                        </div>
                 </div> 
-             </div>
-            </div>
+           

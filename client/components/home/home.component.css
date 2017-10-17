@@ -1,4 +1,13 @@
 .vb-qoute{
         color: white;
         font-size:200%;
+        font-weight: 550;
+    }
+.vb-mission{
+    position: relative;
+    animation: missionmove 2s ;
+}
+    @keyframes missionmove {
+        from {bottom: -100px;}
+        to {top:0px;}
     }
