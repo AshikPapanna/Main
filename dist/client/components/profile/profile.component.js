@@ -71,7 +71,8 @@ var ProfileComponent = /** @class */ (function () {
             selector: 'my-profile',
             templateUrl: './profile.component.html',
             providers: [profile_service_1.ProfileService],
-            inputs: ['isfromhomeview']
+            inputs: ['isfromhomeview'],
+            animations: []
         }),
         __metadata("design:paramtypes", [profile_service_1.ProfileService,
             router_1.ActivatedRoute])

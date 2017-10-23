@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = require("@angular/platform-browser");
+var animations_1 = require("@angular/platform-browser/animations");
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
-var material_1 = require("@angular/material");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var minlength_directive_1 = require("./directives/minlength.directive");
@@ -65,10 +65,8 @@ var AppModule = /** @class */ (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule,
+            imports: [platform_browser_1.BrowserModule, animations_1.BrowserAnimationsModule,
                 forms_1.FormsModule,
-                material_1.MdButtonModule,
-                material_1.MdCheckboxModule,
                 http_1.HttpModule,
                 router_1.RouterModule.forRoot(approutes)],
             declarations: [app_component_1.AppComponent,
