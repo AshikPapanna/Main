@@ -27,7 +27,7 @@ import{FaqsChildComponent} from './components/faqs/child/faqschild.component'
 
 @NgModule({
     
-    imports:[BrowserModule,
+    imports:[BrowserModule,BrowserAnimationsModule,
         FormsModule,       
          HttpModule,
          AppRoutes],

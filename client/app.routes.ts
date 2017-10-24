@@ -15,7 +15,8 @@ import{FaqsChildComponent} from './components/faqs/child/faqschild.component'
 const approutes:Routes=[
     {
      path:'home',
-     component:HomeComponent
+     component:HomeComponent,
+     data:{state:'home'}
     },
     {
         path:'login',
@@ -23,8 +24,10 @@ const approutes:Routes=[
     },
     {
         path:'faqs',
-        component:FaqsComponent
+        component:FaqsComponent,
+        data:{state:'faqs'}
                     },
+                    
     {
         path:'register',
         component:RegisterComponent

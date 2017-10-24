@@ -7,32 +7,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var profile_1 = require("./../models/profile");
+var app_routeanimation_1 = require("./app.routeanimation");
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = "Hi Ashik";
-        this.isblur = false;
-        this.navclass = {
-            'navbar-fixed': true,
-            'vb-blur': true
-        };
-        this.profiles = [
-            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/gravatar1.jpg'),
-            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/gravatar1.jpg'),
-            new profile_1.Profile('asdasd', 'Windstorm', 'sdfsadsd', 'public/images/gravatar1.jpg'),
-        ];
     }
-    AppComponent.prototype.OpenNav = function () {
-        document.getElementById("mySidenav").style.width = "30%";
-        document.getElementById("body").style.filter = "blur(20%)";
-        this.isblur = true;
+    AppComponent.prototype.getState = function (outlet) {
+        return outlet.activatedRouteData.state;
     };
     AppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'my-app',
             templateUrl: './app.component.html',
-            styleUrls: ['./app.component.css']
+            styleUrls: ['./app.component.css'],
+            animations: [app_routeanimation_1.routerTransition]
         })
     ], AppComponent);
     return AppComponent;

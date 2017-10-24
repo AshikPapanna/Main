@@ -11,9 +11,9 @@ var animations_1 = require("@angular/platform-browser/animations");
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
-var router_1 = require("@angular/router");
 var minlength_directive_1 = require("./directives/minlength.directive");
 var app_component_1 = require("./app.component");
+var app_routes_1 = require("./app.routes");
 var login_component_1 = require("./components/login/login.component");
 var profile_component_1 = require("./components/profile/profile.component");
 var register_component_1 = require("./components/register/register.component");
@@ -21,45 +21,6 @@ var home_component_1 = require("./components/home/home.component");
 var forgotpassword_component_1 = require("./components/forgotpassword/forgotpassword.component");
 var faqs_component_1 = require("./components/faqs/faqs.component");
 var faqschild_component_1 = require("./components/faqs/child/faqschild.component");
-var approutes = [
-    {
-        path: 'home',
-        component: home_component_1.HomeComponent
-    },
-    {
-        path: 'login',
-        component: login_component_1.LoginComponent
-    },
-    {
-        path: 'faqs',
-        component: faqs_component_1.FaqsComponent
-    },
-    {
-        path: 'register',
-        component: register_component_1.RegisterComponent
-    },
-    {
-        path: 'forgotpassword/:emailid',
-        component: forgotpassword_component_1.ForgotpasswordComponent
-    },
-    {
-        path: 'forgotpassword',
-        component: forgotpassword_component_1.ForgotpasswordComponent
-    },
-    {
-        path: 'profiles',
-        component: profile_component_1.ProfileComponent
-    },
-    {
-        path: 'profiles/:tokenId',
-        component: profile_component_1.ProfileComponent
-    },
-    {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
-    }
-];
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -68,7 +29,7 @@ var AppModule = /** @class */ (function () {
             imports: [platform_browser_1.BrowserModule, animations_1.BrowserAnimationsModule,
                 forms_1.FormsModule,
                 http_1.HttpModule,
-                router_1.RouterModule.forRoot(approutes)],
+                app_routes_1.AppRoutes],
             declarations: [app_component_1.AppComponent,
                 login_component_1.LoginComponent,
                 profile_component_1.ProfileComponent, register_component_1.RegisterComponent,

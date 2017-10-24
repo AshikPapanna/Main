@@ -1,29 +1,16 @@
 import{Component} from '@angular/core'
 import {Profile} from './../models/profile'
+import {routerTransition} from './app.routeanimation'
 @Component({
   moduleId:module.id,
 selector:'my-app',
 templateUrl:'./app.component.html',
-styleUrls:['./app.component.css']
+styleUrls:['./app.component.css'],
+animations:[routerTransition]
 })
 export class AppComponent{
-  title="Hi Ashik";
-  isblur=false;
-  navclass={
-    'navbar-fixed':true,
-    'vb-blur':true
-
+  getState(outlet) {
+    return outlet.activatedRouteData.state;
   }
-  profiles:Profile[]= [
-    new Profile('asdasd', 'Windstorm','sdfsadsd','public/images/gravatar1.jpg'),
-    new Profile('asdasd', 'Windstorm','sdfsadsd','public/images/gravatar1.jpg'),
-    new Profile('asdasd', 'Windstorm','sdfsadsd','public/images/gravatar1.jpg'),
-    /*new Profile('asdasd', 'Windstorm','sdfsadsd','public/images/gravatar1.jpg'),
-    new Profile('asdasd', 'Windstorm','sdfsadsd','public/images/gravatar1.jpg'),*/
-  ];
-  OpenNav()   {
-    document.getElementById("mySidenav").style.width = "30%";
-    document.getElementById("body").style.filter = "blur(20%)";
-    this.isblur=true;
-}
+  
 }

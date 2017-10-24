@@ -12,8 +12,8 @@
 </nav>
 </div>
 
-  <div class="parallax" >     
-    <router-outlet></router-outlet>            
+  <div class="parallax" [@routerTransition]="getState(o)" >     
+    <router-outlet #o="outlet"></router-outlet>            
  </div>
  <footer class="grey darken-3" style="height:12%" >
     <div class="footer-copyright" style="padding:2%">
