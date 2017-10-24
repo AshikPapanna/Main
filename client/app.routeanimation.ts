@@ -9,16 +9,16 @@ export const routerTransition = trigger('routerTransition', [
     group([
       query(':enter', [
         style({ transform: 'translateX(100%)' }),
-        animate('0.5s ease-in-out', style({ transform: 'translateX(0%)' }))
+        animate('0.5s ease', style({ transform: 'translateX(0%)' }))
       ], { optional: true }),
       query(':leave', [
         style({ transform: 'translateX(0%)' }),
-        animate('0.5s ease-in-out', style({ transform: 'translateX(-100%)' }))
+        animate('0.5s ease', style({ transform: 'translateX(-100%)' }))
       ], { optional: true }),
     ]),
     query(':enter .block', stagger(400, [
       style({ transform: 'translateY(100px)' }),
-      animate('1s ease-in-out', style({ transform: 'translateY(0px)', opacity: 1 })),
+      animate('1s ease', style({ transform: 'translateY(0px)', opacity: 1 })),
     ]), { optional: true }),
   ])
 ])

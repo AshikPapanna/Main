@@ -17,13 +17,13 @@
        <div class="container">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input #firstname id="first_name" type="text" [(ngModel)]="register.firstname" (ngModelChange)="validatefirstname(firstname.value)" required name="firstName" [ngClass]="firstNamevalidateclass"   aria-required="true">
+                        <input name="firstName" #firstname id="first_name" type="text" [(ngModel)]="register.firstname" (ngModelChange)="validatefirstname(firstname.value)" required  [ngClass]="firstNamevalidateclass"   aria-required="true">
                         <label for="first_name" data-error="Should be >= 3 and <= 20">First Name</label>
                       </div>
                    
                 
                 <div class="input-field col s6">
-                    <input id="last_name" type="text" #lastname [(ngModel)]="register.lastname" (ngModelChange)="validatelastname(lastname.value)" [ngClass]="lastnameclass" >
+                    <input id="last_name" name="lastName" type="text" #lastname [(ngModel)]="register.lastname" (ngModelChange)="validatelastname(lastname.value)" [ngClass]="lastnameclass" >
                     <label for="last_name" data-error="Should be >= 3 and <= 10">Last Name</label>
                   </div>
             </div>
