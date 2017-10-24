@@ -14,7 +14,10 @@ import {ProfileService} from './profile.service';
     selector:'my-profile',
     templateUrl:'./profile.component.html',
     providers:[ProfileService],
-    inputs:['isfromhomeview']
+    inputs:['isfromhomeview'],
+    animations:[
+      
+    ]
 })
 export class ProfileComponent {
    
