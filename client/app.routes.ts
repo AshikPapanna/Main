@@ -20,7 +20,8 @@ const approutes:Routes=[
     },
     {
         path:'login',
-        component:LoginComponent
+        component:LoginComponent,
+        data:{state:'login'}
     },
     {
         path:'faqs',

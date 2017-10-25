@@ -1,20 +1,16 @@
  
  
  
-<div class="row" style="height:50;">
-  <div class="col s12">
-    <div class="row" >
-      <div class="col s10">
-        <div class="center">          
-            <a href="#" id="logo" class="brand-logo">Logo</a>
-          </div>
-        </div>
-        <div class="col s2">
-          <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-        </div>
+<div class="row" style="height:100%;background-color:white;">
+  <div class="col s6" style="padding-top:17%;text-align:right;padding-right:4%"  >
+  <h2 class="red-text text-darken-1 logotext">  Ashik</h2>
+  
     </div>
+  
+  <div class="col s3" style="background-color:white  ;padding-top:2%;margin-top:8%;margin-bottom:8%; box-shadow: 0px 0px 15px #888888;">
+   
       <form  (ngSubmit)="onSubmit()" #loginForm="ngForm">
-      <div class="container">
+   
       <div class="row">
                   <div class="input-field col s12">
                     <input id="email" type="email" [(ngModel)]="login.emailId" name="email" class="validate">
@@ -42,8 +38,10 @@
              </div>       
         </div>
       </div>
-      </div>
+    
       </form>
+    </div>
+    <div class="col s3" style="background-color:wheat;">
     </div>
 </div>
 
