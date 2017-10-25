@@ -31,7 +31,8 @@ const approutes:Routes=[
                     
     {
         path:'register',
-        component:RegisterComponent
+        component:RegisterComponent,
+        data:{state:'register'}
     },
     {
         path:'forgotpassword/:emailid',
