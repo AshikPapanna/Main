@@ -22,9 +22,10 @@ exports.register=function(req,res,next)
           }
         else{
             user.hash_password=undefined; 
-            var error= confirmmailhelper.sendconfirmationmail(user.email,jwt.sign({
+            var error= confirmmailhelper.sendconfirmationmail(user.email,user.firstname,jwt.sign({
                                          email:user.email,
                                          fullname:user.fullname,
+                                         role:user.role,
                                          _id:user._id
                                          }
                                         ,appconfig.secrete
@@ -53,6 +54,7 @@ if(!user){
 return res.json({token:jwt.sign({
     email:user.email,
     fullname:user.fullname,
+    role:user.role,
     _id:user._id
        },appconfig.secrete,{
            expiresIn:250
@@ -74,8 +76,7 @@ exports.userslist=function(req,res,next)
 exports.forgotpassword=function(req,res){
     console.log(req.body);
    User.findOne({email:req.body.email },  function(err,user){
-         if(!err) {
-             console.log(user);
+         if(!err) {           
              if(!user){
                   return res.status(401).json({email:"Email is not registered"});
              }
@@ -84,12 +85,27 @@ exports.forgotpassword=function(req,res){
                      user.save(function(err,user){
                 if(!err)
                     {
+                        var error= forgotmailhelper.sendconfirmationmail(user.email,user.firstname,jwt.sign({
+                            email:user.email,
+                            fullname:user.fullname,
+                            _id:user._id
+                            }
+                           ,appconfig.secrete
+                           ,{ expiresIn:250
+                             }));
+
                        return res.json({email:user.email});
+                    }
+                    else{
+                        return res.status(401).json({message:'Inavlid opertion!'});
                     }
                   
             });
        
          }
+     }
+     else{
+        return res.status(401).json({message:'Inavlid opertion!'});  
      }
 
           

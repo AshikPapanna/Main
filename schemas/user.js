@@ -3,18 +3,19 @@ var mongoose = require("mongoose");
 var bcrypt = require("bcrypt-nodejs");
 var validators = require("mongoose-validators");
 var uniqueValidators=require("mongoose-unique-validator");
+
 var UserSchema = new mongoose.Schema({
     firstname: {
         type: String,
         required: true,
         trim: true,
-        validate: [validators.isLength({message:'FirstName should be >=4 and <=10'},4, 10)]
+        validate: [validators.isLength({message:'FirstName should be >=4 and <=10'},4, 20)]
     },
     lastname: {
         type: String,
         trim: true,
         required:true,
-        validate: [validators.isLength({message:'FirstName should be >=2 and <=6'},4, 10)]
+        validate: [validators.isLength({message:'FirstName should be >=2 and <=6'},2, 20)]
     },
     email: {
         type: String,
@@ -40,7 +41,13 @@ var UserSchema = new mongoose.Schema({
     isemailverified:{
         type:Boolean,
         default:false
+    },
+    role:{
+        type:String,
+        enum:['Trainer','Admin','Registered','User'],
+        default:'Registered'
     }
+ 
 });
 UserSchema.pre('save', function (next) {
     var currentdate = new Date();
