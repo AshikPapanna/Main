@@ -14,6 +14,7 @@ var profile_1 = require("../../../models/profile");
 var router_1 = require("@angular/router");
 require("rxjs/add/operator/switchMap");
 var profile_service_1 = require("./profile.service");
+var animations_1 = require("@angular/animations");
 var ProfileComponent = /** @class */ (function () {
     function ProfileComponent(profileservice, route) {
         this.profileservice = profileservice;
@@ -72,7 +73,24 @@ var ProfileComponent = /** @class */ (function () {
             templateUrl: './profile.component.html',
             providers: [profile_service_1.ProfileService],
             inputs: ['isfromhomeview'],
-            animations: []
+            animations: [
+                animations_1.trigger('flyInOut', [
+                    animations_1.state('in', animations_1.style({ opacity: 1, transform: 'translateX(0)' })),
+                    animations_1.transition('void => *', [
+                        animations_1.style({
+                            opacity: 0,
+                            transform: 'translateX(-100%)'
+                        }),
+                        animations_1.animate('0.2s ease-in')
+                    ]),
+                    animations_1.transition('* => void', [
+                        animations_1.animate('0.2s 0.1s ease-out', animations_1.style({
+                            opacity: 0,
+                            transform: 'translateX(100%)'
+                        }))
+                    ])
+                ])
+            ]
         }),
         __metadata("design:paramtypes", [profile_service_1.ProfileService,
             router_1.ActivatedRoute])
