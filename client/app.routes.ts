@@ -19,6 +19,11 @@ const approutes:Routes=[
      data:{state:'home'}
     },
     {
+     path:'home/:name:ifr',
+     component:HomeComponent,
+     data:{state:'home'}
+    },
+    {
         path:'login',
         component:LoginComponent,
         data:{state:'login'}

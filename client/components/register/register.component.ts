@@ -3,6 +3,8 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core'
 import {Register} from '../../../models/registration'
 
 import{RegisterService} from './register.service'
+
+import {Router} from '@angular/router'
 declare var $: any
 @Component({
     moduleId:module.id,
@@ -12,7 +14,8 @@ declare var $: any
     providers:[RegisterService]
 })
 export class RegisterComponent {
-    constructor(private registerService:RegisterService){} 
+    constructor(private registerService:RegisterService
+    ,private router:Router){} 
     firstNamevalidateclass:string='';
     confirmpasswordclass:string='';
     passwordclass:string='';  
@@ -65,12 +68,17 @@ if(!(this.validatefirstname(this.register.firstname)
 && this.comparePassword(this.register.password,this.register.confirmpassword)
 && this.validatelastname(this.register.lastname)&& this.validateemail(this.register.email)) )
 {
-    return false;    
+      console.log('right');   
+    return false; 
+  
 }
+console.log('wrong');
          this.registerService.register(this.register).subscribe(
             user=>
             {
               this.IsSuccess=true;
+              console.log(user);
+              this.router.navigate(['/home',{name:user.firstname,ifr:true}])
              },
             err=>{
              

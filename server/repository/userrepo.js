@@ -31,6 +31,7 @@ exports.register=function(req,res,next)
                                         ,appconfig.secrete
                                         ,{ expiresIn:250
                                           }));
+                                        console.log(error);
            
                                         
                 return res.json(user);
