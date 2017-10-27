@@ -6,14 +6,23 @@
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="badges.html">Components</a></li>
                 <li><a routerLink="/faqs">FAQs</a></li>
-                <li *ngIf="!username"><a routerLink="/login" >login</a></li>
-                <li *ngIf="username"><a >{{username}}</a></li>
+                <li *ngIf="!username"><a routerLink="/login" >login</a>
+                   </li>  
+       
+                <li  *ngIf="username"><a >{{username}}</a>
+                   </li>                  
+             
         </ul>
     </div> 
 </nav>
 </div>
 
-  <div class="parallax" [@routerTransition]="getState(o)" >     
+  <div class="parallax" [@routerTransition]="getState(o)" > 
+        <ul class="vb-accountsetmenu">
+                <li class="vb-accountsetlist">q</li>
+                <li  class="vb-accountsetlist">q</li>
+                <li  class="vb-accountsetlist">q</li>
+            </ul>    
     <router-outlet #o="outlet"></router-outlet>            
  </div>
  <footer class="grey darken-3" style="height:12%" >
@@ -25,7 +34,26 @@
       </div>
     </footer>
 <style>
-    
+    .vb-accountsetmenu{
+        width:20%;position:absolute;right:15;height:20%;background-color:white;
+        margin-top:10px;
+    }
+    .vb-accountsetmenu::before{
+        content: "";
+        border-color: transparent;
+        border-bottom-color: #FFF;
+        border-style: dashed dashed solid;
+        border-width: 0 15px 15px;
+        position: absolute;
+        height: 0;
+        width: 0;
+        right: 10px;
+        top: -13px;
+        z-index: 9999;
+    }
+    .vb-accountsetlist{
+        display: block;position: relative;color:gray;text-align: center;
+    }
 nav{
     
     background-color:  #009900;

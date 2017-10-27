@@ -21,6 +21,7 @@ export class AppComponent{
   }
   ngOnInit(){
     var user=JSON.parse(localStorage.getItem('username'));
+    console.log(user);
     this.username=user && user.username;
  }
   

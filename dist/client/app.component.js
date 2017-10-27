@@ -19,6 +19,7 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var user = JSON.parse(localStorage.getItem('username'));
+        console.log(user);
         this.username = user && user.username;
     };
     AppComponent = __decorate([
