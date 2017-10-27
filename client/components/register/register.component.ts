@@ -3,6 +3,7 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core'
 import {Register} from '../../../models/registration'
 
 import{RegisterService} from './register.service'
+import {Location} from '@angular/common';
 
 import {Router} from '@angular/router'
 declare var $: any
@@ -15,7 +16,7 @@ declare var $: any
 })
 export class RegisterComponent {
     constructor(private registerService:RegisterService
-    ,private router:Router){} 
+    ,private router:Router,private location:Location){} 
     firstNamevalidateclass:string='';
     confirmpasswordclass:string='';
     passwordclass:string='';  
@@ -78,7 +79,9 @@ console.log('wrong');
             {
               this.IsSuccess=true;
               console.log(user);
-              this.router.navigate(['/home',{name:user.firstname,ifr:true}])
+              localStorage.setItem('username',JSON.stringify({username:user.firstname}));
+              window.location.replace(location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: ''));
+
              },
             err=>{
              

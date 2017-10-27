@@ -5,6 +5,7 @@ import{Http,Response,Headers,RequestOptions} from '@angular/http';
 import {Register} from  '../../../models/registration';
 
 import {Observable} from 'rxjs/Rx';
+import {Location} from '@angular/common';
 
 import 'rxjs/add/operator/map';
 
@@ -16,7 +17,7 @@ import {DOCUMENT} from '@angular/platform-browser';
 
 @Injectable()
 export class RegisterService{
-    constructor(private http:Http,@Inject(DOCUMENT) document:any){};
+    constructor(private http:Http,@Inject(DOCUMENT) document:any,private location:Location){};
     
     register(body:Object):Observable<Register>{
         let bodyString = JSON.stringify(body); // Stringify payload
@@ -25,6 +26,10 @@ export class RegisterService{
         return this.http.post(document.location.href,body,options)
         .map((res:Response)=>res.json())
          .catch(error=>{ return Observable.throw(error)})
+    }
+    getafterregister(){
+        console.log(location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: ''));
+        return this.http.get(location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '/'))
     }
 }
 

@@ -6,6 +6,7 @@ import{HomeComponent} from './components/home/home.component';
 import {ForgotpasswordComponent} from './components/forgotpassword/forgotpassword.component';
 import {FaqsComponent} from './components/faqs/faqs.component';
 import{FaqsChildComponent} from './components/faqs/child/faqschild.component'
+import{AppComponent} from './app.component'
 
 
 
@@ -19,10 +20,10 @@ const approutes:Routes=[
      data:{state:'home'}
     },
     {
-     path:'home/:name:ifr',
+     path:'home/:name/:ifr',
      component:HomeComponent,
      data:{state:'home'}
-    },
+    },   
     {
         path:'login',
         component:LoginComponent,
@@ -61,6 +62,7 @@ component:ProfileComponent
         redirectTo:'/home',
         pathMatch:'full'
     }
+
 ]
 
 

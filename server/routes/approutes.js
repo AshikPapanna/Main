@@ -13,11 +13,13 @@ module.exports=function(app){
     router.post('/login',userHandler.signin);
     router.get('/faqs',faqshandler.getfaqs);
     router.post('/auth/users',userHandler.userslist);
-    router.get('/',function(req,res){
+    router.get('/',function(req,res){  
+        console.log('base');      
         res.sendFile(__base+'index.html');
         
     }); 
     router.get('*', function(req, res) {
+        console.log('hi');
         res.sendfile(__base+'index.html');
       });         
     app.use('/',router);

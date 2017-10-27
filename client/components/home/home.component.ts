@@ -1,6 +1,6 @@
 import {Component,OnInit} from '@angular/core'
 
-import{ActivatedRoute,Params} from '@angular/router'
+import{ActivatedRoute,Params,ParamMap} from '@angular/router'
 
 @Component({
     moduleId:module.id,
@@ -16,9 +16,10 @@ export class HomeComponent{
 username:string;
 isFromRegister:boolean;
 ngOnInit(){
-     this.route.queryParams.subscribe((par:Params)=>{this.username= par['name']
+   /*console.log(this.route);
+     this.route.params.subscribe((par:Params)=>{console.log(par); this.username= par['name']
     this.isFromRegister= par['ifr']})
     console.log(this.username);
-    console.log(this.isFromRegister);
+    console.log(this.isFromRegister);*/
 }
 }
