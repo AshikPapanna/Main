@@ -13,14 +13,14 @@
    
       <div class="row">
                   <div class="input-field col s12">
-                    <input id="email" type="email" [(ngModel)]="login.emailId" name="email" class="validate">
-                    <label for="email" data-error="wrong" data-success="right">Email</label>
+                    <input id="email" type="email" required [(ngModel)]="login.emailId" name="email"  #email (ngModelChange)="validateemail(email.value)"  [ngClass]="emailvalidateclass">
+                    <label for="email" data-error="Email is invalid or already registered" >Email</label>
                   </div>
        </div>
       <div class="row">
                   <div class="input-field col s12">
-                    <input id="password" type="password" [(ngModel)]="login.password" name="password" class="validate">
-                    <label for="password">Password</label>
+                    <input id="password" type="password" [(ngModel)]="login.password" #password name="password"(ngModelChange)="Validatepasswordlength(password.value);" [ngClass]="passwordclass">
+                    <label for="password" data-error="Password do not match or invalid">Password</label>
                   </div>
         </div>
         <div class="center">          
@@ -50,6 +50,9 @@
       .btn{
        line-height:0;
       }
+      .input-field label {
+    width: 100%;
+}
       </style>
     
    

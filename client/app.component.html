@@ -1,7 +1,7 @@
 <div class="navbar-fixed">
 <nav>
     <div class="nav-wrapper">          
-        <a href="#" id="logo" class="brand-logo">Logo</a>        
+        <a routerLink="/home" id="logo" class="brand-logo" >Logo</a>        
         <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="badges.html">Components</a></li>
@@ -18,10 +18,9 @@
 </div>
 
   <div class="parallax" [@routerTransition]="getState(o)" > 
-        <ul class="vb-accountsetmenu">
-                <li class="vb-accountsetlist">q</li>
-                <li  class="vb-accountsetlist">q</li>
-                <li  class="vb-accountsetlist">q</li>
+      <ul *ngIf="isloggedin()"class="vb-accountsetmenu" >
+                <li class="vb-accountsetlist">Account Setting</li>
+                <li  class="vb-accountsetlist"><button class="waves-effect waves-light btn green" (click)="logout()" >Logout</button></li>  
             </ul>    
     <router-outlet #o="outlet"></router-outlet>            
  </div>
@@ -35,7 +34,7 @@
     </footer>
 <style>
     .vb-accountsetmenu{
-        width:20%;position:absolute;right:15;height:20%;background-color:white;
+        width:20%;position:absolute;right:15;background-color:white;
         margin-top:10px;
     }
     .vb-accountsetmenu::before{
@@ -48,16 +47,21 @@
         height: 0;
         width: 0;
         right: 10px;
-        top: -13px;
+        top: -9px;
         z-index: 9999;
     }
     .vb-accountsetlist{
         display: block;position: relative;color:gray;text-align: center;
+        padding-top:5%;
+        padding-bottom: 1%;
     }
 nav{
     
     background-color:  #009900;
 }
+.btn{
+  line-height:0;
+ }
 #logo{
     left: 4%;
 }

@@ -17,6 +17,8 @@ var LoginComponent = /** @class */ (function () {
     function LoginComponent(loginservice, route) {
         this.loginservice = loginservice;
         this.route = route;
+        this.emailvalidateclass = '';
+        this.passwordclass = '';
         this.login = new login_1.Login('', '', '');
     }
     ;
@@ -27,14 +29,40 @@ var LoginComponent = /** @class */ (function () {
          document.getElementById("mySidenav").style.width = "0%";
          document.getElementById("mySidenavforregister").style.width = "30%";
      }*/
+    LoginComponent.prototype.validateemail = function (email) {
+        if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
+            this.emailvalidateclass = 'valid';
+            return true;
+        }
+        else {
+            this.emailvalidateclass = 'invalid';
+            return false;
+        }
+    };
+    LoginComponent.prototype.Validatepasswordlength = function (password) {
+        if (password.length < 8 || password.length > 20) {
+            this.passwordclass = 'invalid';
+            return false;
+        }
+        else {
+            this.passwordclass = 'valid';
+            return true;
+        }
+    };
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;
         console.log(this.login);
         this.loginservice.login(this.login).subscribe(function (user) {
             console.log(user);
-            _this.route.navigate(['/profiles']);
+            window.location.replace(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''));
         }, function (err) {
             console.log(err);
+            if (err._body && JSON.parse(err._body).message && JSON.parse(err._body).message.email) {
+                _this.emailvalidateclass = 'invalid';
+            }
+            if (err._body && JSON.parse(err._body).message && JSON.parse(err._body).message.password) {
+                _this.passwordclass = 'invalid';
+            }
         });
     };
     LoginComponent = __decorate([

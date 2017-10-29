@@ -11,16 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var app_routeanimation_1 = require("./app.routeanimation");
+var login_service_1 = require("./components/login/login.service");
+var common_1 = require("@angular/common");
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(loginService, location) {
+        this.loginService = loginService;
+        this.location = location;
     }
     AppComponent.prototype.getState = function (outlet) {
         return outlet.activatedRouteData.state;
     };
     AppComponent.prototype.ngOnInit = function () {
-        var user = JSON.parse(localStorage.getItem('username'));
-        console.log(user);
-        this.username = user && user.username;
+        if (this.loginService.islogedin()) {
+            var user = JSON.parse(localStorage.getItem('user'));
+            console.log(user);
+            this.username = user.user && user.user.firstname;
+        }
+    };
+    AppComponent.prototype.logout = function () {
+        this.loginService.logout();
+        window.location.replace(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''));
+    };
+    AppComponent.prototype.isloggedin = function () {
+        console.log('islogin');
+        return this.loginService.islogedin();
     };
     AppComponent = __decorate([
         core_1.Component({
@@ -28,9 +42,10 @@ var AppComponent = /** @class */ (function () {
             selector: 'my-app',
             templateUrl: './app.component.html',
             styleUrls: ['./app.component.css'],
-            animations: [app_routeanimation_1.routerTransition]
+            animations: [app_routeanimation_1.routerTransition],
+            providers: [login_service_1.LoginService]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [login_service_1.LoginService, common_1.Location])
     ], AppComponent);
     return AppComponent;
 }());

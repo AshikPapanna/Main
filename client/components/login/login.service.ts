@@ -22,23 +22,36 @@ export class LoginService{
         let options = new RequestOptions({ headers: headers }); // Create a request optio
       return this.http.post(document.location.href,body,options)
                                .map((res:Response)=>
-                               {let token =res.json()&&res.json().token
+                               {
+                                 console.log("logged in successfully");
+                                 let token =res.json()&&res.json().token;
+                                 let user =res.json()&&res.json().user;
                                 if(token)
-                                  {
-                                    
+                                  {                                   
                                     this.token=token;
-                                    localStorage.setItem('user',JSON.stringify({user:body.emailId,token:token}))
-                                  return res;
+                                    localStorage.setItem('user',JSON.stringify({user:user,token:token}))
+                                    console.log(JSON.parse(localStorage.getItem('user')));
+                                    return res;
                                   }
                                 else{
                                   return res;
                                 }
                               })
-      .catch((error:any)=>Observable.throw(error.json().error||'server error'))
+      .catch((error:any)=>{ return Observable.throw(error)})
 
      }
     logout():void{
       this.token=null;
       localStorage.removeItem('user');
+    }
+    islogedin()
+    {
+      if(localStorage.getItem('user')){
+    return  JSON.parse(localStorage.getItem('user')).token;
+      }
+      else
+        {
+      return false;
+        }
     }
 }

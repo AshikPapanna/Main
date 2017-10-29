@@ -44,12 +44,14 @@ exports.signin=function(req,res){
               
 if(err){ console.log(err);}
 if(!user){  
-    return res.status(401).json({message:"Authentication failed. Invalid user or password"});
+    console.log("no user");
+    return res.status(401).json({message:{'email':"Email is Invalid"}});
 }else if(user)
 {
   if  (!user.comparepassword(req.body.password))
     {
-        return res.status(401).json({message:"Authentication failed. Invalid user or password"});
+        console.log("no password mach");
+        return res.status(401).json({message:{'password':"Password do not match or invalid"}});
      }
 }
 return res.json({token:jwt.sign({
@@ -60,7 +62,7 @@ return res.json({token:jwt.sign({
        },appconfig.secrete,{
            expiresIn:250
        }
-)});
+),user:user});
 })
 }
 exports.userslist=function(req,res,next)

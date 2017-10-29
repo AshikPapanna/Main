@@ -7,7 +7,8 @@ var fromEmail = new helper.Email('ashikvpapanna@gmail.com');
 var confirmationshtml=require('./confirmationshtml');
 var toEmail = new helper.Email(toemail);
 var subject = 'Sending with SendGrid is Fun';
-var content = new helper.Content('text/html','<h2>Hi</h2>');
+console.log(appconfig.mailurl);
+var content = new helper.Content('text/html',confirmationshtml(username,appconfig.mailurl+token));
 var mail = new helper.Mail(fromEmail, subject, toEmail, content);
  
 var sg = require('sendgrid')(appconfig.sendgridkey);
