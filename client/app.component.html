@@ -17,11 +17,10 @@
 </nav>
 </div>
 
-  <div class="parallax" [@routerTransition]="getState(o)" > 
-      <ul *ngIf="isloggedin()"class="vb-accountsetmenu" >
-                <li class="vb-accountsetlist">Account Setting</li>
-                <li  class="vb-accountsetlist"><button class="waves-effect waves-light btn green" (click)="logout()" >Logout</button></li>  
-            </ul>    
+<div class="parallax" [@routerTransition]="getState(o)" > 
+    <ul *ngIf="isloggedin()"class="vb-accountsetmenu" >
+              <li class="vb-accountsetlist">Account Setting</li>
+              <li  class="vb-accountsetlist"><button class="waves-effect waves-light btn green" (click)="logout()" >Logout</button></li>         </ul>
     <router-outlet #o="outlet"></router-outlet>            
  </div>
  <footer class="grey darken-3" style="height:12%" >
