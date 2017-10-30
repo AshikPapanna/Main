@@ -1,0 +1,1 @@
+{"version":3,"sources":["faqs.ts"],"names":[],"mappings":";;AAAA;IACA,mBACI,QAAe,EACf,MAAa,EACb,QAAe;IAEnB,CAAC;IACD,gBAAC;AAAD,CAPA,AAOC,IAAA;AAPY,8BAAS","file":"faqs.js","sourcesContent":["export class Faqschild{\r\nconstructor(\r\n    question:string,\r\n    answer:string,\r\n    comments:string\r\n){\r\n}\r\n}"]}

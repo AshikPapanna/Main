@@ -7,7 +7,8 @@
     "nodemon": "nodemon server",
     "start": "node server.js",
     "typings": "typings",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "heroku":"heroku"
   },
   "keywords": [],
   "author": "Ashik P",
