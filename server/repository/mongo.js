@@ -1,5 +1,5 @@
 var mongoose=require('mongoose');
-var appconfig=require('../../appconfig.js');
+
 
 
 exports.connect=function()
@@ -12,7 +12,7 @@ exports.connect=function()
         console.log(err);
       }); 
       mongoose.Promise = global.Promise;
-   mongoose.connect(appconfig.database,{useMongoClient:true});
+    mongoose.connect(process.env.Database||require('../../appconfig.js').database,{useMongoClient:true});
     mongoose.connection;
 };
 
