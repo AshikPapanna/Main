@@ -17,6 +17,10 @@
       '@angular/cdk/table': 'node_modules/@angular/cdk/bundles/cdk-table.umd.js',
       '@angular/cdk/scrolling': 'node_modules/@angular/cdk/bundles/cdk-scrolling.umd.js',
       '@angular/cdk/stepper': 'node_modules/@angular/cdk/bundles/cdk-stepper.umd.js',
+       '@angular/animations': 'node_modules/@angular/animations/bundles/animations.umd.js',
+            '@angular/animations/browser': 'node_modules/@angular/animations/bundles/animations-browser.umd.js',
+            '@angular/platform-browser/animations': 'node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js',
+
 
 
       '@angular':                   'node_modules/@angular',
