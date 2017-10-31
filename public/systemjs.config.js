@@ -38,8 +38,7 @@
     var ngPackageNames = [
       'common',
       'compiler',
-      'core',  
-      'animations' ,  
+      'core',      
       'material',         
       'forms',
       'http',
