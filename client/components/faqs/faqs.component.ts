@@ -18,7 +18,8 @@ constructor(private faqsService:FaqsService ){
 
 }
 ngOnInit(){
-    this.faqsService.getfaqs().subscribe(
+   // this.faqs=this.faqsService.getfaqs();
+ this.faqsService.getfaqs().subscribe(
         faqslist=>{
             this.faqs=faqslist;
         }

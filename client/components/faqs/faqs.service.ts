@@ -14,9 +14,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FaqsService{
 constructor(private http:Http,@Inject(DOCUMENT) document:any){};
-  getfaqs():Observable<Faqschild[]>{   
-     return this.http.get(document.location.href)
-     .map((res:Response)=>res.json())
+  getfaqs():Observable<Faqschild[]>{  
+    //return  [{'question':'hi','answer':'sdsds'}]; 
+   return this.http.get(location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '')+'/faqs')
+     .map((res:Response)=>res.json())     
      .catch((err:any)=>Observable.throw(err));
   }
 }
