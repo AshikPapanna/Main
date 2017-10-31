@@ -39,7 +39,7 @@ jsonwebtoken.verify(req.headers.authorization.split(' ')[1],process.env.JWT_KEY
     }else if(req.query && req.query.tokenId)
     {
         console.log(req.query.tokenId);
-        jsonwebtoken.verify(req.query.tokenId,process.env.JWT_KEY||require('./appconfig').secrete
+        jsonwebtoken.verify(req.query.tokenId,process.env.JWT_KEY
         ,function(err,decode){
             if(err) 
            {
