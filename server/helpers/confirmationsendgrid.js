@@ -8,7 +8,7 @@ var confirmationshtml=require('./confirmationshtml');
 var toEmail = new helper.Email(toemail);
 var subject = 'Sending with SendGrid is Fun';
 console.log(appconfig.mailurl);
-var content = new helper.Content('text/html',confirmationshtml(username,(process.env.SENDGRID_KEY||require('../../appconfig.js'))+token));
+var content = new helper.Content('text/html',confirmationshtml(username,(process.env.EMAIL_URL||require('../../appconfig.js'))+token));
 var mail = new helper.Mail(fromEmail, subject, toEmail, content);
  
 var sg = require('sendgrid')(process.env.SENDGRID_KEY||require('../../appconfig.js').sendgridkey);
