@@ -1,0 +1,8 @@
+<ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header" ><i class="material-icons" (click)="toggalanswer()">filter_drama</i>{{faqs.question}}</div>
+          <div class="collapsiblebody" *ngIf="showanswer"
+          style="background-color:white;padding:5%" ><span>{{faqs.answer}}</span></div>         
+       </li>
+</ul>
+      
