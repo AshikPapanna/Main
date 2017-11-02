@@ -12,29 +12,29 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-var platform_browser_1 = require("@angular/platform-browser");
-var Rx_1 = require("rxjs/Rx");
+const core_1 = require("@angular/core");
+const http_1 = require("@angular/http");
+const platform_browser_1 = require("@angular/platform-browser");
+const Rx_1 = require("rxjs/Rx");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
-var FaqsService = /** @class */ (function () {
-    function FaqsService(http, document) {
+let FaqsService = class FaqsService {
+    constructor(http, document) {
         this.http = http;
     }
     ;
-    FaqsService.prototype.getfaqs = function () {
-        return this.http.get(document.location.href)
-            .map(function (res) { return res.json(); })
-            .catch(function (err) { return Rx_1.Observable.throw(err); });
-    };
-    FaqsService = __decorate([
-        core_1.Injectable(),
-        __param(1, core_1.Inject(platform_browser_1.DOCUMENT)),
-        __metadata("design:paramtypes", [http_1.Http, Object])
-    ], FaqsService);
-    return FaqsService;
-}());
+    getfaqs() {
+        //return  [{'question':'hi','answer':'sdsds'}]; 
+        return this.http.get(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/faqs')
+            .map((res) => res.json())
+            .catch((err) => Rx_1.Observable.throw(err));
+    }
+};
+FaqsService = __decorate([
+    core_1.Injectable(),
+    __param(1, core_1.Inject(platform_browser_1.DOCUMENT)),
+    __metadata("design:paramtypes", [http_1.Http, Object])
+], FaqsService);
 exports.FaqsService = FaqsService;
 
 //# sourceMappingURL=faqs.service.js.map

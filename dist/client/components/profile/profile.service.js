@@ -12,19 +12,19 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-var Rx_1 = require("rxjs/Rx");
+const core_1 = require("@angular/core");
+const http_1 = require("@angular/http");
+const Rx_1 = require("rxjs/Rx");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
-var platform_browser_1 = require("@angular/platform-browser");
-var common_1 = require("@angular/common");
-var ProfileService = /** @class */ (function () {
-    function ProfileService(http, document, location) {
+const platform_browser_1 = require("@angular/platform-browser");
+const common_1 = require("@angular/common");
+let ProfileService = class ProfileService {
+    constructor(http, document, location) {
         this.http = http;
         this.location = location;
     }
-    ProfileService.prototype.getprofiles = function (tokenId) {
+    getprofiles(tokenId) {
         if (tokenId) {
             localStorage.setItem('user', JSON.stringify({ token: tokenId }));
             this.localtoken = tokenId;
@@ -32,22 +32,21 @@ var ProfileService = /** @class */ (function () {
         else {
             this.localtoken = JSON.parse(localStorage.getItem('user')).token;
         }
-        var headers = new http_1.Headers({ 'authorization': 'JWT ' + this.localtoken });
-        var options = new http_1.RequestOptions({ headers: headers });
+        let headers = new http_1.Headers({ 'authorization': 'JWT ' + this.localtoken });
+        let options = new http_1.RequestOptions({ headers: headers });
         return this.http.get(document.location.href, options)
-            .map(function (res) { console.log(res); res || res.json(); })
-            .catch(function (error) { return Rx_1.Observable.throw(error); });
-    };
-    ProfileService.prototype.getprofilesforhome = function () {
-        return this.http.get(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/profilesforhome', new http_1.RequestOptions({})).map(function (res) { return res.json(); });
-    };
-    ProfileService = __decorate([
-        core_1.Injectable(),
-        __param(1, core_1.Inject(platform_browser_1.DOCUMENT)),
-        __metadata("design:paramtypes", [http_1.Http, Object, common_1.Location])
-    ], ProfileService);
-    return ProfileService;
-}());
+            .map((res) => { console.log(res); res || res.json(); })
+            .catch((error) => Rx_1.Observable.throw(error));
+    }
+    getprofilesforhome() {
+        return this.http.get(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/profilesforhome', new http_1.RequestOptions({})).map((res) => res.json());
+    }
+};
+ProfileService = __decorate([
+    core_1.Injectable(),
+    __param(1, core_1.Inject(platform_browser_1.DOCUMENT)),
+    __metadata("design:paramtypes", [http_1.Http, Object, common_1.Location])
+], ProfileService);
 exports.ProfileService = ProfileService;
 
 //# sourceMappingURL=profile.service.js.map

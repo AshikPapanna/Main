@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var animations_1 = require("@angular/animations");
+const animations_1 = require("@angular/animations");
 exports.routerTransition = animations_1.trigger('routerTransition', [
     animations_1.transition('* <=> *', [
         animations_1.query(':enter, :leave', animations_1.style({ position: 'fixed', width: '100%' }), { optional: true }),

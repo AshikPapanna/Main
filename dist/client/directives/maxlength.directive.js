@@ -9,14 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var Maxlength = /** @class */ (function () {
-    function Maxlength(elref, rendr) {
+const core_1 = require("@angular/core");
+let Maxlength = class Maxlength {
+    constructor(elref, rendr) {
         this.elref = elref;
         this.rendr = rendr;
         this.onerror = new core_1.EventEmitter();
     }
-    Maxlength.prototype.onblur = function () {
+    onblur() {
         if (this.elref.nativeElement.value.length > this.maxLength) {
             this.onerror.emit(null);
             this.rendr.setElementClass(this.elref.nativeElement, 'valid', false);
@@ -26,29 +26,28 @@ var Maxlength = /** @class */ (function () {
             this.rendr.setElementClass(this.elref.nativeElement, 'invalid', false);
             this.rendr.setElementClass(this.elref.nativeElement, 'valid', true);
         }
-    };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], Maxlength.prototype, "maxLength", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", Object)
-    ], Maxlength.prototype, "onerror", void 0);
-    __decorate([
-        core_1.HostListener('blur'),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", void 0)
-    ], Maxlength.prototype, "onblur", null);
-    Maxlength = __decorate([
-        core_1.Directive({
-            selector: '[maxLength]'
-        }),
-        __metadata("design:paramtypes", [core_1.ElementRef, core_1.Renderer])
-    ], Maxlength);
-    return Maxlength;
-}());
+    }
+};
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], Maxlength.prototype, "maxLength", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], Maxlength.prototype, "onerror", void 0);
+__decorate([
+    core_1.HostListener('blur'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], Maxlength.prototype, "onblur", null);
+Maxlength = __decorate([
+    core_1.Directive({
+        selector: '[maxLength]'
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef, core_1.Renderer])
+], Maxlength);
 exports.Maxlength = Maxlength;
 
 //# sourceMappingURL=maxlength.directive.js.map

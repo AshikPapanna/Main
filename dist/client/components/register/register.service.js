@@ -12,39 +12,38 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-var Rx_1 = require("rxjs/Rx");
-var common_1 = require("@angular/common");
+const core_1 = require("@angular/core");
+const http_1 = require("@angular/http");
+const Rx_1 = require("rxjs/Rx");
+const common_1 = require("@angular/common");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/observable/throw");
-var platform_browser_1 = require("@angular/platform-browser");
-var RegisterService = /** @class */ (function () {
-    function RegisterService(http, document, location) {
+const platform_browser_1 = require("@angular/platform-browser");
+let RegisterService = class RegisterService {
+    constructor(http, document, location) {
         this.http = http;
         this.location = location;
     }
     ;
-    RegisterService.prototype.register = function (body) {
-        var bodyString = JSON.stringify(body); // Stringify payload
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-        var options = new http_1.RequestOptions({ headers: headers }); // Create a request optio
+    register(body) {
+        let bodyString = JSON.stringify(body); // Stringify payload
+        let headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options = new http_1.RequestOptions({ headers: headers }); // Create a request optio
         return this.http.post(document.location.href, body, options)
-            .map(function (res) { return res.json(); })
-            .catch(function (error) { return Rx_1.Observable.throw(error); });
-    };
-    RegisterService.prototype.getafterregister = function () {
+            .map((res) => res.json())
+            .catch(error => { return Rx_1.Observable.throw(error); });
+    }
+    getafterregister() {
         console.log(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''));
         return this.http.get(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '/'));
-    };
-    RegisterService = __decorate([
-        core_1.Injectable(),
-        __param(1, core_1.Inject(platform_browser_1.DOCUMENT)),
-        __metadata("design:paramtypes", [http_1.Http, Object, common_1.Location])
-    ], RegisterService);
-    return RegisterService;
-}());
+    }
+};
+RegisterService = __decorate([
+    core_1.Injectable(),
+    __param(1, core_1.Inject(platform_browser_1.DOCUMENT)),
+    __metadata("design:paramtypes", [http_1.Http, Object, common_1.Location])
+], RegisterService);
 exports.RegisterService = RegisterService;
 
 //# sourceMappingURL=register.service.js.map

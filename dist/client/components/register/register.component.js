@@ -9,13 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var registration_1 = require("../../../models/registration");
-var register_service_1 = require("./register.service");
-var common_1 = require("@angular/common");
-var router_1 = require("@angular/router");
-var RegisterComponent = /** @class */ (function () {
-    function RegisterComponent(registerService, router, location) {
+const core_1 = require("@angular/core");
+const registration_1 = require("../../../models/registration");
+const register_service_1 = require("./register.service");
+const common_1 = require("@angular/common");
+const router_1 = require("@angular/router");
+let RegisterComponent = class RegisterComponent {
+    constructor(registerService, router, location) {
         this.registerService = registerService;
         this.router = router;
         this.location = location;
@@ -27,7 +27,7 @@ var RegisterComponent = /** @class */ (function () {
         this.IsSuccess = false;
         this.register = new registration_1.Register('', '', '', '', '', '', '', '');
     }
-    RegisterComponent.prototype.comparePassword = function (password, confirmpassword) {
+    comparePassword(password, confirmpassword) {
         if (password !== confirmpassword) {
             this.confirmpasswordclass = 'invalid';
             return false;
@@ -36,8 +36,8 @@ var RegisterComponent = /** @class */ (function () {
             this.confirmpasswordclass = 'valid';
             return true;
         }
-    };
-    RegisterComponent.prototype.validatelastname = function (lastname) {
+    }
+    validatelastname(lastname) {
         if (lastname.length < 2 || lastname.length > 20) {
             this.lastnameclass = 'invalid';
             return false;
@@ -46,8 +46,8 @@ var RegisterComponent = /** @class */ (function () {
             this.lastnameclass = 'valid';
             return true;
         }
-    };
-    RegisterComponent.prototype.Validatepasswordlength = function (password) {
+    }
+    Validatepasswordlength(password) {
         if (password.length < 8 || password.length > 20) {
             this.passwordclass = 'invalid';
             return false;
@@ -56,9 +56,8 @@ var RegisterComponent = /** @class */ (function () {
             this.passwordclass = 'valid';
             return true;
         }
-    };
-    RegisterComponent.prototype.onSubmit = function () {
-        var _this = this;
+    }
+    onSubmit() {
         if (!(this.validatefirstname(this.register.firstname)
             && this.Validatepasswordlength(this.register.password)
             && this.comparePassword(this.register.password, this.register.confirmpassword)
@@ -67,20 +66,20 @@ var RegisterComponent = /** @class */ (function () {
             return false;
         }
         console.log('wrong');
-        this.registerService.register(this.register).subscribe(function (user) {
-            _this.IsSuccess = true;
+        this.registerService.register(this.register).subscribe(user => {
+            this.IsSuccess = true;
             console.log(user);
             localStorage.setItem('username', JSON.stringify({ username: user.firstname }));
             window.location.replace(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''));
-        }, function (err) {
+        }, err => {
             if (err._body && JSON.parse(err._body).message && JSON.parse(err._body).message.email) {
-                _this.emailvalidateclass = 'invalid';
-                _this.IsSuccess = false;
+                this.emailvalidateclass = 'invalid';
+                this.IsSuccess = false;
             }
         });
-    };
+    }
     ;
-    RegisterComponent.prototype.validatefirstname = function (firstname) {
+    validatefirstname(firstname) {
         if (firstname.length < 4 || firstname.length > 20) {
             this.firstNamevalidateclass = 'invalid';
             return false;
@@ -89,8 +88,8 @@ var RegisterComponent = /** @class */ (function () {
             this.firstNamevalidateclass = 'valid';
             return true;
         }
-    };
-    RegisterComponent.prototype.validateemail = function (email) {
+    }
+    validateemail(email) {
         if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
             this.emailvalidateclass = 'valid';
             return true;
@@ -99,20 +98,19 @@ var RegisterComponent = /** @class */ (function () {
             this.emailvalidateclass = 'invalid';
             return false;
         }
-    };
-    RegisterComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'my-register',
-            templateUrl: './register.component.html',
-            styleUrls: ['./register.component.css'],
-            providers: [register_service_1.RegisterService]
-        }),
-        __metadata("design:paramtypes", [register_service_1.RegisterService,
-            router_1.Router, common_1.Location])
-    ], RegisterComponent);
-    return RegisterComponent;
-}());
+    }
+};
+RegisterComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'my-register',
+        templateUrl: './register.component.html',
+        styleUrls: ['./register.component.css'],
+        providers: [register_service_1.RegisterService]
+    }),
+    __metadata("design:paramtypes", [register_service_1.RegisterService,
+        router_1.Router, common_1.Location])
+], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 
 //# sourceMappingURL=register.component.js.map

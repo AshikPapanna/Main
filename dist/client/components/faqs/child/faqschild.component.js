@@ -9,30 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var faqs_1 = require("../../../../models/faqs");
-var FaqsChildComponent = /** @class */ (function () {
-    function FaqsChildComponent() {
+const core_1 = require("@angular/core");
+const faqs_1 = require("../../../../models/faqs");
+let FaqsChildComponent = class FaqsChildComponent {
+    constructor() {
         this.showanswer = false;
         console.log(this.faqs);
     }
-    FaqsChildComponent.prototype.toggalanswer = function () {
+    toggalanswer() {
         this.showanswer = !this.showanswer;
-    };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", faqs_1.Faqschild)
-    ], FaqsChildComponent.prototype, "faqs", void 0);
-    FaqsChildComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'vb-faqschild',
-            templateUrl: './faqschild.component.html'
-        }),
-        __metadata("design:paramtypes", [])
-    ], FaqsChildComponent);
-    return FaqsChildComponent;
-}());
+    }
+};
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", faqs_1.Faqschild)
+], FaqsChildComponent.prototype, "faqs", void 0);
+FaqsChildComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'vb-faqschild',
+        templateUrl: './faqschild.component.html'
+    }),
+    __metadata("design:paramtypes", [])
+], FaqsChildComponent);
 exports.FaqsChildComponent = FaqsChildComponent;
 
 //# sourceMappingURL=faqschild.component.js.map

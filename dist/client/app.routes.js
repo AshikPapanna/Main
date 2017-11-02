@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var router_1 = require("@angular/router");
-var login_component_1 = require("./components/login/login.component");
-var profile_component_1 = require("./components/profile/profile.component");
-var register_component_1 = require("./components/register/register.component");
-var home_component_1 = require("./components/home/home.component");
-var forgotpassword_component_1 = require("./components/forgotpassword/forgotpassword.component");
-var faqs_component_1 = require("./components/faqs/faqs.component");
-var approutes = [
+const router_1 = require("@angular/router");
+const login_component_1 = require("./components/login/login.component");
+const profile_component_1 = require("./components/profile/profile.component");
+const register_component_1 = require("./components/register/register.component");
+const home_component_1 = require("./components/home/home.component");
+const forgotpassword_component_1 = require("./components/forgotpassword/forgotpassword.component");
+const faqs_component_1 = require("./components/faqs/faqs.component");
+const approutes = [
     {
         path: 'home',
         component: home_component_1.HomeComponent,

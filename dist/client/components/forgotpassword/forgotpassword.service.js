@@ -12,29 +12,28 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-var Rx_1 = require("rxjs/Rx");
+const core_1 = require("@angular/core");
+const http_1 = require("@angular/http");
+const Rx_1 = require("rxjs/Rx");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
-var platform_browser_1 = require("@angular/platform-browser");
-var ForgotpasswordService = /** @class */ (function () {
-    function ForgotpasswordService(http, document) {
+const platform_browser_1 = require("@angular/platform-browser");
+let ForgotpasswordService = class ForgotpasswordService {
+    constructor(http, document) {
         this.http = http;
     }
     ;
-    ForgotpasswordService.prototype.forgotpassword = function (body) {
+    forgotpassword(body) {
         return this.http.post(document.location.href, body)
-            .map(function (res) { return res.json(); })
-            .catch(function (err) { return Rx_1.Observable.throw(err); });
-    };
-    ForgotpasswordService = __decorate([
-        core_1.Injectable(),
-        __param(1, core_1.Inject(platform_browser_1.DOCUMENT)),
-        __metadata("design:paramtypes", [http_1.Http, Object])
-    ], ForgotpasswordService);
-    return ForgotpasswordService;
-}());
+            .map((res) => res.json())
+            .catch((err) => Rx_1.Observable.throw(err));
+    }
+};
+ForgotpasswordService = __decorate([
+    core_1.Injectable(),
+    __param(1, core_1.Inject(platform_browser_1.DOCUMENT)),
+    __metadata("design:paramtypes", [http_1.Http, Object])
+], ForgotpasswordService);
 exports.ForgotpasswordService = ForgotpasswordService;
 
 //# sourceMappingURL=forgotpassword.service.js.map

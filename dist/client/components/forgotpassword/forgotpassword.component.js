@@ -9,13 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
 require("rxjs/add/operator/switchMap");
-var forgotpassword_service_1 = require("./forgotpassword.service");
-var registration_1 = require("../../../models/registration");
-var ForgotpasswordComponent = /** @class */ (function () {
-    function ForgotpasswordComponent(forgotpasswordService, route) {
+const forgotpassword_service_1 = require("./forgotpassword.service");
+const registration_1 = require("../../../models/registration");
+let ForgotpasswordComponent = class ForgotpasswordComponent {
+    constructor(forgotpasswordService, route) {
         this.forgotpasswordService = forgotpasswordService;
         this.route = route;
         this.register = new registration_1.Register('', '', '', '', '', '', '', '');
@@ -24,11 +24,10 @@ var ForgotpasswordComponent = /** @class */ (function () {
         this.IsSuccess = false;
         this.emailvalidateclass = '';
     }
-    ForgotpasswordComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.route.queryParams.subscribe(function (par) { _this.register.email = par['emailid']; });
-    };
-    ForgotpasswordComponent.prototype.validateemail = function (email) {
+    ngOnInit() {
+        this.route.queryParams.subscribe((par) => { this.register.email = par['emailid']; });
+    }
+    validateemail(email) {
         if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
             this.emailvalidateclass = 'valid';
             return true;
@@ -37,8 +36,8 @@ var ForgotpasswordComponent = /** @class */ (function () {
             this.emailvalidateclass = 'invalid';
             return false;
         }
-    };
-    ForgotpasswordComponent.prototype.comparePassword = function (password, confirmpassword) {
+    }
+    comparePassword(password, confirmpassword) {
         if (password !== confirmpassword) {
             this.confirmpasswordclass = 'invalid';
             return false;
@@ -47,8 +46,8 @@ var ForgotpasswordComponent = /** @class */ (function () {
             this.confirmpasswordclass = 'valid';
             return true;
         }
-    };
-    ForgotpasswordComponent.prototype.Validatepasswordlength = function (password) {
+    }
+    Validatepasswordlength(password) {
         if (password.length < 8 || password.length > 20) {
             this.passwordclass = 'invalid';
             return false;
@@ -57,36 +56,34 @@ var ForgotpasswordComponent = /** @class */ (function () {
             this.passwordclass = 'valid';
             return true;
         }
-    };
-    ForgotpasswordComponent.prototype.onSubmit = function () {
-        var _this = this;
+    }
+    onSubmit() {
         if (!(this.Validatepasswordlength(this.register.password)
             && this.comparePassword(this.register.password, this.register.confirmpassword))) {
             return false;
         }
-        this.forgotpasswordService.forgotpassword(this.register).subscribe(function (user) {
-            _this.IsSuccess = true;
-        }, function (err) {
+        this.forgotpasswordService.forgotpassword(this.register).subscribe(user => {
+            this.IsSuccess = true;
+        }, err => {
             console.log(err);
             if (err._body && JSON.parse(err._body).email && JSON.parse(err._body).email) {
-                _this.emailvalidateclass = 'invalid';
-                _this.IsSuccess = false;
+                this.emailvalidateclass = 'invalid';
+                this.IsSuccess = false;
             }
         });
-    };
+    }
     ;
-    ForgotpasswordComponent = __decorate([
-        core_1.Component({
-            selector: 'sa-forgotpassword',
-            moduleId: module.id,
-            templateUrl: './forgotpassword.component.html',
-            styleUrls: ['./forgotpassword.component.css'],
-            providers: [forgotpassword_service_1.ForgotpasswordService]
-        }),
-        __metadata("design:paramtypes", [forgotpassword_service_1.ForgotpasswordService, router_1.ActivatedRoute])
-    ], ForgotpasswordComponent);
-    return ForgotpasswordComponent;
-}());
+};
+ForgotpasswordComponent = __decorate([
+    core_1.Component({
+        selector: 'sa-forgotpassword',
+        moduleId: module.id,
+        templateUrl: './forgotpassword.component.html',
+        styleUrls: ['./forgotpassword.component.css'],
+        providers: [forgotpassword_service_1.ForgotpasswordService]
+    }),
+    __metadata("design:paramtypes", [forgotpassword_service_1.ForgotpasswordService, router_1.ActivatedRoute])
+], ForgotpasswordComponent);
 exports.ForgotpasswordComponent = ForgotpasswordComponent;
 
 //# sourceMappingURL=forgotpassword.component.js.map

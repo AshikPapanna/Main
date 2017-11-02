@@ -9,12 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var login_1 = require("../../../models/login");
-var login_service_1 = require("./login.service");
-var router_1 = require("@angular/router");
-var LoginComponent = /** @class */ (function () {
-    function LoginComponent(loginservice, route) {
+const core_1 = require("@angular/core");
+const login_1 = require("../../../models/login");
+const login_service_1 = require("./login.service");
+const router_1 = require("@angular/router");
+let LoginComponent = class LoginComponent {
+    constructor(loginservice, route) {
         this.loginservice = loginservice;
         this.route = route;
         this.emailvalidateclass = '';
@@ -29,7 +29,7 @@ var LoginComponent = /** @class */ (function () {
          document.getElementById("mySidenav").style.width = "0%";
          document.getElementById("mySidenavforregister").style.width = "30%";
      }*/
-    LoginComponent.prototype.validateemail = function (email) {
+    validateemail(email) {
         if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
             this.emailvalidateclass = 'valid';
             return true;
@@ -38,8 +38,8 @@ var LoginComponent = /** @class */ (function () {
             this.emailvalidateclass = 'invalid';
             return false;
         }
-    };
-    LoginComponent.prototype.Validatepasswordlength = function (password) {
+    }
+    Validatepasswordlength(password) {
         if (password.length < 8 || password.length > 20) {
             this.passwordclass = 'invalid';
             return false;
@@ -48,36 +48,34 @@ var LoginComponent = /** @class */ (function () {
             this.passwordclass = 'valid';
             return true;
         }
-    };
-    LoginComponent.prototype.onSubmit = function () {
-        var _this = this;
+    }
+    onSubmit() {
         console.log(this.login);
-        this.loginservice.login(this.login).subscribe(function (user) {
+        this.loginservice.login(this.login).subscribe(user => {
             console.log(user);
             window.location.replace(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''));
-        }, function (err) {
+        }, err => {
             console.log(err);
             if (err._body && JSON.parse(err._body).message && JSON.parse(err._body).message.email) {
-                _this.emailvalidateclass = 'invalid';
+                this.emailvalidateclass = 'invalid';
             }
             if (err._body && JSON.parse(err._body).message && JSON.parse(err._body).message.password) {
-                _this.passwordclass = 'invalid';
+                this.passwordclass = 'invalid';
             }
         });
-    };
-    LoginComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'my-login',
-            templateUrl: './login.component.html',
-            styleUrls: ['./login.component.css'],
-            providers: [login_service_1.LoginService]
-        }),
-        __metadata("design:paramtypes", [login_service_1.LoginService,
-            router_1.Router])
-    ], LoginComponent);
-    return LoginComponent;
-}());
+    }
+};
+LoginComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'my-login',
+        templateUrl: './login.component.html',
+        styleUrls: ['./login.component.css'],
+        providers: [login_service_1.LoginService]
+    }),
+    __metadata("design:paramtypes", [login_service_1.LoginService,
+        router_1.Router])
+], LoginComponent);
 exports.LoginComponent = LoginComponent;
 
 //# sourceMappingURL=login.component.js.map

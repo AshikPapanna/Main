@@ -9,30 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
+const core_1 = require("@angular/core");
 require("rxjs/add/operator/switchMap");
-var faqs_service_1 = require("./faqs.service");
-var FaqsComponent = /** @class */ (function () {
-    function FaqsComponent(faqsService) {
+const faqs_service_1 = require("./faqs.service");
+let FaqsComponent = class FaqsComponent {
+    constructor(faqsService) {
         this.faqsService = faqsService;
     }
-    FaqsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.faqsService.getfaqs().subscribe(function (faqslist) {
-            _this.faqs = faqslist;
+    ngOnInit() {
+        // this.faqs=this.faqsService.getfaqs();
+        this.faqsService.getfaqs().subscribe(faqslist => {
+            this.faqs = faqslist;
         });
-    };
-    FaqsComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'vb-faqs',
-            templateUrl: './faqs.component.html',
-            providers: [faqs_service_1.FaqsService]
-        }),
-        __metadata("design:paramtypes", [faqs_service_1.FaqsService])
-    ], FaqsComponent);
-    return FaqsComponent;
-}());
+    }
+};
+FaqsComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'vb-faqs',
+        templateUrl: './faqs.component.html',
+        providers: [faqs_service_1.FaqsService]
+    }),
+    __metadata("design:paramtypes", [faqs_service_1.FaqsService])
+], FaqsComponent);
 exports.FaqsComponent = FaqsComponent;
 
 //# sourceMappingURL=faqs.component.js.map
