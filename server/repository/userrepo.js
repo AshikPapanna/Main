@@ -2,7 +2,7 @@
 var jwt=require('jsonwebtoken');
 var User=require('../../schemas/user.js');
 var mongo=require('./mongo.js').connect();
-var appconfig=require('../../appconfig.js');
+
 var confirmmailhelper=require('../helpers/confirmationsendgrid.js');
 var bcrypt = require("bcrypt-nodejs");
 var forgotmailhelper=require('../helpers/forgotpasswordsendgrid.js');
@@ -28,7 +28,7 @@ exports.register=function(req,res,next)
                                          role:user.role,
                                          _id:user._id
                                          }
-                                        ,appconfig.secrete
+                                        ,process.env.JWT_KEY||require('../../appconfig.js').secrete
                                         ,{ expiresIn:250
                                           }));
                                         console.log(error);
@@ -59,7 +59,7 @@ return res.json({token:jwt.sign({
     fullname:user.fullname,
     role:user.role,
     _id:user._id
-       },appconfig.secrete,{
+       },process.env.JWT_KEY||require('../../appconfig.js').secrete,{
            expiresIn:250
        }
 ),user:user});
@@ -93,7 +93,7 @@ exports.forgotpassword=function(req,res){
                             fullname:user.fullname,
                             _id:user._id
                             }
-                           ,appconfig.secrete
+                           ,process.env.JWT_KEY||require('../../appconfig.js').secrete
                            ,{ expiresIn:250
                              }));
 

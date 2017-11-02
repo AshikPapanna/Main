@@ -3,7 +3,7 @@ var bodyparser=require('body-parser');
 var path=require('path');
 var jsonwebtoken=require('jsonwebtoken');
 var cookieParser=require('cookie-parser');
-var appconfig=require('./appconfig.js');
+
 
 var app=express();
 global.__base = __dirname + '/';
@@ -23,7 +23,7 @@ app.use('/dist',express.static(path.join(__dirname,'dist')));
 app.use(function(req,res,next){
 if(req.headers&&req.headers.authorization    
     &&req.headers.authorization.split(' ')[0]==='JWT')    {
-jsonwebtoken.verify(req.headers.authorization.split(' ')[1],appconfig.secrete
+jsonwebtoken.verify(req.headers.authorization.split(' ')[1],process.env.JWT_KEY||require('./appconfig').secrete
 ,function(err,decode){
     if(err){ 
                console.log(err);
@@ -39,7 +39,7 @@ jsonwebtoken.verify(req.headers.authorization.split(' ')[1],appconfig.secrete
     }else if(req.query && req.query.tokenId)
     {
         console.log(req.query.tokenId);
-        jsonwebtoken.verify(req.query.tokenId,appconfig.secrete
+        jsonwebtoken.verify(req.query.tokenId,process.env.JWT_KEY||require('./appconfig').secrete
         ,function(err,decode){
             if(err) 
            {
