@@ -57,8 +57,10 @@ jsonwebtoken.verify(req.headers.authorization.split(' ')[1],process.env.JWT_KEY|
         next();
     }    
 });
-var routes = require(path.join(__dirname, '/server/routes/approutes.js'));
-routes(app);
+var jobroutes = require(path.join(__dirname, '/server/routes/jobroutes.js'));
+jobroutes(app);
+var approutes = require(path.join(__dirname, '/server/routes/approutes.js'));
+approutes(app);
 app.listen(app.get('port'),function()
 {
  
