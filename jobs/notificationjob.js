@@ -3,7 +3,7 @@
 
 var schedule = require('node-schedule');
 var notificationmailhelper=require('../server/helpers/notificationsendgrid.js');
-var User=require('../schemas/user.js');
+var User=require('../schemas/user.js'); 
  
 exports.sendnotification=function(req,res,next){
 schedule.scheduleJob('*/1 * * * *', function(){
