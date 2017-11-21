@@ -1,15 +1,15 @@
-module.exports.sendconfirmationmail=function(toemail,username ,token){
+module.exports.sendnotificationmail=function(toemail,username){
 
 
 var helper = require('sendgrid').mail;
 
 var fromEmail = new helper.Email('ashikvpapanna@gmail.com');
-var confirmationshtml=require('./confirmationshtml');
+var notificationhtml=require('./notificationhtml');
 var toEmail = new helper.Email(toemail);
-var subject = 'Sending with SendGrid is Fun';
+var subject = 'Good Morning';
 
-var content = new helper.Content('text/html',confirmationshtml(username,(process.env.EMAIL_URL||require('../../appconfig.js').mailurl)+token));
-//var content = new helper.Content('text/html','<h1>Hi</h1>');
+var content = new helper.Content('text/html',notificationhtml(username));
+
 
 
 var mail = new helper.Mail(fromEmail, subject, toEmail, content);

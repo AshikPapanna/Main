@@ -1,7 +1,3 @@
-/**
- * System configuration for Angular 2/4 samples
- * Adjust as necessary for your application needs.
- */
 (function (global) {
     System.config({
         paths: {
@@ -27,18 +23,30 @@
             '@angular/platform-browser/animations': 'npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js',
 
             // other libraries
-            'rxjs': 'npm:rxjs',
+      
             'angular2-in-memory-web-api':'npm:angular2-in-memory-web-api'
         },
+        bundles:{
+            "npm:rxjs-system-bundle/Rx.system.js": [
+              "rxjs",
+              "rxjs/*",
+              "rxjs/operator/*",
+              "rxjs/observable/*",
+              "rxjs/scheduler/*",
+              "rxjs/symbol/*",
+              "rxjs/add/operator/*",
+              "rxjs/add/observable/*",
+              "rxjs/util/*"
+            ]
+          },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
             app: {
                 main: 'main.js',
                 defaultExtension: 'js'
             },
-            rxjs: {
-                main:'Rx.js',
-                defaultExtension: 'js'
+            rxjs: {               
+                defaultExtension: false
             },
               'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
         }
