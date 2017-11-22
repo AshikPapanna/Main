@@ -31,6 +31,7 @@
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "core-js": "^2.5.1",
+    "country-currency-map": "^1.0.7",
     "express": "^4.15.4",
     "jsonwebtoken": "^8.1.0",
     "jwt-simple": "^0.5.1",

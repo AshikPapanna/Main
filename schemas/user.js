@@ -25,12 +25,30 @@ var UserSchema = new mongoose.Schema({
         unique:true
     },
     hash_password: {
-        type: String,
-        required: true
+        type: String      
     },
     createddate: {
         type: Date,
         default: Date.now
+    },
+    dob:{
+        type: Date,       
+    },
+    age:{
+        type:Number,
+        min:[6,"Age should be more than 6"],
+        max:[30,"Age should be less than 30"],
+        required:[function(){return !this.dob;},"Please enter Age or Date of Birth"]
+    },
+    country:{
+        type:String,
+        enum:['India','United States'],
+        required:[true,'Please select the Country']
+    },
+    gender:{
+        type:String,
+        enum:{values:['M','F'],message:'Please select valid Gender'},
+        required:[true,'Please select the Gender']
     },
     resetPasswordToken: {
         type: String
@@ -41,6 +59,10 @@ var UserSchema = new mongoose.Schema({
     isemailverified:{
         type:Boolean,
         default:false
+    },
+    issubscribed:{
+        type:Boolean,
+        default:true
     },
     role:{
         type:String,
@@ -53,12 +75,22 @@ UserSchema.pre('save', function (next) {
     var currentdate = new Date();
     if (!this.createddate) {
         this.createddate = currentdate;
+    } 
+    console.log("this.dob.getUTCFullYear()");
+      console.log(this.dob.getUTCFullYear());
+    //validate DOB
+    if(this.dob.getUTCFullYear()>(currentdate.getUTCFullYear()-5) || this.dob.getUTCFullYear()<1985)
+    {
+      next(new Error("Please enter valid Date of Birth"));
     }
-    next();
+     else
+    {
+      next();
+    }
 });
 
 
-UserSchema.plugin(uniqueValidators,{message:'{PATH} should be unique.'});
+UserSchema.plugin(uniqueValidators,{message:'Email should be unique.'});
 
 UserSchema.methods.fullname = function () {
     return this.firstname + ' ' + this.lastname;

@@ -7,14 +7,20 @@ var confirmmailhelper=require('../helpers/confirmationsendgrid.js');
 var bcrypt = require("bcrypt-nodejs");
 var forgotmailhelper=require('../helpers/forgotpasswordsendgrid.js');
 
-
+exports.resetpassword=function(req,res,next){
+    newUser.hash_password=bcrypt.hashSync(req.body.password,bcrypt.genSaltSync(10)); 
+}
 
 exports.register=function(req,res,next)
 {  
-     var newUser=new User(req.body); 
-     newUser.hash_password=bcrypt.hashSync(req.body.password,bcrypt.genSaltSync(10));    
+     var newUser=new User(req.body);        
      newUser.save(function(err,user){
-        if(err){
+        if(err){           
+            for (var errName in err.errors) {  
+                console.log( err.errors[errName].message );            
+               // console.log(err.errors[errName]);             
+              
+              }
             return res.status(401).json({ message:{
               'lastname': err.errors && err.errors.lastname && err.errors.lastname.message,
               'firstname':err.errors && err.errors.firstname && err.errors.firstname.message,

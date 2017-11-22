@@ -3,6 +3,7 @@ var bodyparser=require('body-parser');
 var path=require('path');
 var jsonwebtoken=require('jsonwebtoken');
 var cookieParser=require('cookie-parser');
+//ar geoip = require('geoip-lite');
 
 
 var app=express();
@@ -21,7 +22,14 @@ app.use('/dist',express.static(path.join(__dirname,'dist')));
 
 
 app.use(function(req,res,next){
-if(req.headers&&req.headers.authorization    
+  /*  console.log("IP Address");
+    console.log( req.headers['x-forwarded-for']|| req.connection.remoteAddress);
+   
+   
+    var ip = "fe80::99c2:b36:d3fa:d2e%10";
+    var geo = geoip.lookup(ip);
+console.log(geo);*///
+    if(req.headers&&req.headers.authorization    
     &&req.headers.authorization.split(' ')[0]==='JWT')    {
 jsonwebtoken.verify(req.headers.authorization.split(' ')[1],process.env.JWT_KEY||require('./appconfig').secrete
 ,function(err,decode){
