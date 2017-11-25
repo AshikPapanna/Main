@@ -22,7 +22,7 @@ module.exports=function(app){
     }); 
     router.get('*', function(req, res) {
         console.log('hi');
-        res.sendfile(__base+'index.html');
+        res.sendFile(__base+'index.html');
       });         
     app.use('/',router);
 }

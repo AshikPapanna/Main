@@ -7,6 +7,8 @@ var content = new helper.Content('text/html', '<h1>and easy to do anywhere, even
 '<style>@import url(https://fonts.googleapis.com/css?family=Comfortaa|Exo+2|Kanit|Righteous)</style>'+
 '<div style="background-color:#581845;padding:0.25%;padding-left: 2%;"> <h1 style="font-family: Verdana, Arial, Helvetica, sans-serif;"><span style="color:white;">S&#x0101;rang</span></h1>');
 var mail = new helper.Mail(fromEmail, subject, toEmail, content);
+var att=new helper.Attachment();
+att.setContent()
  
 var sg = require('sendgrid')(appconfig.sendgridkey);
 var request = sg.emptyRequest({
