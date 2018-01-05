@@ -18,9 +18,10 @@ var subject = 'Sending with SendGrid is Fun';
 var content = new helper.Content('text/html', '<h1>and easy to do anywhere, even with Node.js</h1>'+
 '<img alt="dsfdf" src="data:image/jpg;base64,'+a+'"/>');
 var mail = new helper.Mail(fromEmail, subject, toEmail, content);
-mail.addAttachment(attachement);
 
- 
+var att=new helper.Attachment();
+att.setContent()
+
 var sg = require('sendgrid')(appconfig.sendgridkey);
 var request = sg.emptyRequest({
   method: 'POST',
