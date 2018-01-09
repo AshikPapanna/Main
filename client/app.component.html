@@ -8,21 +8,40 @@
         </a>
  
 
-        <ul id="nav" class="right">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-              
-             <li><a routerLink="/faqs">FAQs</a></li>
+        <ul id="sa-nav" class="right">          
+                <li class="sa-navlink" ><a>Courses</a>  
+                     <ul class="sub-menu" style="width:250%;left:-80%;">
+<li class="sub-menulink"><a style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"  href="">Hindustani Classical Vocal</a></li>
+<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"   href="">Carnatic Classical Vocal </a></li>
+<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"  href="">Carnatic Classical Violin</a></li>
+<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"   href="">Ghazal </a></li>
+<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"   href="">Sitar </a></li>
 
-                <li *ngIf="!username"><a routerLink="/login" >login</a>
+                </ul>           
+                  </li>
+                 
+                <li class="sa-navlink"><a href="">Instructors</a></li>
+                <li class="sa-navlink"><a href="">Company</a>
+                 <ul class="sub-menu" style="width: 150%;left:-20%;">
+<li class="sub-menulink"><a style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"  href="">About Us</a></li>
+<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"   href="">Mission </a></li>
+<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"   href="">Our Team</a></li>
+                </ul>           </li>
+              
+                 <li class="sa-navlink"><a routerLink="">FAQs</a></li>
+
+                <li class="sa-navlink" *ngIf="!username"><a routerLink="/login" >Login</a>
                    </li>  
        
-                <li  *ngIf="username"><a >{{username}}</a>
+                <li class="sa-navlink" *ngIf="username"><a >{{username}}</a>
                    </li>              
         </ul>
     </div> 
+      
 </nav>
+  
 </div>
+
 
 <div class="parallax" [@routerTransition]="getState(o)" > 
     <ul *ngIf="isloggedin()"class="vb-accountsetmenu" >
@@ -39,21 +58,75 @@
       </div>
     </footer>-->
 <style>
+    .sub-menulink{
+        text-align: center;
+        color: white;
+        font-weight: 300;
+        width: 100%;
+        
+        font-size: 1.0em;
+    }
+    .sub-menulink a{
+        color: whitesmoke;
+    }
+    .sa-navlink{
+        line-height: 3;
+        padding-top: 5%;
+         position: relative;
+    }
+    .sa-navlink:hover{
+         border-bottom-style: solid;
+    border-bottom-width: thick;
+    border-bottom-color:  #e83831;
+    background: white;
+        }
+    #sa-nav{
+        margin: 0px;
+        padding-right: 5%;
+    }
+    #sa-nav li{
+        display: inline;
+    }   
+
+.sa-navlink:focus .sub-menu,
+.sa-navlink:focus-within .sub-menu,
+.sa-navlink:hover .sub-menu {
+  visibility: visible; /* shows sub-menu */
+  opacity: 1;
+  z-index: 1;
+  transform: translateY(0%);
+  transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+}
+
+
+  
+    .nav-wrapper{
+line-height: 100px;
+    }
+  /* #sa-nav  a:after {
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    content: "";
+    height: 3px;
+    background: #e83831;
+}*/
     .vb-accountsetmenu{
         width:20%;position:absolute;right:15;background-color:white;
         margin-top:10px;
     }
-    .vb-accountsetmenu::before{
+    .sub-menu::before{
         content: "";
         border-color: transparent;
-        border-bottom-color: #FFF;
+        border-bottom-color:#FC5A5A;
         border-style: dashed dashed solid;
-        border-width: 0 15px 15px;
+        border-width: 0 10px 10px;
         position: absolute;
         height: 0;
         width: 0;
-        right: 10px;
-        top: -9px;
+        right: 45%;
+        top: -10px;
         z-index: 9999;
     }
     .vb-accountsetlist{
@@ -64,6 +137,7 @@
 nav{
     
     background-color:  white;
+     height: 100px;
 }
 .btn{
   line-height:0;
@@ -76,9 +150,10 @@ nav{
 }
 .parallax{
     background-image: url("/public/images/HomeBackGround2.jpg");
+    top:40%;
 
     /* Full height */
-    height: 70%; 
+    height: 60%; 
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -100,5 +175,20 @@ padding-left: 2%;
 }
 nav ul li a{
     color: darkslategrey;
+    font-weight: 400;
+    font-size: 1.2em;
+}
+#sa-submenu{
+    float: right;
+    width: 20%;
+    padding: 0px;
+    margin-right: 25%;
+}
+.sa-submenulink{
+    text-align: center;
+    line-height: 300%;
+background-color:  #FC5A5A;
+color: white;
+padding: 0px;
 }
 </style>

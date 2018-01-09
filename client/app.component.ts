@@ -18,10 +18,13 @@ export class AppComponent{
     
         }
     username:string;
+    
     isFromRegister:boolean;
     getState(outlet) {
     return outlet.activatedRouteData.state;
   }
+
+  
   ngOnInit(){
     if(this.loginService.islogedin()){
     var user=JSON.parse(localStorage.getItem('user'));
