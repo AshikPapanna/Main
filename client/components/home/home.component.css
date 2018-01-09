@@ -3,6 +3,7 @@
         font-size:200%;
         font-weight: 300;
         margin-bottom: 0px;
+        font-family: hpsimplifiedlight;
     }
     .sa-author{
 font-size: 1.5em;
@@ -11,6 +12,12 @@ color: white;
 margin-top: 0px;
 padding-right: 6%;
 float: right;
+    }
+    .sa-bottommenu-text{
+        margin:0px;
+        margin-bottom:5%;
+        font-family: hpsimplifiedlight;
+        font-weight:400
     }
 
     
