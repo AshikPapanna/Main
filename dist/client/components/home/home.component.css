@@ -19,5 +19,25 @@ float: right;
         font-family: hpsimplifiedlight;
         font-weight:400
     }
+.sa-homesubheader-text{
+    margin-top:5%;   
+    font-family:OpenSansLight;
+}
+.sa-homesubheader-text::after{
+    content: "";
+    width: 50px;
+    height: 2px;
+    left: 0;
+    right: 0;
+    background-color: #FC5A5A;
+    display: block;
+    position: relative;
+    margin: auto;
+    bottom: -10px;
+}
+.sa-subheaderdesc-text{
+    margin-top:3%;margin-bottom:3%;font-weight:300;font-size:1.2em;
+    font-family: hpsimplifiedlight;
+}
 
     
