@@ -11,11 +11,11 @@
         <ul id="sa-nav" class="right">          
                 <li class="sa-navlink" ><a>Courses</a>  
                      <ul class="sub-menu" style="width:250%;left:-80%;">
-<li class="sub-menulink"><a style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"  href="">Hindustani Classical Vocal</a></li>
-<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"   href="">Carnatic Classical Vocal </a></li>
-<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"  href="">Carnatic Classical Violin</a></li>
-<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"   href="">Ghazal </a></li>
-<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"   href="">Sitar </a></li>
+<li class="sub-menulink"><a  href="">Hindustani Classical Vocal</a></li>
+<li class="sub-menulink"><a    href="">Carnatic Classical Vocal </a></li>
+<li class="sub-menulink"><a  href="">Carnatic Classical Violin</a></li>
+<li class="sub-menulink"><a    href="">Ghazal </a></li>
+<li class="sub-menulink"><a    href="">Sitar </a></li>
 
                 </ul>           
                   </li>
@@ -23,9 +23,9 @@
                 <li class="sa-navlink"><a href="">Instructors</a></li>
                 <li class="sa-navlink"><a href="">Company</a>
                  <ul class="sub-menu" style="width: 150%;left:-20%;">
-<li class="sub-menulink"><a style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"  href="">About Us</a></li>
-<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"   href="">Mission </a></li>
-<li class="sub-menulink"><a  style="color:white;width:100%;text-align: center;font-size:1em;font-weight:400;"   href="">Our Team</a></li>
+<li class="sub-menulink"><a   href="">About Us</a></li>
+<li class="sub-menulink"><a    href="">Mission </a></li>
+<li class="sub-menulink"><a     href="">Our Team</a></li>
                 </ul>           </li>
               
                  <li class="sa-navlink"><a routerLink="">FAQs</a></li>
@@ -43,31 +43,75 @@
 </div>
 
 
-<div class="parallax" [@routerTransition]="getState(o)" > 
+<div  [@routerTransition]="getState(o)" > 
     <ul *ngIf="isloggedin()"class="vb-accountsetmenu" >
               <li class="vb-accountsetlist">Account Setting</li>
               <li  class="vb-accountsetlist"><button class="waves-effect waves-light btn green" (click)="logout()" >Logout</button></li>         </ul>
     <router-outlet #o="outlet"></router-outlet>            
  </div>
-<!--<footer class="grey darken-3" style="height:12%" >
-    <div class="footer-copyright" style="padding:2%">
+
+ <div  class="row" style="background-color: #757074;margin-bottom: 0px;padding-top:2%;padding-bottom: 2%;  ">
+     <div class="col s12 center" style="margin:2%">
+        <span class="white-text" style="padding-right:2%;font-size:1.2em;"> Our Story</span><span style="color:white;width:5px;">&#124;</span>
+        <span class="white-text" style="padding-left:3%;padding-right:3%;font-size:1.2em;"> Team</span><span style="color:white;width:5px;">&#124;</span>
+        <span class="white-text" style="padding-left:2%;font-size:1.2em;">Join Us</span>
+
+     </div>
+    <div class="col s4" style="text-align: center;">
+        <div class="white-text"  style="padding-bottom:5px;">
+     <b>CONNECT</b>&emsp;</div>
+      <img class="responsive-img " style="width:30px;margin-left:2%;margin-right:2%;" src="./../public/images/facebook.svg">
+      <img class="responsive-img " style="width:30px;margin-left:2%;margin-right:2%;" src="./../public/images/instagram.svg">
+      <img class="responsive-img " style="width:30px;margin-left:2%;margin-right:2%;" src="./../public/images/skype.svg">
+      <img class="responsive-img " style="width:30px;margin-left:2%;margin-right:2%;" src="./../public/images/twitter.svg">
+    </div>
+     <div class="col s4" style="text-align: center;">
+            <div class="white-text"  style="padding-bottom:5px;"><b> CALL US :</b>
+            </div>
+            <div class="white-text">(808)-41541124551</div>
+
+  
+       </div>
+       <div class="col s4" style="text-align: center;">
+            <div class="white-text"  style="padding-bottom:5px;"><b> EMAIL US :</b>
+            </div> <div class="white-text">support@sarang.com</div>
      
-       <span class="white-text" > © 2014 Copyright Text</span>
-        <a class="white-text right" href="#!">Contact Us</a>
+  
+       </div>
+ </div>
+ 
+
+  <div  style="padding:2%;background-color: #464546  ;position: relative;text-align: center;">
+     
+       <span class="white-text center" > © 2014 Copyright Text</span>       
  
       </div>
-    </footer>-->
+  
 <style>
+
+
     .sub-menulink{
         text-align: center;
         color: white;
         font-weight: 300;
-        width: 100%;
-        
+        width: 100%;        
         font-size: 1.0em;
+        background-color: #645F62  ;
     }
     .sub-menulink a{
         color: whitesmoke;
+    }
+    .sub-menulink::after{
+        content: "";
+    width: 100%;
+    height: 1px;
+    left: 0;
+    right: 0;
+    background-color: #8D898C    ;
+    display: block;
+    position: relative;
+    margin: auto;
+    bottom: 0px;
     }
     .sa-navlink{
         line-height: 3;
@@ -119,7 +163,7 @@ line-height: 100px;
     .sub-menu::before{
         content: "";
         border-color: transparent;
-        border-bottom-color:#FC5A5A;
+        border-bottom-color:#645F62  ; 
         border-style: dashed dashed solid;
         border-width: 0 10px 10px;
         position: absolute;
@@ -177,6 +221,16 @@ nav ul li a{
     color: darkslategrey;
     font-weight: 400;
     font-size: 1.2em;
+}
+nav ul li a:hover{
+   background-color: white;
+}
+nav ul li ul li a{
+    color:white;width:100%;text-align: center;font-size:1em;font-weight:400;    
+}
+nav ul li ul li a:hover{
+    color: #FC5A5A;
+    background-color: #645F62  ; 
 }
 #sa-submenu{
     float: right;
