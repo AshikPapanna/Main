@@ -13,6 +13,26 @@
     filter:blur(50);
     margin-bottom: 0px;
 }
+.sa-background-img{ 
+    padding: 22%;
+    padding-bottom: 0px;
+    width:100%;
+  
+}
+.sa-imgcir-container{
+    border-radius:50%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+     margin: 0px;
+}
+.sa-imgcir-container-act{
+    border: 2px solid black;
+}
+.sa-step-link{
+    color: white;
+}
+
 
 .vb-qoute{
         color: white;

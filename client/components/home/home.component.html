@@ -173,19 +173,51 @@ all done at the comfort of your home
 
 
 
-<!--<div class="container">
-<div class="row vb-mission" >  
-    <div class="col s12 center-align">
-  <h1 class="   red-text text-darken-1" style="margin-top:3%;font-weight:180%;" >About</h1>
- <p class="grey-text text-darken-3" style="margin-top:3%;margin-bottom:27%;font-weight:400;font-size:1.5em;">“We are music enthusiastic, providing online course that is one of its kinds, in diverse areas of music such as
-Hindustani Classical, Carnatic, Guzal and so on. Our most acclaimed staff is dedicated to empower the
-students with the knowledge that is best tailored to their needs”
-   </p>
-  
-  
+<div class="container">
+<div class="row center-align" style="padding:5%;margin-bottom: 0px;padding-bottom: 0px;">  
+  <div class="col s2">
+    </div>
+  <div class="col s8">
+    <h3 class=" red-text text-darken-1 sa-homesubheader-text"  >How S&#x0101;rang Works?</h3>
+  <ul style="display:inline-flex;width:100%">
+    <li id="Register" class="col s2 sa-imgcir-container sa-imgcir-container-act" (click)="changestep($event)">  
+      <img id="Register" class="responsive-img sa-background-img "  src="../../../public/images/Register.svg">
+     <a id="Register"><b  id="Register"> STEP 1</b></a>
+    </li>
+     <li id="SelectCourse" class="col s2 sa-imgcir-container" (click)="changestep($event)" >
+   
+      <img id="SelectCourse" class="responsive-img sa-background-img"  src="../../../public/images/SelectCourse.svg" >
+     <a id="SelectCourse" ><b  id="SelectCourse"> STEP 2</b></a>
+    </li>
+     <li id="Proficiency" class="col s2 sa-imgcir-container" (click)="changestep($event)" >
+      <img id="Proficiency" class="responsive-img sa-background-img"  src="../../../public/images/Proficiency.svg">
+        <a id="Proficiency" ><b  id="Proficiency"> STEP 3</b></a>
+        </li>
+     <li id="StartLearn" class="col s2 sa-imgcir-container" (click)="changestep($event)">
+      <img id="StartLearn"  class="responsive-img sa-background-img"  src="../../../public/images/startlearn.svg">
+        <a id="StartLearn"  ><b  id="StartLearn"> STEP 4</b></a>
+     </li>
+       
+    
+    </ul>
+    </div>
+    <div class="col s2">
     </div>
   </div>
-  </div>-->
+</div>
+<div class="container">
+<div class="row">
+  <div class="col s12" style="text-align: center;margin-top: 0px;">
+    <h5 style="font-weight: 400" >{{stepheading}}</h5>
+    <p style="font-size: 1.2em">{{stepdesc}}</p>
+    <button class="btn waves-effect waves-light red" type="submit" name="action" style="line-height: 1">Getting Started
+    <i class="material-icons right">send</i>
+  </button>
+  </div>
+</div>
+ 
+  </div>
+
   <!-- <div id="faqs" class="container">
   <div class="row vb-mission" style="background-color:rgb(254, 237, 253);" >    
 //<my-profile [isfromhomeview]="true" ></my-profile>// 
