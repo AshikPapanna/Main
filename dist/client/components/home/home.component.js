@@ -45,19 +45,19 @@ let HomeComponent = class HomeComponent {
             "sarangworksteps": [
                 {
                     "heading": "Register",
-                    "desc": "one can create one’s own perfect room to learn."
+                    "desc": "Fill out your basic information and sign up!"
                 },
                 {
-                    "heading": "Select Course",
-                    "desc": "unlike in universities it is not necessary that one has to personally and formally communicate with their tutors... communicate."
+                    "heading": "Select a course",
+                    "desc": "Choose a course from our repository that you are interested in learning."
                 },
                 {
-                    "heading": "Proficiency",
-                    "desc": "one can create one’s own perfect room to learn. Proficiency"
+                    "heading": "Select your proficiency",
+                    "desc": "There are two levels - Basic and Skilled - which are available for all the courses. Select the one that best suits your requirements."
                 },
                 {
-                    "heading": "Start Learn",
-                    "desc": "one can create one’s own perfect room to learn. startlearn"
+                    "heading": "Start learning",
+                    "desc": "Learn anytime and anywhere - it's that's simple. "
                 }
             ]
         };

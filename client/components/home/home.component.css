@@ -19,6 +19,15 @@
     width:100%;
   
 }
+fieldset{
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    margin: 10%;
+    border-color: #757074;
+    border-radius: 5%;
+}
 .sa-imgcir-container{
     border-radius:50%;
     padding-top: 1%;
@@ -87,7 +96,7 @@ font-family: hpsimplifiedlight;
     transform: scale3d(1.4, 1.4, 1.4);
 }
 .sa-desc-text{
-    margin-top:3%;margin-bottom:3%;font-weight:400;font-size:1em;font-family:OpenSansLight;
+    margin-top:3%;margin-bottom:3%;font-size:1.1em;font-family:OpenSansLight;
 }
 
 
