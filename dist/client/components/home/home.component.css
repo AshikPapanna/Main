@@ -26,7 +26,17 @@ fieldset{
     border-right-width: 3px;
     margin: 10%;
     border-color: #757074;
-    border-radius: 5%;
+  
+}
+.sa-user-text{
+ 
+    font-weight: 400;
+    font-size: 1.3em;
+}
+.sa-cmt-text{
+    text-align: center;
+    font-weight: 400;
+
 }
 .sa-imgcir-container{
     border-radius:50%;
@@ -66,9 +76,27 @@ font-family: hpsimplifiedlight;
         font-weight:400
     }
 .sa-homesubheader-text{
-    margin-top:5%;   
+    margin-top:2%;   
     font-family:OpenSansLight;
 }
+.sa-homesubheader-text-white{
+     margin-top:2%;   
+    font-family:OpenSansLight;
+}
+.sa-homesubheader-text-white::after{
+     content: "";
+    width: 50px;
+    height: 2px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    display: block;
+    position: relative;
+    margin: auto;
+    bottom: -10px;
+
+}
+
 .sa-homesubheader-text::after{
     content: "";
     width: 50px;
