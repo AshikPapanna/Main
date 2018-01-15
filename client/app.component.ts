@@ -2,15 +2,46 @@ import{Component,OnInit} from '@angular/core'
 import {Profile} from './../models/profile'
 import {routerTransition} from './app.routeanimation'
 import{LoginService} from './components/login/login.service'
+import {trigger, stagger,state
+  , animate, style, group
+  , query as q, transition
+  , keyframes} from '@angular/animations';
 import {Location} from '@angular/common'
+const query = (s,a,o={optional:true})=>q(s,a,o);
+
+export const homeTransition = trigger('footerTransition', [
+
+  transition(':enter', [
+    //padding:2%;background-color: #464546  ;position: relative;
+   query('.sa-footer-con', style({opacity: 0 } )),
+   query('.sa-sitmap-tab', style({opacity: 0 } )),
+   query('.sa-footer-con', stagger(400, [
+      style({ transform: 'translateY(100px)' }),
+      animate('3s cubic-bezier(.75,-0.48,.26,1.52)', style({transform: 'translateY(0px)', opacity: 1})),
+    ])),
+   query('.sa-sitmap-tab', stagger(400, [
+      style({ transform: 'translateY(100px)' }),
+      animate('3s cubic-bezier(.75,-0.48,.26,1.52)', style({transform: 'translateY(0px)', opacity: 1})),
+    ])),
+  ]),
+  transition(':leave', [
+    query('.sa-footer-con', stagger(300, [
+      style({ transform: 'translateY(0px)', opacity: 1 }),
+      animate('1s cubic-bezier(.75,-0.48,.26,1.52)', style({transform: 'translateY(100px)', opacity: 0})),
+    ])),        
+  ])
+]);
 
 @Component({
   moduleId:module.id,
 selector:'my-app',
 templateUrl:'./app.component.html',
 styleUrls:['./app.component.css'],
-animations:[routerTransition],
-providers:[LoginService]
+animations:[routerTransition,homeTransition],
+providers:[LoginService],
+host:{
+  "[@footerTransition]":''
+}
 })
 export class AppComponent{
 

@@ -1,5 +1,9 @@
-
-
+.sa-footer-con{
+    padding:2%;background-color: #464546  ;position: relative;
+}
+.sa-sitmap-tab{
+    background-color: #757074;margin-bottom: 0px;padding-top:2%;padding-bottom: 2%;  
+}
 .sub-menu { 
   visibility: hidden; /* hides sub-menu */
   opacity: 0;
