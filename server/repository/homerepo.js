@@ -1,10 +1,8 @@
 
 
-exports.gethome=function(req,res){  
-   res.set({'Content-Type': 'text/plain',
-   'Content-Length': '123'});
-    res.sendFile(__base+'index.html');
-  
+exports.gethome=function(req,res,next){  
+    console.log('home route');
+   return    res.sendFile(__base+'index.html'); 
 }
 
    

@@ -13,11 +13,11 @@ const approutes = [
         component: home_component_1.HomeComponent,
         data: { state: 'home' }
     },
-    {
-        path: 'home/:name/:ifr',
-        component: home_component_1.HomeComponent,
-        data: { state: 'home' }
-    },
+    /* {
+      path:'home/:name/:ifr',
+      component:HomeComponent,
+      data:{state:'home'}
+     },  */
     {
         path: 'login',
         component: login_component_1.LoginComponent,
@@ -51,6 +51,11 @@ const approutes = [
     },
     {
         path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
+    },
+    {
+        path: '*',
         redirectTo: '/home',
         pathMatch: 'full'
     }

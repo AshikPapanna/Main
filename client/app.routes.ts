@@ -19,11 +19,11 @@ const approutes:Routes=[
      component:HomeComponent,
      data:{state:'home'}
     },
-    {
+   /* {
      path:'home/:name/:ifr',
      component:HomeComponent,
      data:{state:'home'}
-    },   
+    },  */ 
     {
         path:'login',
         component:LoginComponent,
@@ -55,10 +55,16 @@ component:ProfileComponent
     {
         path:'profiles/:tokenId',
         component:ProfileComponent
-            },
+            }
+           ,
       
     {
         path:'',
+        redirectTo:'/home',
+        pathMatch:'full'
+    },
+    {
+        path:'*',
         redirectTo:'/home',
         pathMatch:'full'
     }
