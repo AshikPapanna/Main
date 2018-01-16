@@ -1,6 +1,7 @@
 import{Component,OnInit} from '@angular/core'
 import {Profile} from './../models/profile'
 import {routerTransition} from './app.routeanimation'
+
 import{LoginService} from './components/login/login.service'
 import {trigger, stagger,state
   , animate, style, group
@@ -9,9 +10,9 @@ import {trigger, stagger,state
 import {Location} from '@angular/common'
 const query = (s,a,o={optional:true})=>q(s,a,o);
 
-export const homeTransition = trigger('footerTransition', [
+/*export const homeTransition = trigger('footerTransition', [
 
-  transition(':enter', [
+  transition('*<=>*', [
     //padding:2%;background-color: #464546  ;position: relative;
    query('.sa-footer-con', style({opacity: 0 } )),
    query('.sa-sitmap-tab', style({opacity: 0 } )),
@@ -30,18 +31,18 @@ export const homeTransition = trigger('footerTransition', [
       animate('1s cubic-bezier(.75,-0.48,.26,1.52)', style({transform: 'translateY(100px)', opacity: 0})),
     ])),        
   ])
-]);
+]);*/
 
 @Component({
   moduleId:module.id,
 selector:'my-app',
 templateUrl:'./app.component.html',
 styleUrls:['./app.component.css'],
-animations:[routerTransition,homeTransition],
-providers:[LoginService],
-host:{
+animations:[routerTransition],
+providers:[LoginService]
+/*host:{
   "[@footerTransition]":''
-}
+}*/
 })
 export class AppComponent{
 
@@ -51,7 +52,8 @@ export class AppComponent{
     username:string;
     
     isFromRegister:boolean;
-    getState(outlet) {
+    getState(outlet,v) {
+      console.log(outlet.activatedRouteData.state);
     return outlet.activatedRouteData.state;
   }
 

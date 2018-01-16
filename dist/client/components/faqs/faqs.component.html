@@ -1,14 +1,29 @@
+
+<div  class="row parallax" style="padding-top:5%;">
+    <div class="col s4 ">
+      <p class="vb-qoute" >“The only thing to do with good advice is to pass it on. It is never of any use to oneself”
+       <br>
+      </p>
+     <p class="sa-author">
+        -Oscar Wilde </p>
+    </div>   
+ </div>
+
+
+
 <div class="col s12 center-align">
   <h4 class="   red-text text-darken-1" style="margin-top:3%;font-weight:180%" >FAQs</h4>
-  
- <div class="row" *ngFor="let faq of faqs">
+  <div class="container">
+ <div class="row" style="margin: 0px;" *ngFor="let faq of faqs">
     <div class="col s12">   
       <vb-faqschild [faqs]="faq"></vb-faqschild>
     </div>
 </div>
 </div>
+</div>
 
 
+<sa-footer></sa-footer>
  
     <style>
       .row{

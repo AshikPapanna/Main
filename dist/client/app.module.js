@@ -21,6 +21,7 @@ const home_component_1 = require("./components/home/home.component");
 const forgotpassword_component_1 = require("./components/forgotpassword/forgotpassword.component");
 const faqs_component_1 = require("./components/faqs/faqs.component");
 const faqschild_component_1 = require("./components/faqs/child/faqschild.component");
+const footer_component_1 = require("./components/footer/footer.component");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -36,7 +37,7 @@ AppModule = __decorate([
             home_component_1.HomeComponent,
             minlength_directive_1.Minlength,
             faqschild_component_1.FaqsChildComponent,
-            faqs_component_1.FaqsComponent],
+            faqs_component_1.FaqsComponent, footer_component_1.FooterComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

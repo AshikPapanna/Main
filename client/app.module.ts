@@ -23,6 +23,7 @@ import{HomeComponent} from './components/home/home.component';
 import {ForgotpasswordComponent} from './components/forgotpassword/forgotpassword.component';
 import {FaqsComponent} from './components/faqs/faqs.component';
 import{FaqsChildComponent} from './components/faqs/child/faqschild.component'
+import {FooterComponent} from './components/footer/footer.component'
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import{FaqsChildComponent} from './components/faqs/child/faqschild.component'
         ,HomeComponent
         ,Minlength
         ,FaqsChildComponent
-    ,FaqsComponent],
+    ,FaqsComponent,FooterComponent],
     
 
      bootstrap:[AppComponent]

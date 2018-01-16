@@ -2,7 +2,15 @@
         <li>
           <div class="collapsible-header" ><i class="material-icons" (click)="toggalanswer()">filter_drama</i>{{faqs.question}}</div>
           <div class="collapsiblebody" *ngIf="showanswer"
-          style="background-color:white;padding:5%" ><span>{{faqs.answer}}</span></div>         
+          style="background-color:white;text-align: left;font-family: 'Open Sans',Arial,serif" ><span>{{faqs.answer}}</span></div>         
        </li>
 </ul>
       
+<style>
+  .collapsiblebody{
+padding: 0px;
+  }
+  .collapsible{
+    margin: 0px;
+  }
+  </style>

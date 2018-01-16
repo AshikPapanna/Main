@@ -1,0 +1,15 @@
+.parallax{
+    background-image: url("/public/images/faqbanner.jpg");
+    top:40%;
+
+    /* Full height */
+    height: 60%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter:blur(50);
+    margin-bottom: 0px; 
+}

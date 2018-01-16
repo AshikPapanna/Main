@@ -12,8 +12,9 @@ module.exports=function(app){
     router.post('/forgotpassword',userHandler.forgotpassword);
     router.post('/register',userHandler.register);
     router.post('/login',userHandler.signin);
-    router.get('/faqs',faqshandler.getfaqs);
-    router.get('/home',homehandler.gethome);
+  //  router.get('/faqs',faqshandler.getfaqs);
+    router.get('/faqslist',faqshandler.getfaqs);
+    //router.get('/home',homehandler.gethome);
     router.post('/auth/users',userHandler.userslist);
     router.get('/',function(req,res){  
         console.log('base');      

@@ -15,33 +15,35 @@ const login_service_1 = require("./components/login/login.service");
 const animations_1 = require("@angular/animations");
 const common_1 = require("@angular/common");
 const query = (s, a, o = { optional: true }) => animations_1.query(s, a, o);
-exports.homeTransition = animations_1.trigger('footerTransition', [
-    animations_1.transition(':enter', [
-        //padding:2%;background-color: #464546  ;position: relative;
-        query('.sa-footer-con', animations_1.style({ opacity: 0 })),
-        query('.sa-sitmap-tab', animations_1.style({ opacity: 0 })),
-        query('.sa-footer-con', animations_1.stagger(400, [
-            animations_1.style({ transform: 'translateY(100px)' }),
-            animations_1.animate('3s cubic-bezier(.75,-0.48,.26,1.52)', animations_1.style({ transform: 'translateY(0px)', opacity: 1 })),
-        ])),
-        query('.sa-sitmap-tab', animations_1.stagger(400, [
-            animations_1.style({ transform: 'translateY(100px)' }),
-            animations_1.animate('3s cubic-bezier(.75,-0.48,.26,1.52)', animations_1.style({ transform: 'translateY(0px)', opacity: 1 })),
-        ])),
-    ]),
-    animations_1.transition(':leave', [
-        query('.sa-footer-con', animations_1.stagger(300, [
-            animations_1.style({ transform: 'translateY(0px)', opacity: 1 }),
-            animations_1.animate('1s cubic-bezier(.75,-0.48,.26,1.52)', animations_1.style({ transform: 'translateY(100px)', opacity: 0 })),
-        ])),
-    ])
-]);
+/*export const homeTransition = trigger('footerTransition', [
+
+  transition('*<=>*', [
+    //padding:2%;background-color: #464546  ;position: relative;
+   query('.sa-footer-con', style({opacity: 0 } )),
+   query('.sa-sitmap-tab', style({opacity: 0 } )),
+   query('.sa-footer-con', stagger(400, [
+      style({ transform: 'translateY(100px)' }),
+      animate('3s cubic-bezier(.75,-0.48,.26,1.52)', style({transform: 'translateY(0px)', opacity: 1})),
+    ])),
+   query('.sa-sitmap-tab', stagger(400, [
+      style({ transform: 'translateY(100px)' }),
+      animate('3s cubic-bezier(.75,-0.48,.26,1.52)', style({transform: 'translateY(0px)', opacity: 1})),
+    ])),
+  ]),
+  transition(':leave', [
+    query('.sa-footer-con', stagger(300, [
+      style({ transform: 'translateY(0px)', opacity: 1 }),
+      animate('1s cubic-bezier(.75,-0.48,.26,1.52)', style({transform: 'translateY(100px)', opacity: 0})),
+    ])),
+  ])
+]);*/
 let AppComponent = class AppComponent {
     constructor(loginService, location) {
         this.loginService = loginService;
         this.location = location;
     }
-    getState(outlet) {
+    getState(outlet, v) {
+        console.log(outlet.activatedRouteData.state);
         return outlet.activatedRouteData.state;
     }
     ngOnInit() {
@@ -66,11 +68,11 @@ AppComponent = __decorate([
         selector: 'my-app',
         templateUrl: './app.component.html',
         styleUrls: ['./app.component.css'],
-        animations: [app_routeanimation_1.routerTransition, exports.homeTransition],
-        providers: [login_service_1.LoginService],
-        host: {
-            "[@footerTransition]": ''
-        }
+        animations: [app_routeanimation_1.routerTransition],
+        providers: [login_service_1.LoginService]
+        /*host:{
+          "[@footerTransition]":''
+        }*/
     }),
     __metadata("design:paramtypes", [login_service_1.LoginService, common_1.Location])
 ], AppComponent);

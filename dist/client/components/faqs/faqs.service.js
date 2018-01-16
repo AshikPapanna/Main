@@ -25,7 +25,7 @@ let FaqsService = class FaqsService {
     ;
     getfaqs() {
         //return  [{'question':'hi','answer':'sdsds'}]; 
-        return this.http.get(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/faqs')
+        return this.http.get(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/faqslist')
             .map((res) => res.json())
             .catch((err) => Rx_1.Observable.throw(err));
     }

@@ -8,6 +8,7 @@ import {FaqsService} from './faqs.service';
     moduleId:module.id,
     selector:'vb-faqs',
     templateUrl:'./faqs.component.html',
+    styleUrls:['./faqs.component.css'],
     providers:[FaqsService]
     
 })

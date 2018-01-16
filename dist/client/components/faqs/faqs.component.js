@@ -28,6 +28,7 @@ FaqsComponent = __decorate([
         moduleId: module.id,
         selector: 'vb-faqs',
         templateUrl: './faqs.component.html',
+        styleUrls: ['./faqs.component.css'],
         providers: [faqs_service_1.FaqsService]
     }),
     __metadata("design:paramtypes", [faqs_service_1.FaqsService])
