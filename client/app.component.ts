@@ -52,8 +52,7 @@ export class AppComponent{
     username:string;
     
     isFromRegister:boolean;
-    getState(outlet,v) {
-      console.log(outlet.activatedRouteData.state);
+    getState(outlet) { 
     return outlet.activatedRouteData.state;
   }
 
