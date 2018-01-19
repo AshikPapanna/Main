@@ -7,7 +7,6 @@ const register_component_1 = require("./components/register/register.component")
 const home_component_1 = require("./components/home/home.component");
 const forgotpassword_component_1 = require("./components/forgotpassword/forgotpassword.component");
 const faqs_component_1 = require("./components/faqs/faqs.component");
-const instructor_component_1 = require("./components/instructors/instructor.component");
 const approutes = [
     {
         path: 'home',
@@ -46,10 +45,10 @@ const approutes = [
         path: 'profiles',
         component: profile_component_1.ProfileComponent
     },
-    {
-        path: 'instructors',
-        component: instructor_component_1.InstructorComponent
-    },
+    // {
+    //   path:'instructors',
+    //  component:InstructorComponent
+    //   },
     {
         path: 'profiles/:tokenId',
         component: profile_component_1.ProfileComponent

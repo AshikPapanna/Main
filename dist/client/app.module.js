@@ -22,7 +22,7 @@ const forgotpassword_component_1 = require("./components/forgotpassword/forgotpa
 const faqs_component_1 = require("./components/faqs/faqs.component");
 const faqschild_component_1 = require("./components/faqs/child/faqschild.component");
 const footer_component_1 = require("./components/footer/footer.component");
-const instructor_component_1 = require("./components/instructors/instructor.component");
+//import{InstructorComponent} from './components/instructors/instructor.component'
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -38,7 +38,9 @@ AppModule = __decorate([
             home_component_1.HomeComponent,
             minlength_directive_1.Minlength,
             faqschild_component_1.FaqsChildComponent,
-            faqs_component_1.FaqsComponent, footer_component_1.FooterComponent, instructor_component_1.InstructorComponent],
+            faqs_component_1.FaqsComponent, footer_component_1.FooterComponent
+            //,InstructorComponent
+        ],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
