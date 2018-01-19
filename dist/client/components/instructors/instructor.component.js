@@ -10,11 +10,11 @@ const core_1 = require("@angular/core");
 let InstructorComponent = class InstructorComponent {
     ngAfterViewInit() {
         jQuery(document).ready(function () {
-            // $('.modal').modal();
+            $('.modal').modal();
         });
     }
     closemodal() {
-        // ('#modal1').modal('close');
+        ('#modal1').modal('close');
     }
 };
 InstructorComponent = __decorate([
