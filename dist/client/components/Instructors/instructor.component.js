@@ -19,9 +19,9 @@ let InstructorComponent = class InstructorComponent {
 };
 InstructorComponent = __decorate([
     core_1.Component({
+        moduleId: module.id,
         templateUrl: './instructor.component.html',
-        styleUrls: ['./instructor.component.css'],
-        moduleId: module.id
+        styleUrls: ['./instructor.component.css']
     })
 ], InstructorComponent);
 exports.InstructorComponent = InstructorComponent;

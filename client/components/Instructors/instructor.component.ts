@@ -1,9 +1,10 @@
-import {Component,AfterViewInit,EventEmitter} from '@angular/core'
+import {Component,AfterViewInit} from '@angular/core'
 
 @Component({
-    templateUrl:'./instructor.component.html'
-    ,styleUrls:['./instructor.component.css'],
-    moduleId:module.id
+    moduleId:module.id,
+    templateUrl:'./instructor.component.html',
+    styleUrls:['./instructor.component.css']
+  
 })
 
 export class InstructorComponent implements AfterViewInit{
