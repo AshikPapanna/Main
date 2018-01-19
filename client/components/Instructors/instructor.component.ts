@@ -10,12 +10,12 @@ export class InstructorComponent implements AfterViewInit{
  
     ngAfterViewInit(): void {
        jQuery(document).ready(function(){
-        $('.modal').modal();
+       // $('.modal').modal();
        })
     }
     closemodal(){
        
-      ('#modal1').modal('close');
+     // ('#modal1').modal('close');
     }
 
 }
