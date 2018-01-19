@@ -3,7 +3,7 @@ import {Component,AfterViewInit} from '@angular/core'
 @Component({
     moduleId:module.id,
     templateUrl:'./instructor.component.html',
-    styleUrls:['./instructor.component.css']
+    styleUrls:['./instructor.component.css'] 
   
 })
 
