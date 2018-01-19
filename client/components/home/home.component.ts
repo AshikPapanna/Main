@@ -1,4 +1,4 @@
-import {Component,OnInit} from '@angular/core'
+import {Component,OnInit,AfterViewInit} from '@angular/core'
 
 import{ActivatedRoute,Params,ParamMap} from '@angular/router'
 
@@ -20,11 +20,19 @@ stepdesc:string;
 Registerimgsrc:string;
 selectcourseimgsrc:string;
 sarangworksteps:any;
-clearimagesrc(){
-    this.Registerimgsrc="../../../public/images/Register.svg";
-    this.selectcourseimgsrc="../../../public/images/SelectCourse.svg";
-}
-;
+
+private fragment: string;
+
+  ngAfterViewInit(): void {
+    try {
+        console.log(this.fragment+'we');
+        window.location.hash = this.fragment;
+     if(this.fragment) document.querySelector('#' + this.fragment).scrollIntoView();
+    } catch (e) {
+        console.log(e);
+     }
+  }
+
 changestep(event:any){
   var target = event.target || event.srcElement || event.currentTarget;
     var idAttr = target.attributes.id;
@@ -51,6 +59,8 @@ jQuery("#"+value).addClass('sa-imgcir-container-act');
 
 }
 ngOnInit(){
+    this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
+    console.log(this.fragment+'ds');
     this.sarangworksteps={
     "sarangworksteps":[
         {

@@ -6,6 +6,7 @@ import{HomeComponent} from './components/home/home.component';
 import {ForgotpasswordComponent} from './components/forgotpassword/forgotpassword.component';
 import {FaqsComponent} from './components/faqs/faqs.component';
 import{FaqsChildComponent} from './components/faqs/child/faqschild.component'
+import{InstructorComponent} from './components/instructors/instructor.component'
 import{AppComponent} from './app.component'
 
 
@@ -52,6 +53,10 @@ const approutes:Routes=[
 path:'profiles',
 component:ProfileComponent
     },
+    {
+        path:'instructors',
+        component:InstructorComponent
+            },
     {
         path:'profiles/:tokenId',
         component:ProfileComponent

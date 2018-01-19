@@ -42,8 +42,7 @@ let AppComponent = class AppComponent {
         this.loginService = loginService;
         this.location = location;
     }
-    getState(outlet, v) {
-        console.log(outlet.activatedRouteData.state);
+    getState(outlet) {
         return outlet.activatedRouteData.state;
     }
     ngOnInit() {

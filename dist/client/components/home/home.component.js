@@ -15,11 +15,17 @@ let HomeComponent = class HomeComponent {
     constructor(route) {
         this.route = route;
     }
-    clearimagesrc() {
-        this.Registerimgsrc = "../../../public/images/Register.svg";
-        this.selectcourseimgsrc = "../../../public/images/SelectCourse.svg";
+    ngAfterViewInit() {
+        try {
+            console.log(this.fragment + 'we');
+            window.location.hash = this.fragment;
+            if (this.fragment)
+                document.querySelector('#' + this.fragment).scrollIntoView();
+        }
+        catch (e) {
+            console.log(e);
+        }
     }
-    ;
     changestep(event) {
         var target = event.target || event.srcElement || event.currentTarget;
         var idAttr = target.attributes.id;
@@ -41,6 +47,8 @@ let HomeComponent = class HomeComponent {
         this.stepdesc = this.sarangworksteps.sarangworksteps[index].desc;
     }
     ngOnInit() {
+        this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
+        console.log(this.fragment + 'ds');
         this.sarangworksteps = {
             "sarangworksteps": [
                 {

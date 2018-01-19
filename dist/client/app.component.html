@@ -22,10 +22,10 @@
                 </ul>           
                   </li>
                  
-                <li class="sa-navlink"><a href="">Instructors</a></li>
+                <li class="sa-navlink"><a routerLink="/instructors">Instructors</a></li>
                 <li class="sa-navlink"><a href="">Company</a>
                  <ul class="sub-menu" style="width: 150%;left:-20%;">
-<li class="sub-menulink"><a   href="">About Us</a></li>
+<li class="sub-menulink"><a  [routerLink]="['home']" fragment="Selectyourproficiency">About Us</a></li>
 <li class="sub-menulink"><a    href="">Mission </a></li>
 <li class="sub-menulink"><a     href="">Our Team</a></li>
                 </ul>           </li>
@@ -45,7 +45,7 @@
 </div>
 
 
-<div  [@routerTransition]="getState(o,'he')" > 
+<div  [@routerTransition]="getState(o)" > 
     <ul *ngIf="isloggedin()"class="vb-accountsetmenu" >
               <li class="vb-accountsetlist">Account Setting</li>
               <li  class="vb-accountsetlist"><button class="waves-effect waves-light btn green" (click)="logout()" >Logout</button></li>         </ul>
