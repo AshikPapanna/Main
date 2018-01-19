@@ -24,7 +24,7 @@ import {ForgotpasswordComponent} from './components/forgotpassword/forgotpasswor
 import {FaqsComponent} from './components/faqs/faqs.component';
 import{FaqsChildComponent} from './components/faqs/child/faqschild.component'
 import {FooterComponent} from './components/footer/footer.component'
-//import{InstructorComponent} from './components/instructors/instructor.component'
+import{InstructorComponent} from './components/instructors/instructor.component'
 
 
 @NgModule({
@@ -41,7 +41,7 @@ import {FooterComponent} from './components/footer/footer.component'
         ,Minlength
         ,FaqsChildComponent
     ,FaqsComponent,FooterComponent
-    //,InstructorComponent
+    ,InstructorComponent
 ],
     
 
