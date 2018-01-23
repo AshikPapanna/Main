@@ -14,6 +14,7 @@ import{AppComponent} from './app.component'
 
 
 
+
 const approutes:Routes=[
     {
      path:'home',

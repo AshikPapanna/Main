@@ -6,12 +6,15 @@ module.exports=function(app){
     var profileHandler=require('../repository/profilerepo');
      var faqshandler=require('../repository/faqsrepo');
      var homehandler=require('../repository/homerepo.js');
+     var instructorhandler=require('../repository/instructorrepo')
 
     router.get('/profiles', profileHandler.getprofiles ); 
     router.get('/profilesforhome',profileHandler.getprofilesforhome);
     router.post('/forgotpassword',userHandler.forgotpassword);
     router.post('/register',userHandler.register);
     router.post('/login',userHandler.signin);
+    router.get('/instructors/getinstructors',instructorhandler.getallinstructors);
+    router.post('/instructors/getinstructordetails',instructorhandler.getinstructordetailsbyidorspecialization)
   //  router.get('/faqs',faqshandler.getfaqs);
     router.get('/faqslist',faqshandler.getfaqs);
     //router.get('/home',homehandler.gethome);

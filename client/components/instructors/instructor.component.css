@@ -15,7 +15,7 @@
     margin-bottom: 0px; 
 }
 .circle{
-    transition: transform 0.6s;
+    transition: transform 0.3s;
     transition-timing-function: ease-out;
 }
 .circle:hover{
@@ -38,5 +38,31 @@
 }*/
 .sa-imag-wrapper{
     margin: 25%;
-    padding-bottom: 0%;
+    margin-bottom: 10%;
+
+}
+.sa-instructor-con{
+    text-align: center;
+    
+}
+.sa-instructor-text{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+.sa-homesubheader-text{
+    margin-top:4%;   
+    font-family:OpenSansLight;
+}
+
+.sa-homesubheader-text::after{
+    content: "";
+    width: 50px;
+    height: 2px;
+    left: 0;
+    right: 0;
+    background-color: #FC5A5A;
+    display: block;
+    position: relative;
+    margin: auto;
+    bottom: -10px;
 }
