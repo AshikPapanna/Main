@@ -45,7 +45,7 @@
 </div>
 
 
-<div  [@routerTransition]="getState(o,'he')" > 
+<div  [@routerTransition]="getState(o)" > 
     <ul *ngIf="isloggedin()"class="vb-accountsetmenu" >
               <li class="vb-accountsetlist">Account Setting</li>
               <li  class="vb-accountsetlist"><button class="waves-effect waves-light btn green" (click)="logout()" >Logout</button></li>         </ul>
