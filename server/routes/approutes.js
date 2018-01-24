@@ -14,7 +14,7 @@ module.exports=function(app){
     router.post('/register',userHandler.register);
     router.post('/login',userHandler.signin);
     router.get('/instructors/getinstructors',instructorhandler.getallinstructors);
-    router.post('/instructors/getinstructordetails',instructorhandler.getinstructordetailsbyidorspecialization)
+    router.get('/instructors/getinstructordetails',instructorhandler.getinstructordetailsbyidorspecialization)
   //  router.get('/faqs',faqshandler.getfaqs);
     router.get('/faqslist',faqshandler.getfaqs);
     //router.get('/home',homehandler.gethome);

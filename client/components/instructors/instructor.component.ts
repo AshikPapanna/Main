@@ -44,5 +44,18 @@ export class InstructorComponent implements AfterViewInit,OnInit{
        
        $('#modal1').modal('close');
     }
+    getspecializtiondetails(specialization:String):Instructor[]{
+        console.log(specialization)
+       return this.instructors.filter(this.filterbasedonspcl,specialization);
+      // return this.distinctspecialization;
+    }
+    filterbasedonspcl(value:Instructor,index){
+     return value.specialized.find(function(ele){
+                return ele===this.toString();
+               },this);
+    }
+    getspecializationdetails(id:string){
+         console.log("done");
+    }
 
 }

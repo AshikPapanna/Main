@@ -36,6 +36,19 @@ let InstructorComponent = class InstructorComponent {
     closemodal() {
         $('#modal1').modal('close');
     }
+    getspecializtiondetails(specialization) {
+        console.log(specialization);
+        return this.instructors.filter(this.filterbasedonspcl, specialization);
+        // return this.distinctspecialization;
+    }
+    filterbasedonspcl(value, index) {
+        return value.specialized.find(function (ele) {
+            return ele === this.toString();
+        }, this);
+    }
+    getdata() {
+        console.log("done");
+    }
 };
 InstructorComponent = __decorate([
     core_1.Component({

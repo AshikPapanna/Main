@@ -10,13 +10,13 @@ exports.getallinstructors=function(req,res){
 }
 
 exports.getinstructordetailsbyidorspecialization=function(req,res){
-    console.log(req.body);
+    console.log(req.query.id);
    
     Instructors.find(
         { $or:
         [
-            {_id:req.body.id},
-            {specialized:req.body.specialized}
+            {_id:req.query.id},
+            {specialized:req.query.specialized}
         ]
         },function(err,instructordetails){
         if(err) return res.status(401).json({message:{'mongoerror':"Invalid Instructor Documents"}});

@@ -9,26 +9,27 @@
         </div>   
      </div>
      <div class="container">
-            <div class="row" *ngFor="let specialization of distinctspecialization">
+            <div class="row" *ngFor="let specialization of distinctspecialization;">
                <div class="col s12 center-align">
                    <h3 class=" red-text text-darken-1 sa-homesubheader-text"  >{{specialization}}</h3>
                </div> 
-               <div class="col s4 sa-instructor-con" *ngFor="let specialization of distinctspecialization" >
-                    <div class="sa-imag-wrapper">
-                       <a class="modal-trigger" href="#modal1">
-                           
-                    <img class="responsive-img circle" src="../../../public/images/UserPic.jpg"  >
-                       </a>
-                    </div>
-                    <a class="modal-trigger sa-instructor-text" href="#modal1">Sandesh</a>
-                   </div>   
+                <div class="col s4 sa-instructor-con" *ngFor="let specializationdetail of getspecializtiondetails(specialization)">
+             <div class="sa-imag-wrapper">
+                <a class="modal-trigger" href="#modal1">
+                    
+             <img class="responsive-img circle" src="{{specializationdetail.imageurl}}"  >
+                </a>
+             </div>
+             <a class="modal-trigger sa-instructor-text" href="#modal1" (click)="getspecializationdetails(specializationdetail._id)">{{specializationdetail.firstname+" "+specializationdetail.lastname}}</a>
+            </div>
+              
             </div>
             </div>
     
     <!-- <div class="col s12 center-align">
             <h4 class="   red-text text-darken-1" style="margin-top:3%;font-weight:180%" >FAQs</h4>
      </div>-->
-     <div class="container">
+<!-- <div class="container">
      <div class="row">
         <div class="col s12 center-align">
             <h3 class=" red-text text-darken-1 sa-homesubheader-text"  >Hindustani Classical Vocal</h3>
@@ -101,9 +102,15 @@
                        </div>
                        <a class="modal-trigger sa-instructor-text" href="#modal1">Sandesh</a>
                    </div>
+                    <div class="col s4 sa-instructor-con" >
+                    <div class="sa-imag-wrapper">
+                    <img class="responsive-img circle" src="../../../public/images/UserPic.jpg">
+                    </div>
+                    <a class="modal-trigger sa-instructor-text" href="#modal1">Sandesh</a>
+                   </div>
                        
             </div>
-            </div>
+            </div>-->
      
        <!-- Modal Structure -->
        <div id="modal1" class="modal" >
