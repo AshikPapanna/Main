@@ -1,10 +1,10 @@
 .parallax{
-    background-image: url("/public/images/faqbanner.jpg");
+    background-image: url("/public/images/faq3.jpg");
     top:40%;
 
     /* Full height */
     height: 60%; 
-
+   
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;

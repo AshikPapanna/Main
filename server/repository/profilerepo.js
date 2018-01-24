@@ -46,7 +46,7 @@ exports.getprofilesforhome=function(req,res){
     });
    
 }
-   
+
 
 
 
