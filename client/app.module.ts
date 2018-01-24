@@ -25,6 +25,7 @@ import {FaqsComponent} from './components/faqs/faqs.component';
 import{FaqsChildComponent} from './components/faqs/child/faqschild.component'
 import {FooterComponent} from './components/footer/footer.component'
 import{InstructorComponent} from './components/instructors/instructor.component'
+import {InstructordetailComponent} from  './components/instructors/instructordetail/instructordetail.component'
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import{InstructorComponent} from './components/instructors/instructor.component'
         ,FaqsChildComponent
     ,FaqsComponent,FooterComponent
     ,InstructorComponent
+    ,InstructordetailComponent
 ],
     
 

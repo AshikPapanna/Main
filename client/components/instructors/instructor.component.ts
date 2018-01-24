@@ -3,6 +3,8 @@ import {InstructorService} from './instructor.service'
 
 import {Instructor,InstructorDetails} from '../../../models/instructor'
 
+import {InstructordetailComponent} from './instructordetail/instructordetail.component'
+
 @Component({
     moduleId:module.id,
     templateUrl:'./instructor.component.html',
@@ -12,9 +14,12 @@ import {Instructor,InstructorDetails} from '../../../models/instructor'
 })
 
 export class InstructorComponent implements AfterViewInit,OnInit{
+  
     instructors:Instructor[];     
     distinctspecialization:string[]=[];
+    data:InstructorDetails;
     specialization:string[]=[];
+    showmodel:boolean=false;
     ngOnInit(): void {
        this.instructorService.getinstructors().subscribe(
          instructors=>{this.instructors=instructors ;          
@@ -26,7 +31,8 @@ export class InstructorComponent implements AfterViewInit,OnInit{
              this.distinctspecialization=  this.specialization.filter((v, i, a) => a.indexOf(v) === i);
             }  ,
           err=>{console.log(err);}      
-       )     
+       )
+       
      
 
     }
@@ -36,13 +42,14 @@ export class InstructorComponent implements AfterViewInit,OnInit{
     }
    
     ngAfterViewInit(): void {
-       jQuery(document).ready(function(){
+      /* jQuery(document).ready(function(){
        $('.modal').modal();
-       })
+       })*/
+    
     }
     closemodal(){
        
-       $('#modal1').modal('close');
+        this.showmodel=false;
     }
     getspecializtiondetails(specialization:String):Instructor[]{
         console.log(specialization)
@@ -55,7 +62,17 @@ export class InstructorComponent implements AfterViewInit,OnInit{
                },this);
     }
     getspecializationdetails(id:string){
-         console.log("done");
+       
+        this.showmodel=true;
+       
+        this.instructorService.getinstructordetails(id).subscribe(
+            details=>{
+                this.data=details;
+            },
+            err=>{
+                console.log(err);
+            }
+        )
     }
 
 }

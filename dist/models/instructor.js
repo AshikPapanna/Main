@@ -8,6 +8,7 @@ class Concerts {
 }
 class Instructor {
     constructor() {
+        this._id = "";
         this.specialized = [];
         this.firstname = "";
         this.lastname = "";

@@ -19,6 +19,8 @@ constructor(private http:Http,@Inject(DOCUMENT) document:any){};
      .catch((err:any)=>Observable.throw(err));
   }
     getinstructordetails(id:string):Observable<InstructorDetails>{
- return this.http.post(document.location.href+"/getinstructordetails",)
+ return this.http.get(document.location.href+"/getinstructordetails/"+id)
+ .map((res:Response)=>res.json())
+ .catch((err:any)=>Observable.throw(err));
     }
 }

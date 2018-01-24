@@ -8,7 +8,7 @@
             -Oscar Wilde </p>
         </div>   
      </div>
-     <div class="container">
+   <div class="container">
             <div class="row" *ngFor="let specialization of distinctspecialization;">
                <div class="col s12 center-align">
                    <h3 class=" red-text text-darken-1 sa-homesubheader-text"  >{{specialization}}</h3>
@@ -20,7 +20,7 @@
              <img class="responsive-img circle" src="{{specializationdetail.imageurl}}"  >
                 </a>
              </div>
-             <a class="modal-trigger sa-instructor-text" href="#modal1" (click)="getdata()">{{specializationdetail.firstname+" "+specializationdetail.lastname}}</a>
+             <a class=" sa-instructor-text"  (click)="getspecializationdetails(specializationdetail._id)">{{specializationdetail.firstname+" "+specializationdetail.lastname}}</a>
             </div>
               
             </div>
@@ -113,15 +113,7 @@
             </div>-->
      
        <!-- Modal Structure -->
-       <div id="modal1" class="modal" >
-         <div class="modal-content">
-           <h4>Modal Header</h4>
-           <p>A bunch of text</p>
-         </div>
-         <div class="modal-footer">
-           <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="closemodal()">Agree</a>
-         </div>
-       </div>
+      <sa-instructormodal *ngIf="showmodel" [data]="data"></sa-instructormodal>
     
     <sa-footer></sa-footer>
      

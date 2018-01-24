@@ -24,8 +24,12 @@ let InstructorService = class InstructorService {
     }
     ;
     getinstructors() {
-        console.log(document.location.href + "/getinstructors");
         return this.http.get(document.location.href + "/getinstructors")
+            .map((res) => res.json())
+            .catch((err) => Rx_1.Observable.throw(err));
+    }
+    getinstructordetails(id) {
+        return this.http.get(document.location.href + "/getinstructordetails/" + id)
             .map((res) => res.json())
             .catch((err) => Rx_1.Observable.throw(err));
     }

@@ -16,6 +16,7 @@ let InstructorComponent = class InstructorComponent {
         this.instructorService = instructorService;
         this.distinctspecialization = [];
         this.specialization = [];
+        this.showmodel = false;
     }
     ngOnInit() {
         this.instructorService.getinstructors().subscribe(instructors => {
@@ -29,12 +30,12 @@ let InstructorComponent = class InstructorComponent {
         }, err => { console.log(err); });
     }
     ngAfterViewInit() {
-        jQuery(document).ready(function () {
-            $('.modal').modal();
-        });
+        /* jQuery(document).ready(function(){
+         $('.modal').modal();
+         })*/
     }
     closemodal() {
-        $('#modal1').modal('close');
+        this.showmodel = false;
     }
     getspecializtiondetails(specialization) {
         console.log(specialization);
@@ -46,8 +47,13 @@ let InstructorComponent = class InstructorComponent {
             return ele === this.toString();
         }, this);
     }
-    getdata() {
-        console.log("done");
+    getspecializationdetails(id) {
+        this.showmodel = true;
+        this.instructorService.getinstructordetails(id).subscribe(details => {
+            this.data = details;
+        }, err => {
+            console.log(err);
+        });
     }
 };
 InstructorComponent = __decorate([

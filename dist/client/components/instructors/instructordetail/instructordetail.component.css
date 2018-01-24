@@ -1,0 +1,22 @@
+.sa-modal{
+    top:30%;
+    left: 0px;
+    right: 0px;
+    width: 55%;
+    margin: auto;
+    position: fixed;
+    transition: transform 0.3s;
+    transform: translateX(1);
+    z-index: 1003;
+    background-color: #fafafa;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(95, 95, 95, 0.12), 0 5px 5px -3px rgba(0,0,0,0.3);
+}
+.sa-modaloverlay{
+    height: 100%;
+    opacity: 0.5;
+    top:0%;
+    z-index:1002;
+    position: fixed;
+    background-color: black;
+    width:100%;
+}
