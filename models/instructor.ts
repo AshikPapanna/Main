@@ -8,7 +8,7 @@ class Concerts{
 export class Instructor
 {
     _id:string="";
-    specialized:Array<string>=[];
+    specialized:"";
     firstname:string="";
      lastname:string="";
      imageurl:string="";

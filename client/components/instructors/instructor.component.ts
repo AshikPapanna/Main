@@ -22,14 +22,13 @@ export class InstructorComponent implements AfterViewInit,OnInit{
     showmodel:boolean=false;
     ngOnInit(): void {
        this.instructorService.getinstructors().subscribe(
-         instructors=>{this.instructors=instructors ;          
-            this.instructors.forEach(element => {   
-            element.specialized.forEach(ele=>{
-                   this.specialization.push(ele);
+         instructors=>{
+           this.instructors=instructors ;          
+           this.instructors.forEach(element => {   
+                this.specialization.push(element.specialized);
                })
-            });
-             this.distinctspecialization=  this.specialization.filter((v, i, a) => a.indexOf(v) === i);
-            }  ,
+          this.distinctspecialization=  this.specialization.filter((v, i, a) => a.indexOf(v) === i);
+            } , 
           err=>{console.log(err);}      
        )
        
@@ -57,9 +56,9 @@ export class InstructorComponent implements AfterViewInit,OnInit{
       // return this.distinctspecialization;
     }
     filterbasedonspcl(value:Instructor,index){
-     return value.specialized.find(function(ele){
+     /*return value.find(function(ele){
                 return ele===this.toString();
-               },this);
+               },this);*/
     }
     getspecializationdetails(id:string){
        

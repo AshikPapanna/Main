@@ -7,7 +7,12 @@ import {ForgotpasswordComponent} from './components/forgotpassword/forgotpasswor
 import {FaqsComponent} from './components/faqs/faqs.component';
 import{FaqsChildComponent} from './components/faqs/child/faqschild.component'
 import{InstructorComponent} from './components/instructors/instructor.component'
+
+import{InstructordetailComponent} from './components/instructors/instructordetail/instructordetail.component'
+
 import{AppComponent} from './app.component'
+
+import{AboutusComponent} from './components/aboutus/aboutus.component';
 
 
 
@@ -58,9 +63,17 @@ component:ProfileComponent
         path:'instructors',
         component:InstructorComponent
             },
+     {
+        path:'instructors/:id',
+        component:InstructorComponent
+            },
     {
         path:'profiles/:tokenId',
         component:ProfileComponent
+    },
+     {
+        path:'aboutus',
+        component:AboutusComponent
     },
       
     {

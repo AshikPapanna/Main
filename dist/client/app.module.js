@@ -24,6 +24,7 @@ const faqschild_component_1 = require("./components/faqs/child/faqschild.compone
 const footer_component_1 = require("./components/footer/footer.component");
 const instructor_component_1 = require("./components/instructors/instructor.component");
 const instructordetail_component_1 = require("./components/instructors/instructordetail/instructordetail.component");
+const aboutus_component_1 = require("./components/aboutus/aboutus.component");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -41,7 +42,8 @@ AppModule = __decorate([
             faqschild_component_1.FaqsChildComponent,
             faqs_component_1.FaqsComponent, footer_component_1.FooterComponent,
             instructor_component_1.InstructorComponent,
-            instructordetail_component_1.InstructordetailComponent
+            instructordetail_component_1.InstructordetailComponent,
+            aboutus_component_1.AboutusComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     })

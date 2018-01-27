@@ -11,7 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const instructor_1 = require("../../../../models/instructor");
+const instructor_service_1 = require("./../instructor.service");
 let InstructordetailComponent = class InstructordetailComponent {
+    constructor(instructorService) {
+        this.instructorService = instructorService;
+    }
+    ngOnInit() {
+        /*  getspecializationdetails(id:string){
+        
+         this.instructorService.getinstructordetails(id).subscribe(
+             details=>{
+                 this.data=details;
+             },
+             err=>{
+                 console.log(err);
+             }
+         )
+     }*/
+    }
     set data(data) {
         this._data = data;
     }
@@ -30,7 +47,8 @@ InstructordetailComponent = __decorate([
         moduleId: module.id,
         styleUrls: ['./instructordetail.component.css'],
         templateUrl: './instructordetail.component.html'
-    })
+    }),
+    __metadata("design:paramtypes", [instructor_service_1.InstructorService])
 ], InstructordetailComponent);
 exports.InstructordetailComponent = InstructordetailComponent;
 

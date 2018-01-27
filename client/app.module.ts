@@ -26,6 +26,7 @@ import{FaqsChildComponent} from './components/faqs/child/faqschild.component'
 import {FooterComponent} from './components/footer/footer.component'
 import{InstructorComponent} from './components/instructors/instructor.component'
 import {InstructordetailComponent} from  './components/instructors/instructordetail/instructordetail.component'
+import{AboutusComponent} from './components/aboutus/aboutus.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import {InstructordetailComponent} from  './components/instructors/instructordet
     ,FaqsComponent,FooterComponent
     ,InstructorComponent
     ,InstructordetailComponent
+    ,AboutusComponent
 ],
     
 

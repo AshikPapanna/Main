@@ -1,13 +1,12 @@
 .parallax{
-    background-image: url("/public/images/HomeBackGround2.jpg");
+    background-image: url("/public/images/home_banner.jpg");
     top:40%;
 
     /* Full height */
-    height: 60%; 
+    height: 100%; 
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
-    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     filter:blur(50);

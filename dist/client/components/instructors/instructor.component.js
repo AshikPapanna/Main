@@ -22,9 +22,7 @@ let InstructorComponent = class InstructorComponent {
         this.instructorService.getinstructors().subscribe(instructors => {
             this.instructors = instructors;
             this.instructors.forEach(element => {
-                element.specialized.forEach(ele => {
-                    this.specialization.push(ele);
-                });
+                this.specialization.push(element.specialized);
             });
             this.distinctspecialization = this.specialization.filter((v, i, a) => a.indexOf(v) === i);
         }, err => { console.log(err); });
@@ -43,9 +41,9 @@ let InstructorComponent = class InstructorComponent {
         // return this.distinctspecialization;
     }
     filterbasedonspcl(value, index) {
-        return value.specialized.find(function (ele) {
-            return ele === this.toString();
-        }, this);
+        /*return value.find(function(ele){
+                   return ele===this.toString();
+                  },this);*/
     }
     getspecializationdetails(id) {
         this.showmodel = true;

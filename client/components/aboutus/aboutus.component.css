@@ -1,0 +1,86 @@
+.sa-homesubheader-text::after{
+    content: "";
+    width: 50px;
+    height: 2px;
+    left: 0;
+    right: 0;
+    background-color: #FC5A5A;
+    display: block;
+    position: relative;
+    margin: auto;
+    bottom: -10px;
+}
+.sa-qoute{
+     color: white;
+        font-size:400%;
+        font-weight: 400;
+        margin: 0px;
+        margin-top: 1%;
+        
+}
+.parallax{
+    background-image: url("/public/images/About_Us.jpg");
+    top:40%;
+
+    /* Full height */
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment:fixed;
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter:blur(50);
+    margin-bottom: 0px;
+}
+.sa-desc-text{
+    margin-top:3%;margin-bottom:15%;font-size:1.1em;font-family:OpenSansLight;
+}
+.parallax-mission{
+    background-image: url("/public/images/We_care.jpg");
+    top:40%;
+
+    /* Full height */
+    height: 60%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment:fixed;
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter:blur(50);
+    margin-bottom: 0px;
+}
+.sa-homeheader-text::after{
+    content: "";
+    width: 500px;
+    height: 1px;
+    left: 0;
+    right: 0;
+    background-color:  #EEE3E1;
+    display: block;
+    position: relative;
+    margin: auto;
+    bottom: -10px;
+}
+.sa-homeheaderdesc-text{
+    color: #EEE3E1;
+    font-family: OpenSansLight;
+    margin-top: 2%; 
+    font-size: 1.2em;
+
+}
+
+
+.sa-homeheader-text::before{
+    content: "";
+    width: 80px;
+    height: 2px;
+    left: 0;
+    right: 0;
+    background-color:#FC5A5A;
+    display: block;
+    position: relative;
+    margin: auto;
+    
+}
