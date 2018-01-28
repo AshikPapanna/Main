@@ -1,4 +1,4 @@
-import {Component,Input,OnInit} from "@angular/core"
+import {Component,Input,Output,OnInit,EventEmitter} from "@angular/core"
 import {Instructor,InstructorDetails} from '../../../../models/instructor'
 import {InstructorService} from './../instructor.service'
 
@@ -12,27 +12,32 @@ export class InstructordetailComponent implements OnInit{
     constructor(private instructorService:InstructorService ){
 
     }
+    instructordetail:InstructorDetails;
+
     ngOnInit(): void {
-       /*  getspecializationdetails(id:string){    
        
-        this.instructorService.getinstructordetails(id).subscribe(
+        this.instructorService.getinstructordetails(this.instructordetails).subscribe(
             details=>{
-                this.data=details;
+                this.instructordetail=details[0];
+                console.log(this.instructordetail);
             },
             err=>{
                 console.log(err);
             }
         )
-    }*/
-
     }
-    private _data: InstructorDetails;
+
+    closemodal(){
+        this.close.emit(null);
+    }
+    private _data: string;
     @Input()
-    set data(data:InstructorDetails){
+    set data(data:string){
           this._data=data;
     }
-    get instructordetails():InstructorDetails{
-          return this.data;
+    get instructordetails():string{
+          return this._data;
     }
+ @Output()  close =new EventEmitter<any>();
   
 }

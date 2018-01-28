@@ -1,30 +1,28 @@
 
 <div  class="row parallax" style="padding-top:5%;">
-        <div class="col s4 ">
-          <p class="vb-qoute" >“The only thing to do with good advice is to pass it on. It is never of any use to oneself”
-           <br>
-          </p>
-         <p class="sa-author">
-            -Oscar Wilde </p>
-        </div>   
+     
      </div>
-   <div class="container">
-            <div class="row" *ngFor="let specialization of distinctspecialization;">
-               <div class="col s12 center-align">
-                   <h3 class=" red-text text-darken-1 sa-homesubheader-text"  >{{specialization}}</h3>
+  
+            <div class="row sa-rowborder-btm"  *ngFor="let instructor of instructors;">
+              
+               <div class="col s4 "  style="text-align: center;">
+                 
+                   <h3 class=" text-darken-1 sa-instsubheader-text"  >{{instructor._id}}</h3>
                </div> 
-                <div class="col s4 sa-instructor-con" *ngFor="let specializationdetail of getspecializtiondetails(specialization)">
+                <div class="col s2 sa-instructor-con" *ngFor="let instructorbrief of instructor.instructorbriefs ">
              <div class="sa-imag-wrapper">
                 <a class="modal-trigger" href="#modal1">
                     
-             <img class="responsive-img circle" src="{{specializationdetail.imageurl}}"  >
+             <img class="responsive-img circle" src="{{instructorbrief.imageurl}}"  >
                 </a>
              </div>
-             <a class=" sa-instructor-text"  (click)="getspecializationdetails(specializationdetail._id)">{{specializationdetail.firstname+" "+specializationdetail.lastname}}</a>
+            <div style="padding-bottom: 8%">
+             <a class=" sa-instructor-text"  (click)="getspecializationdetails(instructorbrief._id)">{{instructorbrief.firstname+" "+instructorbrief.lastname}}</a>
             </div>
-              
             </div>
+   
             </div>
+           
     
     <!-- <div class="col s12 center-align">
             <h4 class="   red-text text-darken-1" style="margin-top:3%;font-weight:180%" >FAQs</h4>
@@ -113,7 +111,7 @@
             </div>-->
      
        <!-- Modal Structure -->
-      <sa-instructormodal *ngIf="showmodel" [data]="data"></sa-instructormodal>
+      <sa-instructormodal *ngIf="showmodel" [data]="data" (close)="closemodal()"></sa-instructormodal>
     
     <sa-footer></sa-footer>
      

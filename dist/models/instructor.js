@@ -6,7 +6,7 @@ class Concerts {
         var place = "";
     }
 }
-class Instructor {
+class Instructorbrief {
     constructor() {
         this._id = "";
         this.firstname = "";
@@ -14,8 +14,14 @@ class Instructor {
         this.imageurl = "";
     }
 }
+exports.Instructorbrief = Instructorbrief;
+class Instructor {
+    constructor() {
+        this.instructorbriefs = [];
+    }
+}
 exports.Instructor = Instructor;
-class InstructorDetails extends Instructor {
+class InstructorDetails extends Instructorbrief {
     constructor() {
         super(...arguments);
         this.education = "";

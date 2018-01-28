@@ -21,10 +21,11 @@ let InstructorComponent = class InstructorComponent {
     ngOnInit() {
         this.instructorService.getinstructors().subscribe(instructors => {
             this.instructors = instructors;
-            this.instructors.forEach(element => {
-                this.specialization.push(element.specialized);
-            });
-            this.distinctspecialization = this.specialization.filter((v, i, a) => a.indexOf(v) === i);
+            console.log(this.instructors);
+            /*this.instructors.forEach(element => {
+                 this.specialization.push(element.specialized);
+                })
+           this.distinctspecialization=  this.specialization.filter((v, i, a) => a.indexOf(v) === i);*/
         }, err => { console.log(err); });
     }
     ngAfterViewInit() {
@@ -33,33 +34,41 @@ let InstructorComponent = class InstructorComponent {
          })*/
     }
     closemodal() {
+        console.log("hi");
         this.showmodel = false;
     }
-    getspecializtiondetails(specialization) {
+    setspecializtiondetails(specialization) {
         console.log(specialization);
-        return this.instructors.filter(this.filterbasedonspcl, specialization);
+        this.distinctspecializationdetials = this.instructors.filter(this.filterbasedonspcl, specialization);
+        console.log(this.distinctspecializationdetials);
+        //  return 
         // return this.distinctspecialization;
     }
     filterbasedonspcl(value, index) {
-        /*return value.find(function(ele){
-                   return ele===this.toString();
-                  },this);*/
+        //    return value.specialized===this.toString();
     }
     getspecializationdetails(id) {
+        this.data = id;
         this.showmodel = true;
-        this.instructorService.getinstructordetails(id).subscribe(details => {
-            this.data = details;
-        }, err => {
-            console.log(err);
-        });
     }
 };
 InstructorComponent = __decorate([
+    core_1.Pipe({
+        name: "specializationfilter",
+        pure: false
+    })
+    /* export class SpecializationFilterPipe implements PipeTransform{
+    transform(value: Instructor[],spcl:string) {
+         return value.filter(inst => inst.specialized.toLowerCase().indexOf(spcl) !== -1);
+     }
+ 
+     }*/
+    ,
     core_1.Component({
         moduleId: module.id,
         templateUrl: './instructor.component.html',
         styleUrls: ['./instructor.component.css'],
-        providers: [instructor_service_1.InstructorService]
+        providers: [instructor_service_1.InstructorService],
     }),
     __metadata("design:paramtypes", [instructor_service_1.InstructorService])
 ], InstructorComponent);

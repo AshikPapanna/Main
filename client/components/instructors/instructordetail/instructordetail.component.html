@@ -1,10 +1,10 @@
-<div   class="sa-modal" >
+<div *ngIf="instructordetail"   class="sa-modal" >
         <div class="sa-modal-content">
-          <h4>{{data.education}}</h4>
+          <h4>{{instructordetail.education}}</h4>
           <p>A bunch of text</p>
         </div>
         <div class="sa-modal-footer">
           <a class="waves-effect waves-green btn-flat" (click)="closemodal();">Agree</a>
         </div>
       </div>
-<div  class="sa-modaloverlay" ></div>
+<div  class="sa-modaloverlay"  (click)="closemodal();"></div>

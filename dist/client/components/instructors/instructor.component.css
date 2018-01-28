@@ -46,24 +46,34 @@
     text-align: center;
     
 }
-.sa-instructor-text{
-    font-weight: 400;
-    font-size: 1.2em;
-}
-.sa-homesubheader-text{
-    margin-top:4%;   
-    font-family:OpenSansLight;
-}
 
-.sa-homesubheader-text::after{
-    content: "";
-    width: 50px;
+.sa-instructor-text{
+    font-weight: 500;
+    font-size: 1.2em;
+  color:  rgb(68, 68, 68)
+
+}
+.sa-rowborder-btm::after{
+ content: "";
+    width: 70%;
     height: 2px;
     left: 0;
     right: 0;
-    background-color: #FC5A5A;
+    background-color: #D5CFCE;
     display: block;
     position: relative;
     margin: auto;
     bottom: -10px;
+    z-index: -1;
 }
+.sa-rowborder-btm{
+    margin-top: 3%;
+    padding-bottom: 3%;
+
+}
+.sa-instsubheader-text{
+margin-top:6%;   
+    font-family:   'SegoeiLight';
+;
+}
+

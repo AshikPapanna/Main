@@ -1,33 +1,47 @@
-import {Component,AfterViewInit,OnInit} from '@angular/core'
+import {Component,AfterViewInit,OnInit,Pipe,PipeTransform} from '@angular/core'
 import {InstructorService} from './instructor.service'
 
 import {Instructor,InstructorDetails} from '../../../models/instructor'
 
 import {InstructordetailComponent} from './instructordetail/instructordetail.component'
+@Pipe({
+        name:"specializationfilter",
+        pure:false
+})
+   /* export class SpecializationFilterPipe implements PipeTransform{
+   transform(value: Instructor[],spcl:string) {
+        return value.filter(inst => inst.specialized.toLowerCase().indexOf(spcl) !== -1);
+    }
 
+    }*/
 @Component({
+    
     moduleId:module.id,
     templateUrl:'./instructor.component.html',
     styleUrls:['./instructor.component.css'] ,
-    providers:[InstructorService]
+    providers:[InstructorService],
+
   
 })
 
 export class InstructorComponent implements AfterViewInit,OnInit{
   
-    instructors:Instructor[];     
+    instructors:Instructor[];    
+    
+    distinctspecializationdetials:Instructor[];     
     distinctspecialization:string[]=[];
-    data:InstructorDetails;
+    data:string;
     specialization:string[]=[];
     showmodel:boolean=false;
     ngOnInit(): void {
        this.instructorService.getinstructors().subscribe(
          instructors=>{
-           this.instructors=instructors ;          
-           this.instructors.forEach(element => {   
+           this.instructors=instructors ;   
+           console.log( this.instructors);       
+           /*this.instructors.forEach(element => {   
                 this.specialization.push(element.specialized);
                })
-          this.distinctspecialization=  this.specialization.filter((v, i, a) => a.indexOf(v) === i);
+          this.distinctspecialization=  this.specialization.filter((v, i, a) => a.indexOf(v) === i);*/
             } , 
           err=>{console.log(err);}      
        )
@@ -47,31 +61,25 @@ export class InstructorComponent implements AfterViewInit,OnInit{
     
     }
     closemodal(){
-       
+       console.log("hi");
         this.showmodel=false;
     }
-    getspecializtiondetails(specialization:String):Instructor[]{
-        console.log(specialization)
-       return this.instructors.filter(this.filterbasedonspcl,specialization);
+    setspecializtiondetails(specialization:String){
+         console.log(specialization);
+              this.distinctspecializationdetials=this.instructors.filter(this.filterbasedonspcl,specialization);
+        console.log(this.distinctspecializationdetials)
+     //  return 
       // return this.distinctspecialization;
     }
-    filterbasedonspcl(value:Instructor,index){
-     /*return value.find(function(ele){
-                return ele===this.toString();
-               },this);*/
+    filterbasedonspcl(value:Instructor,index){     
+            //    return value.specialized===this.toString();
+            
     }
     getspecializationdetails(id:string){
-       
-        this.showmodel=true;
-       
-        this.instructorService.getinstructordetails(id).subscribe(
-            details=>{
-                this.data=details;
-            },
-            err=>{
-                console.log(err);
-            }
-        )
+                this.data=id;
+                this.showmodel=true; 
+           
+        
     }
 
 }

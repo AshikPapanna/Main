@@ -5,16 +5,22 @@ class Concerts{
        var  place:string=""}
 }
 
-export class Instructor
+
+export class Instructorbrief
 {
     _id:string="";
-    specialized:"";
+   
     firstname:string="";
      lastname:string="";
      imageurl:string="";
+       specialized:"";
 }
+    export class Instructor{
+        _id:"";
+        instructorbriefs:Instructorbrief[]=[];
+        }
 
-export class InstructorDetails extends Instructor{
+export class InstructorDetails extends Instructorbrief{
    
          education: string = "";
          from:string="";

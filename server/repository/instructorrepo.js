@@ -13,15 +13,39 @@ exports.getallinstructors=function(req,res){
             "firstname":1,
             'lastname':1,
             'imageurl':1,
-            'specialized':1
+            'specialized':1,
+            
         }
        },
+    
        {
         "$unwind":"$specialized"
-       }
+       },
+    {
+    "$group":{"_id":"$specialized" ,"instructorbriefs":{"$push":{"firstname":"$firstname","lastname":"$lastname","imageurl":"$imageurl","_id":"$_id"}}}
+    
+
+    },
+{
+"$sort":{"_id":-1}
+}
+   /* ,{"$bucket":{
+           "groupBy": "$specialized",
+             "boundaries": ["Carnatic Classical Vocal", "Hindustani Classical Vocal" ],
+              "default": "Other",
+              "output": {
+                "count": { "$sum": 1 },
+                "corse" : { "$push": { "title": "$bio", "price": "$imageurl" } }
+              }
+    }
+    }*/
+
+    
+    
      ]
     ,function(err,instructors){
        if(err) return res.status(401).json({message:{'mongoerror':"Invalid Instructor Documents"}});
+     
        console.log(instructors);
        return res.json(instructors);  
     });

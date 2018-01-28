@@ -10,37 +10,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
-const instructor_1 = require("../../../../models/instructor");
 const instructor_service_1 = require("./../instructor.service");
 let InstructordetailComponent = class InstructordetailComponent {
     constructor(instructorService) {
         this.instructorService = instructorService;
+        this.close = new core_1.EventEmitter();
     }
     ngOnInit() {
-        /*  getspecializationdetails(id:string){
-        
-         this.instructorService.getinstructordetails(id).subscribe(
-             details=>{
-                 this.data=details;
-             },
-             err=>{
-                 console.log(err);
-             }
-         )
-     }*/
+        this.instructorService.getinstructordetails(this.instructordetails).subscribe(details => {
+            this.instructordetail = details[0];
+            console.log(this.instructordetail);
+        }, err => {
+            console.log(err);
+        });
+    }
+    closemodal() {
+        this.close.emit(null);
     }
     set data(data) {
         this._data = data;
     }
     get instructordetails() {
-        return this.data;
+        return this._data;
     }
 };
 __decorate([
     core_1.Input(),
-    __metadata("design:type", instructor_1.InstructorDetails),
-    __metadata("design:paramtypes", [instructor_1.InstructorDetails])
+    __metadata("design:type", String),
+    __metadata("design:paramtypes", [String])
 ], InstructordetailComponent.prototype, "data", null);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], InstructordetailComponent.prototype, "close", void 0);
 InstructordetailComponent = __decorate([
     core_1.Component({
         selector: 'sa-instructormodal',
