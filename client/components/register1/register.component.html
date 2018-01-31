@@ -1,0 +1,73 @@
+
+    <div class="row" style="height:100%:">
+        <div class="col s5" style="padding-top:17%;text-align:right;padding-right:4%"  >
+        <h2 class="red-text text-darken-1 logotext">  Ashik</h2>
+        
+          </div>
+        
+        <div class="col s5" style="background-color:white  ;padding-top:2%;margin-top:6%;margin-bottom:8%; box-shadow: 0px 0px 15px #888888;">
+        
+     <form id="reg-form" (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+       <div class="container">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="firstName" #firstname id="first_name" type="text" [(ngModel)]="register.firstname" (ngModelChange)="validatefirstname(firstname.value)" required  [ngClass]="firstNamevalidateclass"   aria-required="true">
+                        <label for="first_name" data-error="Should be >= 3 and <= 20">First Name</label>
+                      </div>
+                   
+                
+                <div class="input-field col s6">
+                    <input id="last_name" name="lastName" type="text" #lastname [(ngModel)]="register.lastname" (ngModelChange)="validatelastname(lastname.value)" [ngClass]="lastnameclass" >
+                    <label for="last_name" data-error="Should be >= 3 and <= 10">Last Name</label>
+                  </div>
+            </div>
+           <div class="row">
+                <div class="input-field col s6">
+                         <input id="email" #email required type="email" [(ngModel)]="register.email" name="emailId" (ngModelChange)="validateemail(email.value)"  [ngClass]="emailvalidateclass">
+                         <label for="email" data-error="Email is invalid or already registered" >Email</label>
+                  </div>
+               
+                       <div class="input-field col s6">
+                         <input id="password" type="password" required #password [(ngModel)]="register.password" (ngModelChange)="comparePassword(password.value,confirmpassword.value);Validatepasswordlength(password.value);" name="password" [ngClass]="passwordclass">
+                         <label for="password" data-error="Should be >= 8 and <= 20">Password</label>
+                       </div>
+           </div>
+           <div class="row">
+                       <div class="input-field col s6">
+                         <input id="confirmpassword" type="password" #confirmpassword [(ngModel)]="register.confirmpassword" (ngModelChange)="comparePassword(password.value,confirmpassword.value);" [ngClass]="confirmpasswordclass" name="confirmpassword">
+                         <label for="confirmpassword" data-error="Password does not match">Confirm Password</label>
+                       </div>
+           </div>
+
+           
+       </div>
+       
+         <div class="center">
+          
+         <button type="submit" class="waves-effect waves-light btn green" [disabled]="!registrationForm.form.valid">Register</button>
+         </div>
+          </form>
+          <div class="row" *ngIf="IsSuccess">
+            <div class="container">
+            <div class ="col s12" >
+              <h6>Confirmation mail has been sent to registered EmailId !</h6>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s2" style="background-color:wheat;">
+          </div>
+ </div>
+ <style>
+ .btn{
+  line-height:0;
+ }
+.input-field label {
+    width: 100%;
+}
+
+ </style>
+         
+         
+         
+        

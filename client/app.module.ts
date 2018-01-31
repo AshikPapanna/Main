@@ -5,7 +5,7 @@ import{NgModule} from '@angular/core';
 
 import { FormsModule }   from '@angular/forms';
 
- 
+import { ReactiveFormsModule } from '@angular/forms'; 
 
 import{HttpModule} from '@angular/http'
 
@@ -31,8 +31,8 @@ import{AboutusComponent} from './components/aboutus/aboutus.component';
 
 @NgModule({
     
-    imports:[BrowserModule,BrowserAnimationsModule,
-        FormsModule,       
+    imports:[BrowserModule,BrowserAnimationsModule,ReactiveFormsModule
+       , FormsModule,       
          HttpModule,
          AppRoutes],
     declarations:[AppComponent

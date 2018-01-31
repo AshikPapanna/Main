@@ -10,6 +10,7 @@ const platform_browser_1 = require("@angular/platform-browser");
 const animations_1 = require("@angular/platform-browser/animations");
 const core_1 = require("@angular/core");
 const forms_1 = require("@angular/forms");
+const forms_2 = require("@angular/forms");
 const http_1 = require("@angular/http");
 const minlength_directive_1 = require("./directives/minlength.directive");
 const app_component_1 = require("./app.component");
@@ -29,7 +30,7 @@ let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, animations_1.BrowserAnimationsModule,
+        imports: [platform_browser_1.BrowserModule, animations_1.BrowserAnimationsModule, forms_2.ReactiveFormsModule,
             forms_1.FormsModule,
             http_1.HttpModule,
             app_routes_1.AppRoutes],

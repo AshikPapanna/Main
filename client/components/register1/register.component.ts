@@ -6,8 +6,6 @@ import{RegisterService} from './register.service'
 import {Location} from '@angular/common';
 
 import {Router} from '@angular/router'
-
-import {FormBuilder,FormGroup,Validators,FormControl} from '@angular/forms'
 declare var $: any
 @Component({
     moduleId:module.id,
@@ -17,20 +15,8 @@ declare var $: any
     providers:[RegisterService]
 })
 export class RegisterComponent {
-    registerform:FormGroup;
-    constructor(private registerService:RegisterService,private formbuilder:FormBuilder
-    ,private router:Router,private location:Location){
-        this.createform();
-    } 
-    createform(){
-        this.registerform=this.formbuilder.group(
-            {
-                firstname :['',[Validators.required,Validators.minLength(4),Validators.maxLength(12)]]
-           
-               
-            }
-        )
-    }
+    constructor(private registerService:RegisterService
+    ,private router:Router,private location:Location){} 
     firstNamevalidateclass:string='';
     confirmpasswordclass:string='';
     passwordclass:string='';  

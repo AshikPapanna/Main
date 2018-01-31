@@ -14,11 +14,9 @@ const registration_1 = require("../../../models/registration");
 const register_service_1 = require("./register.service");
 const common_1 = require("@angular/common");
 const router_1 = require("@angular/router");
-const forms_1 = require("@angular/forms");
 let RegisterComponent = class RegisterComponent {
-    constructor(registerService, formbuilder, router, location) {
+    constructor(registerService, router, location) {
         this.registerService = registerService;
-        this.formbuilder = formbuilder;
         this.router = router;
         this.location = location;
         this.firstNamevalidateclass = '';
@@ -28,12 +26,6 @@ let RegisterComponent = class RegisterComponent {
         this.emailvalidateclass = '';
         this.IsSuccess = false;
         this.register = new registration_1.Register('', '', '', '', '', '', '', '');
-        this.createform();
-    }
-    createform() {
-        this.registerform = this.formbuilder.group({
-            firstname: ['', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(12)]]
-        });
     }
     comparePassword(password, confirmpassword) {
         if (password !== confirmpassword) {
@@ -116,7 +108,7 @@ RegisterComponent = __decorate([
         styleUrls: ['./register.component.css'],
         providers: [register_service_1.RegisterService]
     }),
-    __metadata("design:paramtypes", [register_service_1.RegisterService, forms_1.FormBuilder,
+    __metadata("design:paramtypes", [register_service_1.RegisterService,
         router_1.Router, common_1.Location])
 ], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
