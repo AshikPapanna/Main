@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core'
+import { Component, OnInit, OnChanges,AfterViewInit, SimpleChanges } from '@angular/core'
 
 import {Register} from '../../../models/registration'
 
@@ -8,7 +8,7 @@ import {Location} from '@angular/common';
 import {Router} from '@angular/router'
 
 import {FormBuilder,FormGroup,Validators,FormControl} from '@angular/forms'
-declare var $: any
+
 @Component({
     moduleId:module.id,
     selector:'my-register',
@@ -16,8 +16,14 @@ declare var $: any
     styleUrls:['./register.component.css'],
     providers:[RegisterService]
 })
-export class RegisterComponent {
-    registerform:FormGroup;
+export class RegisterComponent implements AfterViewInit  {
+    ngAfterViewInit(): void {
+       jQuery(document).ready(function() {
+        jQuery('select').material_select();
+          });
+               
+    }
+    registerform: FormGroup;
     constructor(private registerService:RegisterService,private formbuilder:FormBuilder
     ,private router:Router,private location:Location){
         this.createform();
@@ -25,10 +31,14 @@ export class RegisterComponent {
     createform(){
         this.registerform=this.formbuilder.group(
             {
-                firstname :['',[Validators.required,Validators.minLength(4),Validators.maxLength(12)]]
-           
-               
-            }
+                firstname :['',[Validators.required,Validators.minLength(4),Validators.maxLength(12)]],
+                lastname :['',[Validators.minLength(2),Validators.maxLength(12)]],
+                username:['',[Validators.required,Validators.min(4),Validators.max(8)]],
+                email :['',[Validators.required]],
+                age:['',[Validators.required]],
+                gender:[''],
+                country:['',[Validators.required]]        
+              }
         )
     }
     firstNamevalidateclass:string='';

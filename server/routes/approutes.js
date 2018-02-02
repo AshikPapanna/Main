@@ -7,6 +7,7 @@ module.exports=function(app){
      var faqshandler=require('../repository/faqsrepo');
      var homehandler=require('../repository/homerepo.js');
      var instructorhandler=require('../repository/instructorrepo')
+     var currencyconverter=require('../helpers/currencyconverter')
 
     router.get('/profiles', profileHandler.getprofiles ); 
     router.get('/profilesforhome',profileHandler.getprofilesforhome);
@@ -19,6 +20,7 @@ module.exports=function(app){
     router.get('/faqslist',faqshandler.getfaqs);
     //router.get('/home',homehandler.gethome);
     router.post('/auth/users',userHandler.userslist);
+    router.post('/ip',currencyconverter.logip);
     router.get('/',function(req,res){  
         console.log('base');      
         res.sendFile(__base+'index.html');

@@ -15,10 +15,45 @@
                         <label for="first_name" attr.data-error="{{registerform.status}}">First Name</label>
                       </div>
                       <div id="last_name" class="input-field col s6">
-                        <input formControlName="lastname">
+                        <input id="last_name" formControlName="lastname">
                          <label for="last_name" data-error="Should be >= 3 and <= 10">Last Name</label>
                         </div>
                      </div>
+                     <div class="row">
+                      <div class="input-field col s6">
+                          <input id="user_name" type="text" formControlName="username" [class.invalid]="registerform.get('firstname').invalid" >
+                          <label for="user_name" attr.data-error="{{registerform.status}}">User Name</label>
+                        </div>
+                        <div id="e_mail" class="input-field col s6">
+                          <input id="e_mail" formControlName="email">
+                           <label for="e_mail" data-error="Should be >= 3 and <= 10">Email</label>
+                          </div>
+                       </div>
+                    
+          <div class="row">
+              <h4>Gender:</h4>
+            <div class="col s6">
+             <p>
+               <input [class]="with-gap"  formControlName="gender" type="radio" id="test1" value="M" />
+               <label for="test1">Male</label>
+             </p>
+             <p>
+               <input [class]="with-gap"  type="radio" formControlName="gender" id="test2" value="F"/>
+               <label for="test2">Female</label>
+             </p>
+          </div>
+
+          <div class="input-field col s6">
+              <select>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+              <label>Materialize Select</label>
+            </div>
+          
+            </div>   
           
            {{registerform.value |json}}
            {{registerform.status |json}}
@@ -30,6 +65,7 @@
          <button type="submit" class="waves-effect waves-light btn green" >Register</button>
          </div>
           </form>
+
           <div class="row" *ngIf="IsSuccess">
             <div class="container">
             <div class ="col s12" >

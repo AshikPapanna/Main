@@ -30,9 +30,20 @@ let RegisterComponent = class RegisterComponent {
         this.register = new registration_1.Register('', '', '', '', '', '', '', '');
         this.createform();
     }
+    ngAfterViewInit() {
+        jQuery(document).ready(function () {
+            jQuery('select').material_select();
+        });
+    }
     createform() {
         this.registerform = this.formbuilder.group({
-            firstname: ['', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(12)]]
+            firstname: ['', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(12)]],
+            lastname: ['', [forms_1.Validators.minLength(2), forms_1.Validators.maxLength(12)]],
+            username: ['', [forms_1.Validators.required, forms_1.Validators.min(4), forms_1.Validators.max(8)]],
+            email: ['', [forms_1.Validators.required]],
+            age: ['', [forms_1.Validators.required]],
+            gender: [''],
+            country: ['', [forms_1.Validators.required]]
         });
     }
     comparePassword(password, confirmpassword) {
