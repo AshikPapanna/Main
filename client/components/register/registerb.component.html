@@ -7,31 +7,31 @@
         
         <div class="col s5" style="background-color:white  ;padding-top:2%;margin-top:6%;margin-bottom:8%; box-shadow: 0px 0px 15px #888888;">
         
-     <form [formGroup]="registerform" novalidate>
+     <form class="form-horizontal" [formGroup]="registerform" novalidate>
 
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input id="first_name" type="text" formControlName="firstname" [class.invalid]="isvalidfield('firstname')">
-                        <label for="first_name" attr.data-error="{{registerform.status}}">First Name</label>
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                       <label for="firstname" class="control-label required">First Name</label>
+      <input type="text" id="firstname" class="form-control" formControlName="firstname">
                       </div>
                       <div id="last_name" class="input-field col s6">
                         <input id="last_name"  type="text"  formControlName="lastname" [class.invalid]="isvalidfield('lastname')">
-                         <label for="last_name" attr.data-error="Invalid">Last Name</label>
+                         <label for="last_name" data-error="Should be >= 3 and <= 10">Last Name</label>
                         </div>
                      </div>
                      <div class="row">
                       <div class="input-field col s6">
                           <input id="user_name" type="text" formControlName="username" [class.invalid]="isvalidfield('username')" >
-                          <label for="user_name"attr.data-error="Invalid">User Name</label>
+                          <label for="user_name" attr.data-error="{{registerform.status}}">User Name</label>
                         </div>
                         <div  class="input-field col s6">
                           <input id="e_mail"  type="text"  formControlName="email" >
-                           <label for="e_mail"attr.data-error="Invalid">Email</label>
+                           <label for="e_mail" data-error="Should be >= 3 and <= 10">Email</label>
                           </div>
                        </div>
                     
           <div class="row">
-              <h5>Gender:</h5>
+              <h4>Gender:</h4>
             <div class="col s6">
              <p>
                <input [class]="with-gap"  formControlName="gender" type="radio" id="test1" value="M"   />

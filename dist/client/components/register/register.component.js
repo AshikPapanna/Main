@@ -32,29 +32,34 @@ let RegisterComponent = class RegisterComponent {
     }
     ngAfterViewInit() {
         jQuery(document).ready(function () {
-            jQuery('select').material_select();
+            // jQuery('select').material_select();
         });
     }
     createform() {
         this.registerform = this.formbuilder.group({
             firstname: ['', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(12)]],
-            lastname: ['', [forms_1.Validators.minLength(2), forms_1.Validators.maxLength(12)]],
-            username: ['', [forms_1.Validators.required, forms_1.Validators.min(4), forms_1.Validators.max(8)]],
+            lastname: ['', [forms_1.Validators.required, forms_1.Validators.minLength(2), forms_1.Validators.maxLength(12)]],
             email: ['', [forms_1.Validators.required]],
-            age: ['', [forms_1.Validators.required]],
-            gender: [''],
+            username: ['', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(8)]],
+            gender: 'M',
+            age: ['', [forms_1.Validators.max(60), forms_1.Validators.min(3)]],
             country: ['', [forms_1.Validators.required]]
         });
     }
-    comparePassword(password, confirmpassword) {
-        if (password !== confirmpassword) {
-            this.confirmpasswordclass = 'invalid';
+    isvalidfield(field) {
+        return this.registerform.get(field).invalid && this.registerform.get(field).touched;
+    }
+    validatefirstname(firstname) {
+        if (firstname.length < 4 || firstname.length > 20) {
+            this.firstNamevalidateclass = 'invalid';
             return false;
         }
         else {
-            this.confirmpasswordclass = 'valid';
+            this.firstNamevalidateclass = 'valid';
             return true;
         }
+    }
+    validateuniqueemail(email) {
     }
     validatelastname(lastname) {
         if (lastname.length < 2 || lastname.length > 20) {
@@ -79,7 +84,6 @@ let RegisterComponent = class RegisterComponent {
     onSubmit() {
         if (!(this.validatefirstname(this.register.firstname)
             && this.Validatepasswordlength(this.register.password)
-            && this.comparePassword(this.register.password, this.register.confirmpassword)
             && this.validatelastname(this.register.lastname) && this.validateemail(this.register.email))) {
             console.log('right');
             return false;
@@ -98,16 +102,6 @@ let RegisterComponent = class RegisterComponent {
         });
     }
     ;
-    validatefirstname(firstname) {
-        if (firstname.length < 4 || firstname.length > 20) {
-            this.firstNamevalidateclass = 'invalid';
-            return false;
-        }
-        else {
-            this.firstNamevalidateclass = 'valid';
-            return true;
-        }
-    }
     validateemail(email) {
         if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
             this.emailvalidateclass = 'valid';

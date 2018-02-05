@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges,AfterViewInit, SimpleChanges } from '@angular/core'
+import { Component, OnInit, OnChanges, SimpleChanges,AfterViewInit } from '@angular/core'
 
 import {Register} from '../../../models/registration'
 
@@ -7,8 +7,8 @@ import {Location} from '@angular/common';
 
 import {Router} from '@angular/router'
 
-import {FormBuilder,FormGroup,Validators,FormControl} from '@angular/forms'
-
+import {FormBuilder,FormGroup,Validators,FormControl,AbstractControl} from '@angular/forms'
+declare var $: any
 @Component({
     moduleId:module.id,
     selector:'my-register',
@@ -16,12 +16,11 @@ import {FormBuilder,FormGroup,Validators,FormControl} from '@angular/forms'
     styleUrls:['./register.component.css'],
     providers:[RegisterService]
 })
-export class RegisterComponent implements AfterViewInit  {
+export class RegisterComponent implements AfterViewInit {
     ngAfterViewInit(): void {
-       jQuery(document).ready(function() {
-        jQuery('select').material_select();
-          });
-               
+         jQuery(document).ready(function() {
+   // jQuery('select').material_select();
+  });
     }
     registerform: FormGroup;
     constructor(private registerService:RegisterService,private formbuilder:FormBuilder
@@ -32,15 +31,36 @@ export class RegisterComponent implements AfterViewInit  {
         this.registerform=this.formbuilder.group(
             {
                 firstname :['',[Validators.required,Validators.minLength(4),Validators.maxLength(12)]],
-                lastname :['',[Validators.minLength(2),Validators.maxLength(12)]],
-                username:['',[Validators.required,Validators.min(4),Validators.max(8)]],
-                email :['',[Validators.required]],
-                age:['',[Validators.required]],
-                gender:[''],
-                country:['',[Validators.required]]        
-              }
+                 lastname :['',[Validators.required,Validators.minLength(2),Validators.maxLength(12)]],
+                 email:['',[Validators.required]],
+                 username:['',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]],
+                 gender:'M',
+                 age:['',[Validators.max(60),Validators.min(3)]],
+                 country:['',[Validators.required]]         
+               
+            }
         )
     }
+    isvalidfield(field:string){
+    
+      return  this.registerform.get(field).invalid &&  this.registerform.get(field).touched;
+    }
+    validatefirstname(firstname:string):boolean{
+            if( firstname.length<4||firstname.length>20)
+                {
+                   this.firstNamevalidateclass='invalid';
+                    return false;
+                }
+                else{
+                   
+                    this.firstNamevalidateclass='valid';
+                    return true;
+                }
+        }
+    validateuniqueemail(email:AbstractControl){
+
+    }
+
     firstNamevalidateclass:string='';
     confirmpasswordclass:string='';
     passwordclass:string='';  
@@ -48,18 +68,8 @@ export class RegisterComponent implements AfterViewInit  {
     emailvalidateclass:string='';
     IsSuccess:boolean=false;
    register=new Register('','','','','','','','');
- 
-comparePassword(password:string,confirmpassword:string):boolean{
-    if(password!==confirmpassword)
-        {          
-this.confirmpasswordclass='invalid';
-return false;
-        }
-else{     
-   this.confirmpasswordclass='valid';
-   return true;
-}
-}
+
+
 validatelastname(lastname:string):boolean{
     if( lastname.length<2||lastname.length>20)
                 {
@@ -90,7 +100,7 @@ validatelastname(lastname:string):boolean{
    onSubmit(){
 if(!(this.validatefirstname(this.register.firstname)
 &&  this.Validatepasswordlength(this.register.password)
-&& this.comparePassword(this.register.password,this.register.confirmpassword)
+
 && this.validatelastname(this.register.lastname)&& this.validateemail(this.register.email)) )
 {
       console.log('right');   
@@ -118,18 +128,7 @@ console.log('wrong');
             }   
          )
    };
-        validatefirstname(firstname:string):boolean{
-            if( firstname.length<4||firstname.length>20)
-                {
-                   this.firstNamevalidateclass='invalid';
-                    return false;
-                }
-                else{
-                   
-                    this.firstNamevalidateclass='valid';
-                    return true;
-                }
-        }
+       
         validateemail(email:string):boolean{
             if(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
                 this.emailvalidateclass='valid'
