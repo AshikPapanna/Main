@@ -38,7 +38,8 @@ let RegisterService = class RegisterService {
         return this.http.get(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '/'));
     }
     checkisemailunique(email) {
-        return this.http.post(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '/checkisemailunique'), email)
+        console.log(document.location.href + "/checkisemailunique");
+        return this.http.post(document.location.href + "/checkisemailunique", email)
             .map((res) => res.json())
             .catch(error => { return Rx_1.Observable.throw(error); });
     }

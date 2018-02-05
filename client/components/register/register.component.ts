@@ -9,8 +9,9 @@ import {CountryList} from '../../constants/countries'
 
 import {Router} from '@angular/router'
 import 'materialize-css';
+import { Observable } from 'rxjs/Observable';
 
-import {FormBuilder,FormGroup,Validators,FormControl,AbstractControl} from '@angular/forms'
+import {FormBuilder,FormGroup,Validators,FormControl,AbstractControl,AsyncValidatorFn} from '@angular/forms'
 declare var $: any
 @Component({
     moduleId:module.id,
@@ -42,7 +43,7 @@ export class RegisterComponent implements AfterViewInit {
             {
                 firstname :['',[Validators.required,Validators.minLength(4),Validators.maxLength(12)]],
                  lastname :['',[Validators.required,Validators.minLength(2),Validators.maxLength(12)]],
-                 email:['',[Validators.required]],
+                 email:['',[Validators.required],this.checkisemailunique.bind(this)],
                  username:['',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]],
                  gender:'M',
                  age:['6',[Validators.max(60),Validators.min(3)]],
@@ -51,6 +52,14 @@ export class RegisterComponent implements AfterViewInit {
             }
         )
     }
+      checkisemailunique(control: AbstractControl) {
+          console.log("email val");
+          console.log(control);               
+                return this.registerService.checkisemailunique({email:control.value}).map(data => { return data? null:{"eeeror":true}});
+                    
+                
+        };
+
     isvalidfield(field:string){
     
       return  this.registerform.get(field).invalid &&  this.registerform.get(field).touched;

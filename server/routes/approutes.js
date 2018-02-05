@@ -16,7 +16,7 @@ module.exports=function(app){
     router.post('/login',userHandler.signin);
     router.get('/instructors/getinstructors',instructorhandler.getallinstructors);
     router.get('/instructors/getinstructordetails/:id',instructorhandler.getinstructordetailsbyidorspecialization)
-   router.get('/checkisemailunique',userHandler.checkisemailunique);
+   router.post('/register/checkisemailunique',userHandler.checkisemailunique);
     router.get('/faqslist',faqshandler.getfaqs);
     //router.get('/home',homehandler.gethome);
     router.post('/auth/users',userHandler.userslist);

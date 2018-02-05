@@ -29,7 +29,7 @@
                         </div>
                         <div  class="input-field col s6">
                             <i class="material-icons prefix">mail</i>
-                          <input id="e_mail"  type="text"  formControlName="email" >
+                          <input id="e_mail"  type="text"  formControlName="email" [class.invalid]="isvalidfield('email')">
                            <label for="e_mail" data-error="Invalid">Email</label>
                           </div>
                        </div>

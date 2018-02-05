@@ -47,13 +47,19 @@ let RegisterComponent = class RegisterComponent {
         this.registerform = this.formbuilder.group({
             firstname: ['', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(12)]],
             lastname: ['', [forms_1.Validators.required, forms_1.Validators.minLength(2), forms_1.Validators.maxLength(12)]],
-            email: ['', [forms_1.Validators.required]],
+            email: ['', [forms_1.Validators.required], this.checkisemailunique.bind(this)],
             username: ['', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(8)]],
             gender: 'M',
             age: ['6', [forms_1.Validators.max(60), forms_1.Validators.min(3)]],
             country: ['India', [forms_1.Validators.required]]
         });
     }
+    checkisemailunique(control) {
+        console.log("email val");
+        console.log(control);
+        return this.registerService.checkisemailunique({ email: control.value }).map(data => { return data ? null : { "eeeror": true }; });
+    }
+    ;
     isvalidfield(field) {
         return this.registerform.get(field).invalid && this.registerform.get(field).touched;
     }

@@ -30,8 +30,9 @@ export class RegisterService{
     getafterregister(){     
         return this.http.get(location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '/'))
     }
-    checkisemailunique(email :any){
-        return this.http.post(location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '/checkisemailunique'),email)
+    checkisemailunique(email :any):Observable<any>{
+        console.log(document.location.href+"/checkisemailunique");
+        return this.http.post(document.location.href+"/checkisemailunique",email)
         .map((res:Response)=>res.json())
         .catch(error=>{ return Observable.throw(error)})
     }
