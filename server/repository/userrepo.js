@@ -122,6 +122,14 @@ exports.forgotpassword=function(req,res){
       
   
 }
+exports.checkisemailunique=function(req,res){
+    User.findOne({email:req.body.email },  function(err,user){
+        if(err)  return res.status(401).json({message:'Inavlid opertion!'}); 
+        if(user)   {return res.status(401).json({message:'invalid'}); }
+        else {return res.send("success");}
+
+    });
+}
 
 
 

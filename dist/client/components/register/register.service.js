@@ -35,8 +35,12 @@ let RegisterService = class RegisterService {
             .catch(error => { return Rx_1.Observable.throw(error); });
     }
     getafterregister() {
-        console.log(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''));
         return this.http.get(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '/'));
+    }
+    checkisemailunique(email) {
+        return this.http.post(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '/checkisemailunique'), email)
+            .map((res) => res.json())
+            .catch(error => { return Rx_1.Observable.throw(error); });
     }
 };
 RegisterService = __decorate([

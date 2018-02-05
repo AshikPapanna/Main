@@ -13,7 +13,9 @@ const core_1 = require("@angular/core");
 const registration_1 = require("../../../models/registration");
 const register_service_1 = require("./register.service");
 const common_1 = require("@angular/common");
+const countries_1 = require("../../constants/countries");
 const router_1 = require("@angular/router");
+require("materialize-css");
 const forms_1 = require("@angular/forms");
 let RegisterComponent = class RegisterComponent {
     constructor(registerService, formbuilder, router, location) {
@@ -21,6 +23,7 @@ let RegisterComponent = class RegisterComponent {
         this.formbuilder = formbuilder;
         this.router = router;
         this.location = location;
+        this.agelist = [];
         this.firstNamevalidateclass = '';
         this.confirmpasswordclass = '';
         this.passwordclass = '';
@@ -29,6 +32,11 @@ let RegisterComponent = class RegisterComponent {
         this.IsSuccess = false;
         this.register = new registration_1.Register('', '', '', '', '', '', '', '');
         this.createform();
+        var i;
+        this.countrylist = countries_1.CountryList;
+        for (i = 6; i <= 40; i++) {
+            this.agelist.push(i);
+        }
     }
     ngAfterViewInit() {
         jQuery(document).ready(function () {
@@ -42,8 +50,8 @@ let RegisterComponent = class RegisterComponent {
             email: ['', [forms_1.Validators.required]],
             username: ['', [forms_1.Validators.required, forms_1.Validators.minLength(4), forms_1.Validators.maxLength(8)]],
             gender: 'M',
-            age: ['', [forms_1.Validators.max(60), forms_1.Validators.min(3)]],
-            country: ['', [forms_1.Validators.required]]
+            age: ['6', [forms_1.Validators.max(60), forms_1.Validators.min(3)]],
+            country: ['India', [forms_1.Validators.required]]
         });
     }
     isvalidfield(field) {

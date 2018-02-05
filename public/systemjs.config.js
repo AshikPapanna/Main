@@ -24,7 +24,7 @@
             'plugin-babel': 'npm:systemjs-plugin-babel/plugin-babel.js',
             'systemjs-babel-build': 'npm:systemjs-plugin-babel/systemjs-babel-browser.js',
             // other libraries
-      
+            'materialize-css': 'npm:materialize-css',
             'angular2-in-memory-web-api':'npm:angular2-in-memory-web-api',
             'angular2-materialize':'npm:angular2-materialize'
         },
@@ -51,10 +51,15 @@
             rxjs: {               
                 defaultExtension: false
             },
-            'angular2-materialize': {
-                main: "dist/materialize-directive",
-                defaultExtension: "js"
-            },
+             'materialize-css': {
+                "format": "global",
+                "main": "dist/js/materialize",
+                "defaultExtension": "js"
+              },
+              'angular2-materialize': {
+                "main": "dist/index",
+                "defaultExtension": "js"
+              },
               'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
         }
     });

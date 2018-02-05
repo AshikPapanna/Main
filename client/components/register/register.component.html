@@ -11,46 +11,66 @@
 
                 <div class="row">
                     <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
                         <input id="first_name" type="text" formControlName="firstname" [class.invalid]="isvalidfield('firstname')">
-                        <label for="first_name" attr.data-error="{{registerform.status}}">First Name</label>
+                        <label for="first_name" data-error="Invalid">First Name</label>
                       </div>
                       <div id="last_name" class="input-field col s6">
+                          <i class="material-icons prefix">account_circle</i>
                         <input id="last_name"  type="text"  formControlName="lastname" [class.invalid]="isvalidfield('lastname')">
-                         <label for="last_name" attr.data-error="Invalid">Last Name</label>
+                         <label for="last_name" data-error="Invalid">Last Name</label>
                         </div>
                      </div>
                      <div class="row">
                       <div class="input-field col s6">
+                          <i class="material-icons prefix">check_circle</i>
                           <input id="user_name" type="text" formControlName="username" [class.invalid]="isvalidfield('username')" >
-                          <label for="user_name"attr.data-error="Invalid">User Name</label>
+                          <label for="user_name" data-error="Invalid">User Name</label>
                         </div>
                         <div  class="input-field col s6">
+                            <i class="material-icons prefix">mail</i>
                           <input id="e_mail"  type="text"  formControlName="email" >
-                           <label for="e_mail"attr.data-error="Invalid">Email</label>
+                           <label for="e_mail" data-error="Invalid">Email</label>
                           </div>
                        </div>
                     
           <div class="row">
-              <h5>Gender:</h5>
-            <div class="col s6">
-             <p>
+              
+            
+             
+                <div class="col s1" style="margin-top:5%">
+                <i class="material-icons prefix">wc</i>
+                </div>
+             <div class="col s2" style="margin-top:5%">
                <input [class]="with-gap"  formControlName="gender" type="radio" id="test1" value="M"   />
                <label for="test1">Male</label>
-             </p>
-             <p>
+             </div>
+             <div class="col s3" style="margin-top:5%">
                <input [class]="with-gap"  type="radio" formControlName="gender" id="test2" value="F"/>
                <label for="test2">Female</label>
-             </p>
+             </div>
+            
+          <div class="col s1" style="margin-top:5%">
+              <i class="material-icons prefix">all_inclusive</i>
           </div>
-
-          <div class="input-field col s6">
-              <select>
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-              </select>
-              <label>Materialize Select</label>
+          <div class="input-field  col s5" >
+              <select name="age_ctl" formControlName="age" materialize="material_select" [materializeSelectOptions]="agelist" [class.invalid]="isvalidfield('username')">
+                  <option *ngFor="let age of agelist" [value]="age">{{age}}</option>
+              </select>            
+              <label for="age_ctl" data-error="Invalid" style="font-size: 1rem;">Age</label>
+           </div>
+         
+        </div>
+          <div class="row">
+            
+              <div class="col s1" style="margin-top:5%">
+                  <i class="material-icons prefix">public</i>
+              </div>
+          <div class="input-field col s5">
+              <select name="country_name" formControlName="country" materialize="material_select" [materializeSelectOptions]="countrylist" [class.invalid]="isvalidfield('username')">
+                  <option *ngFor="let country of countrylist" [value]="country">{{country}}</option>
+              </select>            
+              <label for="country_name" data-error="Invalid" style="font-size: 1rem;">Country</label>
             </div>
           
             </div>   

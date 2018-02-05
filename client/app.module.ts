@@ -28,13 +28,15 @@ import{InstructorComponent} from './components/instructors/instructor.component'
 import {InstructordetailComponent} from  './components/instructors/instructordetail/instructordetail.component'
 import{AboutusComponent} from './components/aboutus/aboutus.component';
 
+import { MaterializeModule } from 'angular2-materialize';
+
 
 @NgModule({
     
     imports:[BrowserModule,BrowserAnimationsModule,ReactiveFormsModule
        , FormsModule,       
          HttpModule,
-         AppRoutes],
+         AppRoutes,MaterializeModule ],
     declarations:[AppComponent
         ,LoginComponent
         ,ProfileComponent,RegisterComponent

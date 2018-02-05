@@ -5,7 +5,10 @@ import {Register} from '../../../models/registration'
 import{RegisterService} from './register.service'
 import {Location} from '@angular/common';
 
+import {CountryList} from '../../constants/countries'
+
 import {Router} from '@angular/router'
+import 'materialize-css';
 
 import {FormBuilder,FormGroup,Validators,FormControl,AbstractControl} from '@angular/forms'
 declare var $: any
@@ -17,6 +20,8 @@ declare var $: any
     providers:[RegisterService]
 })
 export class RegisterComponent implements AfterViewInit {
+    countrylist:any;
+    agelist:Array<Number>[]=[];
     ngAfterViewInit(): void {
          jQuery(document).ready(function() {
    // jQuery('select').material_select();
@@ -26,6 +31,11 @@ export class RegisterComponent implements AfterViewInit {
     constructor(private registerService:RegisterService,private formbuilder:FormBuilder
     ,private router:Router,private location:Location){
         this.createform();
+        var i;
+        this.countrylist=CountryList;
+        for(i=6;i<=40;i++){
+             this.agelist.push(i);
+        }
     } 
     createform(){
         this.registerform=this.formbuilder.group(
@@ -35,8 +45,8 @@ export class RegisterComponent implements AfterViewInit {
                  email:['',[Validators.required]],
                  username:['',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]],
                  gender:'M',
-                 age:['',[Validators.max(60),Validators.min(3)]],
-                 country:['',[Validators.required]]         
+                 age:['6',[Validators.max(60),Validators.min(3)]],
+                 country:['India',[Validators.required]]         
                
             }
         )

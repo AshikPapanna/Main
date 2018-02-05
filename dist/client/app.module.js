@@ -26,6 +26,7 @@ const footer_component_1 = require("./components/footer/footer.component");
 const instructor_component_1 = require("./components/instructors/instructor.component");
 const instructordetail_component_1 = require("./components/instructors/instructordetail/instructordetail.component");
 const aboutus_component_1 = require("./components/aboutus/aboutus.component");
+const angular2_materialize_1 = require("angular2-materialize");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -33,7 +34,7 @@ AppModule = __decorate([
         imports: [platform_browser_1.BrowserModule, animations_1.BrowserAnimationsModule, forms_2.ReactiveFormsModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            app_routes_1.AppRoutes],
+            app_routes_1.AppRoutes, angular2_materialize_1.MaterializeModule],
         declarations: [app_component_1.AppComponent,
             login_component_1.LoginComponent,
             profile_component_1.ProfileComponent, register_component_1.RegisterComponent,
