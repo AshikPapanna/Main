@@ -26,6 +26,7 @@
     "@types/core-js": "^0.9.43",
     "@types/node": "^8.0.26",
     "@types/rx": "^4.1.1",
+    "angular2-materialize": "^15.1.10",
     "async": "^2.5.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
@@ -43,6 +44,7 @@
     "mongoose-unique-validator": "^1.0.6",
     "mongoose-validators": "^0.1.0",
     "morgan": "^1.8.2",
+    "ng2-materialize": "^1.8.0-beta.0",
     "node-schedule": "^1.2.5",
     "nodemailer": "^4.1.0",
     "nodemon": "^1.12.0",
@@ -52,6 +54,7 @@
     "rxjs-system-bundle": "^5.5.2",
     "sendgrid": "^5.2.3",
     "systemjs": "^0.20.18",
+    "systemjs-plugin-babel": "0.0.25",
     "zone.js": "^0.8.17"
   },
   "engines": {
