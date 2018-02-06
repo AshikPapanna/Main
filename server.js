@@ -22,13 +22,6 @@ app.use('/dist',express.static(path.join(__dirname,'dist')));
 
 
 app.use(function(req,res,next){
-  /*  console.log("IP Address");
-    console.log( req.headers['x-forwarded-for']|| req.connection.remoteAddress);
-   
-   
-    var ip = "fe80::99c2:b36:d3fa:d2e%10";
-    var geo = geoip.lookup(ip);
-console.log(geo);*///
     if(req.headers&&req.headers.authorization    
     &&req.headers.authorization.split(' ')[0]==='JWT')    {
 jsonwebtoken.verify(req.headers.authorization.split(' ')[1],process.env.JWT_KEY||require('./appconfig').secrete
@@ -52,7 +45,7 @@ jsonwebtoken.verify(req.headers.authorization.split(' ')[1],process.env.JWT_KEY|
             if(err) 
            {
             console.log(err);
-        req.user=undefined;
+             req.user=undefined;
         }else{   console.log(decode); 
             req.user=decode;}
     next();  

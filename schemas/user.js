@@ -9,13 +9,13 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        validate: [validators.isLength({message:'FirstName should be >=4 and <=10'},4, 20)]
+        validate: [validators.isLength({message:'FirstName should be >=4 and <=10'},4, 12)]
     },
     lastname: {
         type: String,
         trim: true,
         required:true,
-        validate: [validators.isLength({message:'FirstName should be >=2 and <=6'},2, 20)]
+        validate: [validators.isLength({message:'FirstName should be >=2 and <=6'},2, 12)]
     },
     email: {
         type: String,
@@ -30,19 +30,15 @@ var UserSchema = new mongoose.Schema({
     createddate: {
         type: Date,
         default: Date.now
-    },
-    dob:{
-        type: Date,       
-    },
+    },  
     age:{
         type:Number,
         min:[6,"Age should be more than 6"],
-        max:[30,"Age should be less than 30"],
+        max:[60,"Age should be less than 30"],
         required:[function(){return !this.dob;},"Please enter Age or Date of Birth"]
     },
     country:{
-        type:String,
-        enum:['India','United States'],
+        type:String,       
         required:[true,'Please select the Country']
     },
     gender:{
@@ -66,8 +62,8 @@ var UserSchema = new mongoose.Schema({
     },
     role:{
         type:String,
-        enum:['Trainer','Admin','Registered','User'],
-        default:'Registered'
+        enum:['Trainer','Admin','Student','User'],
+        default:'User'
     }
  
 });
@@ -76,13 +72,13 @@ UserSchema.pre('save', function (next) {
     if (!this.createddate) {
         this.createddate = currentdate;
     } 
-    console.log("this.dob.getUTCFullYear()");
+   /* console.log("this.dob.getUTCFullYear()");
       console.log(this.dob.getUTCFullYear());
     //validate DOB
     if(this.dob.getUTCFullYear()>(currentdate.getUTCFullYear()-5) || this.dob.getUTCFullYear()<1985)
     {
       next(new Error("Please enter valid Date of Birth"));
-    }
+    }*/
      else
     {
       next();

@@ -38,10 +38,13 @@ let RegisterService = class RegisterService {
         return this.http.get(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '/'));
     }
     checkisemailunique(email) {
-        console.log(document.location.href + "/checkisemailunique");
         return this.http.post(document.location.href + "/checkisemailunique", email)
-            .map((res) => res.json())
-            .catch(error => { return Rx_1.Observable.throw(error); });
+            .map((res) => {
+            return res.json();
+        })
+            .catch(error => {
+            return Rx_1.Observable.throw(JSON.parse(error._body));
+        });
     }
 };
 RegisterService = __decorate([

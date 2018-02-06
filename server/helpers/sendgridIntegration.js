@@ -1,7 +1,7 @@
 var helper = require('sendgrid').mail;
 var fs = require('fs');
 
-var bitmap = fs.readFileSync('../../public/images/gravatar.jpg');
+var bitmap = fs.readFileSync('../../public/images/chat.svg');
 // convert binary data to base64 encoded string
 var a= new Buffer(bitmap).toString('base64');
 
