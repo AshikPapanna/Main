@@ -79,6 +79,7 @@ export class RegisterComponent  {
      this.registerService.register(this.registerform.value).subscribe(
          data=>{
             this.registerform.reset();
+            this.router.navigate(['/registersuccessfull']);
          },
          err=>{
               console.log(err);

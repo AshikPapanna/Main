@@ -7,7 +7,7 @@
         
         <div class="col s5" style="background-color:white  ;padding-top:2%;margin-top:6%;margin-bottom:8%; box-shadow: 0px 0px 15px #888888;">
         
-     <form [formGroup]="registerform" (ngSubmit)="onSubmit()" novalidate>
+     <form *ngIf="!submitedsuccessfully" [formGroup]="registerform" (ngSubmit)="onSubmit()" novalidate>
 
                 <div class="row">
                     <div class="input-field col s6">
@@ -84,15 +84,7 @@
           
          <button type="submit" class="waves-effect waves-light btn green" [disabled]="registerform.invalid" >Register</button>
          </div>
-          </form>
-
-          <div class="row" *ngIf="IsSuccess">
-            <div class="container">
-            <div class ="col s12" >
-              <h6>Confirmation mail has been sent to registered EmailId !</h6>
-            </div>
-            </div>
-          </div>
+          </form>        
         </div>
         <div class="col s2" style="background-color:wheat;">
           </div>

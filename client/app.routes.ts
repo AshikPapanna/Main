@@ -13,6 +13,7 @@ import{InstructordetailComponent} from './components/instructors/instructordetai
 import{AppComponent} from './app.component'
 
 import{AboutusComponent} from './components/aboutus/aboutus.component';
+import{RegistersuccessfullComponent} from './components/registersuccessfull/registersuccessfull.component';
 
 
 
@@ -74,6 +75,10 @@ component:ProfileComponent
      {
         path:'aboutus',
         component:AboutusComponent
+    },
+    {
+        path:'registersuccessfull',
+        component:RegistersuccessfullComponent
     },
       
     {
