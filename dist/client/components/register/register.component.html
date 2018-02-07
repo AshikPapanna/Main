@@ -1,11 +1,12 @@
 
-    <div class="row" style="height:100%;">
-        <div class="col s5" style="padding-top:17%;text-align:right;padding-right:4%"  >
-        <h2 class="red-text text-darken-1 logotext">  Ashik</h2>
+    <div class="row" style="height:100%;background-image: url('/public/images/signup.jpg')">
+        <div class="col s6" style="padding-top:17%;text-align:center;padding-right:4%"  >
+        <h2 class="red-text text-darken-1 logotext"><b>  New to SARANG? </b> </h2>
+         <p class="red-text text-darken-1 logotext">No worries! Create an account to start learning live interactive Indian Classical courses such as Hindustani, Carnatic and more </p>
         
           </div>
         
-        <div class="col s5" style="background-color:white  ;padding-top:2%;margin-top:6%;margin-bottom:8%; box-shadow: 0px 0px 15px #888888;">
+        <div class="col s4" style="background-color:white  ;padding-top:2%;margin-top:6%;margin-bottom:8%; box-shadow: 0px 0px 15px #888888;">
         
      <form *ngIf="!submitedsuccessfully" [formGroup]="registerform" (ngSubmit)="onSubmit()" novalidate>
 
@@ -13,24 +14,24 @@
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
                         <input id="first_name" type="text" formControlName="firstname" [class.invalid]="isvalidfield('firstname')">
-                        <label for="first_name" data-error="Invalid">First Name</label>
+                        <label for="first_name" data-error="Please enter your first name (>=4 and <=12)">First Name</label>
                       </div>
                       <div id="last_name" class="input-field col s6">
                           <i class="material-icons prefix">account_circle</i>
                         <input id="last_name"  type="text"  formControlName="lastname" [class.invalid]="isvalidfield('lastname')">
-                         <label for="last_name" data-error="Invalid">Last Name</label>
+                         <label for="last_name" data-error="Please enter your last name (>=2 and <=12)">Last Name</label>
                         </div>
                      </div>
                      <div class="row">
                       <div class="input-field col s6">
                           <i class="material-icons prefix">check_circle</i>
                           <input id="user_name" type="text" formControlName="username" [class.invalid]="isvalidfield('username')" >
-                          <label for="user_name" data-error="Invalid">User Name</label>
+                          <label for="user_name" data-error="Please enter an unique name (>=4 and <=8)">User Name</label>
                         </div>
                         <div  class="input-field col s6">
                             <i class="material-icons prefix">mail</i>
                           <input id="e_mail"  type="text"  formControlName="email" [class.invalid]="isvalidfield('email')">
-                           <label for="e_mail" data-error="Invalid">Email</label>
+                           <label for="e_mail" data-error="Email is invalid or already taken">Email</label>
                           </div>
                        </div>
                     
@@ -74,12 +75,7 @@
             </div>
           
             </div>   
-          
-           {{registerform.value |json}}
-           {{registerform.status |json}}
-           
-   
-       
+        
          <div class="center">
           
          <button type="submit" class="waves-effect waves-light btn green" [disabled]="registerform.invalid" >Register</button>

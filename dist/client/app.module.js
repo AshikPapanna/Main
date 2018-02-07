@@ -26,6 +26,7 @@ const footer_component_1 = require("./components/footer/footer.component");
 const instructor_component_1 = require("./components/instructors/instructor.component");
 const instructordetail_component_1 = require("./components/instructors/instructordetail/instructordetail.component");
 const aboutus_component_1 = require("./components/aboutus/aboutus.component");
+const registersuccessfull_component_1 = require("./components/registersuccessfull/registersuccessfull.component");
 const angular2_materialize_1 = require("angular2-materialize");
 let AppModule = class AppModule {
 };
@@ -45,7 +46,8 @@ AppModule = __decorate([
             faqs_component_1.FaqsComponent, footer_component_1.FooterComponent,
             instructor_component_1.InstructorComponent,
             instructordetail_component_1.InstructordetailComponent,
-            aboutus_component_1.AboutusComponent
+            aboutus_component_1.AboutusComponent,
+            registersuccessfull_component_1.RegistersuccessfullComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     })

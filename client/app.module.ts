@@ -28,6 +28,8 @@ import{InstructorComponent} from './components/instructors/instructor.component'
 import {InstructordetailComponent} from  './components/instructors/instructordetail/instructordetail.component'
 import{AboutusComponent} from './components/aboutus/aboutus.component';
 
+import{RegistersuccessfullComponent} from './components/registersuccessfull/registersuccessfull.component';
+
 import { MaterializeModule } from 'angular2-materialize';
 
 
@@ -48,6 +50,7 @@ import { MaterializeModule } from 'angular2-materialize';
     ,InstructorComponent
     ,InstructordetailComponent
     ,AboutusComponent
+    ,RegistersuccessfullComponent
 ],
     
 
