@@ -9,6 +9,7 @@ const forgotpassword_component_1 = require("./components/forgotpassword/forgotpa
 const faqs_component_1 = require("./components/faqs/faqs.component");
 const instructor_component_1 = require("./components/instructors/instructor.component");
 const aboutus_component_1 = require("./components/aboutus/aboutus.component");
+const registersuccessfull_component_1 = require("./components/registersuccessfull/registersuccessfull.component");
 const approutes = [
     {
         path: 'home',
@@ -62,6 +63,10 @@ const approutes = [
     {
         path: 'aboutus',
         component: aboutus_component_1.AboutusComponent
+    },
+    {
+        path: 'registersuccessfull',
+        component: registersuccessfull_component_1.RegistersuccessfullComponent
     },
     {
         path: '',

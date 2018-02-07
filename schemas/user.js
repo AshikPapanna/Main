@@ -1,51 +1,97 @@
-"use strict";
-var mongoose_1 = require('mongoose');
-var bcrypt_nodejs_1 = require('bcrypt-nodejs');
-var mongoose_validators_1 = require('mongoose-validators');
-var UserSchema = new mongoose_1.Schema({
+var mongoose = require("mongoose");
+var bcrypt = require("bcrypt-nodejs");
+var validators = require("mongoose-validators");
+var uniqueValidators=require("mongoose-unique-validator");
+
+var UserSchema = new mongoose.Schema({
     firstname: {
         type: String,
         required: true,
         trim: true,
-        validate: [mongoose_validators_1.validators.isLength(4, 10)]
+        validate: [validators.isLength({message:'FirstName should be >=4 and <=10'},4, 12)]
     },
     lastname: {
         type: String,
-        trim: true
+        trim: true,
+        required:true,
+        validate: [validators.isLength({message:'FirstName should be >=2 and <=6'},2, 12)]
     },
     email: {
         type: String,
         required: true,
         trim: true,
-        lowercase: true
+        lowercase: true,
+        unique:true
     },
     hash_password: {
-        type: String,
-        required: true
+        type: String      
     },
     createddate: {
         type: Date,
         default: Date.now
+    },  
+    age:{
+        type:Number,
+        min:[6,"Age should be more than 6"],
+        max:[60,"Age should be less than 30"],
+        required:[function(){return !this.dob;},"Please enter Age or Date of Birth"]
+    },
+    country:{
+        type:String,       
+        required:[true,'Please select the Country']
+    },
+    gender:{
+        type:String,
+        enum:{values:['M','F'],message:'Please select valid Gender'},
+        required:[true,'Please select the Gender']
     },
     resetPasswordToken: {
         type: String
     },
     resetPasswordExpiresOn: {
         type: Date
+    },
+    isemailverified:{
+        type:Boolean,
+        default:false
+    },
+    issubscribed:{
+        type:Boolean,
+        default:true
+    },
+    role:{
+        type:String,
+        enum:['Trainer','Admin','Student','User'],
+        default:'User'
     }
+ 
 });
 UserSchema.pre('save', function (next) {
     var currentdate = new Date();
     if (!this.createddate) {
         this.createddate = currentdate;
+    } 
+   /* console.log("this.dob.getUTCFullYear()");
+      console.log(this.dob.getUTCFullYear());
+    //validate DOB
+    if(this.dob.getUTCFullYear()>(currentdate.getUTCFullYear()-5) || this.dob.getUTCFullYear()<1985)
+    {
+      next(new Error("Please enter valid Date of Birth"));
+    }*/
+     else
+    {
+      next();
     }
-    next();
 });
+
+
+UserSchema.plugin(uniqueValidators,{message:'Email should be unique.'});
+
 UserSchema.methods.fullname = function () {
     return this.firstname + ' ' + this.lastname;
 };
 UserSchema.methods.comparepassword = function (password) {
-    return bcrypt_nodejs_1.compareSync(password, this.hash_password);
+    return bcrypt.compareSync(password, this.hash_password);
 };
-exports.User = mongoose_1.model("User", UserSchema);
-//# sourceMappingURL=user.js.map
+ mongoose.model("User",UserSchema);
+ module.exports=mongoose.model('User');
