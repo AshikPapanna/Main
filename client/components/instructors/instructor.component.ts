@@ -1,19 +1,10 @@
-import {Component,AfterViewInit,OnInit,Pipe,PipeTransform} from '@angular/core'
+import {Component,AfterViewInit,OnInit} from '@angular/core'
 import {InstructorService} from './instructor.service'
 
 import {Instructor,InstructorDetails} from '../../../models/instructor'
 
 import {InstructordetailComponent} from './instructordetail/instructordetail.component'
-@Pipe({
-        name:"specializationfilter",
-        pure:false
-})
-   /* export class SpecializationFilterPipe implements PipeTransform{
-   transform(value: Instructor[],spcl:string) {
-        return value.filter(inst => inst.specialized.toLowerCase().indexOf(spcl) !== -1);
-    }
 
-    }*/
 @Component({
     
     moduleId:module.id,

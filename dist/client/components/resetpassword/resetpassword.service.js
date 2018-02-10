@@ -13,26 +13,42 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
+const common_1 = require("@angular/common");
 const http_1 = require("@angular/http");
 const Rx_1 = require("rxjs/Rx");
 require("rxjs/add/operator/map");
 const platform_browser_1 = require("@angular/platform-browser");
 let ResetpasswordService = class ResetpasswordService {
-    constructor(http, document) {
+    constructor(http, document, location) {
         this.http = http;
+        this.location = location;
     }
-    getresetpassword() {
-        return this.http.get(document.location.href).map(res => {
-            return res.json();
-        }, err => {
+    getresetpassword(token) {
+        return this.http.get(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/resetpassword/' + token).map(res => {
+        }).catch(err => {
+            console.log(err);
             return Rx_1.Observable.throw(err);
         });
+    }
+    postresetpassword(body, token) {
+        return this.http.post(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/resetpassword/' + token, body).map((res) => {
+            let token = res.json() && res.json().token;
+            let usr = res.json() && res.json().user;
+            if (token) {
+                localStorage.setItem('user', JSON.stringify({ user: usr, token: token }));
+                return res;
+            }
+            else {
+                return res;
+            }
+        })
+            .catch((error) => Rx_1.Observable.throw(error.json().error || 'server error'));
     }
 };
 ResetpasswordService = __decorate([
     core_1.Injectable(),
     __param(1, core_1.Inject(platform_browser_1.DOCUMENT)),
-    __metadata("design:paramtypes", [http_1.Http, Object])
+    __metadata("design:paramtypes", [http_1.Http, Object, common_1.Location])
 ], ResetpasswordService);
 exports.ResetpasswordService = ResetpasswordService;
 

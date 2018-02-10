@@ -1,16 +1,16 @@
 
     <div class="row" style="height:100%;background-image: url('/public/images/signup.jpg')">
-        <div class="col s6" style="padding-top:17%;text-align:center;padding-right:4%"  >
-        <h2 class="red-text text-darken-1 logotext"><b>  New to SARANG? </b> </h2>
-         <p class="red-text text-darken-1 logotext">No worries! Create an account to start learning live interactive Indian Classical courses such as Hindustani, Carnatic and more </p>
+        <div class="col s6" style="padding-top:14%;text-align:center;padding-right:5%;padding-left:6%"  >
+        <h3 class=" pink-text text-darken-4  logotext sa-homesubheader-text"> New to S&#x0101;RANG?  </h3>
+         <p class="brown-text text-darken-1 logotext sa-subheaderdesc-text">No worries! Create an account to start learning live interactive Indian Classical courses such as Hindustani, Carnatic and more </p>
         
           </div>
         
-        <div class="col s4" style="background-color:white  ;padding-top:2%;margin-top:6%;margin-bottom:8%; box-shadow: 0px 0px 15px #888888;">
+        <div class="col s4" style="background-color:white  ;padding-top:2%;margin-top:6%;margin-bottom:8%;width:45%; box-shadow: 0px 0px 15px #888888;">
         
      <form *ngIf="!submitedsuccessfully" [formGroup]="registerform" (ngSubmit)="onSubmit()" novalidate>
 
-                <div class="row">
+                <div class="row" style="margin-bottom: 10px;">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
                         <input id="first_name" type="text" formControlName="firstname" [class.invalid]="isvalidfield('firstname')">
@@ -22,7 +22,7 @@
                          <label for="last_name" data-error="Please enter your last name (>=2 and <=12)">Last Name</label>
                         </div>
                      </div>
-                     <div class="row">
+                     <div class="row" style="margin-bottom: 10px;">
                       <div class="input-field col s6">
                           <i class="material-icons prefix">check_circle</i>
                           <input id="user_name" type="text" formControlName="username" [class.invalid]="isvalidfield('username')" >
@@ -35,7 +35,7 @@
                           </div>
                        </div>
                     
-          <div class="row">
+          <div class="row" style="margin-bottom: 10px;">
               
             
              
@@ -62,7 +62,7 @@
            </div>
          
         </div>
-          <div class="row">
+          <div class="row" style="margin-bottom: 10px;">
             
               <div class="col s1" style="margin-top:5%">
                   <i class="material-icons prefix">public</i>

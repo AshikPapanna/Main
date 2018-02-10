@@ -13,62 +13,29 @@ const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
 require("rxjs/add/operator/switchMap");
 const forgotpassword_service_1 = require("./forgotpassword.service");
-const registration_1 = require("../../../models/registration");
+const forms_1 = require("@angular/forms");
 let ForgotpasswordComponent = class ForgotpasswordComponent {
-    constructor(forgotpasswordService, route) {
+    constructor(forgotpasswordService, fb, router) {
         this.forgotpasswordService = forgotpasswordService;
-        this.route = route;
-        this.register = new registration_1.Register('', '', '', '', '', '', '', '');
-        this.confirmpasswordclass = '';
-        this.passwordclass = '';
-        this.IsSuccess = false;
-        this.emailvalidateclass = '';
+        this.fb = fb;
+        this.router = router;
+        this.createform();
     }
-    ngOnInit() {
-        this.route.queryParams.subscribe((par) => { this.register.email = par['emailid']; });
+    createform() {
+        this.fpform = this.fb.group({
+            email: ['', [forms_1.Validators.required, forms_1.Validators.email]]
+        });
     }
-    validateemail(email) {
-        if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
-            this.emailvalidateclass = 'valid';
-            return true;
-        }
-        else {
-            this.emailvalidateclass = 'invalid';
-            return false;
-        }
-    }
-    comparePassword(password, confirmpassword) {
-        if (password !== confirmpassword) {
-            this.confirmpasswordclass = 'invalid';
-            return false;
-        }
-        else {
-            this.confirmpasswordclass = 'valid';
-            return true;
-        }
-    }
-    Validatepasswordlength(password) {
-        if (password.length < 8 || password.length > 20) {
-            this.passwordclass = 'invalid';
-            return false;
-        }
-        else {
-            this.passwordclass = 'valid';
-            return true;
-        }
+    isvalidfield(field) {
+        return this.fpform.get(field).invalid && this.fpform.get(field).touched;
     }
     onSubmit() {
-        if (!(this.Validatepasswordlength(this.register.password)
-            && this.comparePassword(this.register.password, this.register.confirmpassword))) {
-            return false;
-        }
-        this.forgotpasswordService.forgotpassword(this.register).subscribe(user => {
-            this.IsSuccess = true;
+        this.forgotpasswordService.forgotpassword(this.fpform.value).subscribe(user => {
+            this.router.navigate(['/registersuccessfull']);
         }, err => {
             console.log(err);
             if (err._body && JSON.parse(err._body).email && JSON.parse(err._body).email) {
-                this.emailvalidateclass = 'invalid';
-                this.IsSuccess = false;
+                this.fpform.controls['email'].setErrors({ 'invalid': true });
             }
         });
     }
@@ -76,13 +43,12 @@ let ForgotpasswordComponent = class ForgotpasswordComponent {
 };
 ForgotpasswordComponent = __decorate([
     core_1.Component({
-        selector: 'sa-forgotpassword',
         moduleId: module.id,
         templateUrl: './forgotpassword.component.html',
         styleUrls: ['./forgotpassword.component.css'],
         providers: [forgotpassword_service_1.ForgotpasswordService]
     }),
-    __metadata("design:paramtypes", [forgotpassword_service_1.ForgotpasswordService, router_1.ActivatedRoute])
+    __metadata("design:paramtypes", [forgotpassword_service_1.ForgotpasswordService, forms_1.FormBuilder, router_1.Router])
 ], ForgotpasswordComponent);
 exports.ForgotpasswordComponent = ForgotpasswordComponent;
 

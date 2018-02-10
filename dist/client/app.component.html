@@ -5,7 +5,7 @@
     <div class="nav-wrapper">          
        <!-- <a routerLink="/home" id="logo" class="brand-logo" >Logo1</a>   -->     
 
-      <a style="font-family: 'Comfortaa', cursive;font-weight: 300;font-size:3.0em;position: absolute;left:35px;">
+      <a style="font-family: 'Comfortaa', cursive;font-weight: 300;font-size:3.0em;position: absolute;left:35px;" [routerLink]="['/home']">
           <span class="red-orange-brown">S&#x0101;rang</span>
         </a>
  
@@ -23,7 +23,7 @@
                   </li>
                  
                 <li class="sa-navlink"><a routerLink="/instructors">Instructors</a></li>
-                <li class="sa-navlink"><a href="">Company</a>
+                <li class="sa-navlink"><a >Company</a>
                  <ul class="sub-menu" style="width: 150%;left:-20%;">
 <li class="sub-menulink"><a   routerLink="/aboutus">About Us</a></li>
 <li class="sub-menulink"><a    href="">Mission </a></li>
@@ -32,10 +32,13 @@
               
                  <li class="sa-navlink"><a routerLink="/faqs">FAQs</a></li>
 
-                <li class="sa-navlink" *ngIf="!username"><a routerLink="/login" >Login</a>
+                <li class="sa-navlink" *ngIf="!isloggedin();"><a routerLink="/login" >Login</a>
                    </li>  
        
-                <li class="sa-navlink" *ngIf="username"><a >{{username}}</a>
+                <li class="sa-navlink" *ngIf="isloggedin();"><a >Hi {{username}}</a>
+                     <ul class="sub-menu" style="background-color: white;">
+              <li class="sub-menulink">Account Setting</li>
+              <li  class="sub-menulink"><button class="waves-effect waves-light btn green" (click)="logout()" >Logout</button></li> </ul>
                    </li>              
         </ul>
     </div> 
@@ -45,10 +48,7 @@
 </div>
 
 
-<div  [@routerTransition]="getState(o)" > 
-    <ul *ngIf="isloggedin()"class="vb-accountsetmenu" >
-              <li class="vb-accountsetlist">Account Setting</li>
-              <li  class="vb-accountsetlist"><button class="waves-effect waves-light btn green" (click)="logout()" >Logout</button></li>         </ul>
+<div  [@routerTransition]="getState(o)" >     
     <router-outlet #o="outlet"></router-outlet>            
  </div>
 

@@ -53,17 +53,6 @@ let InstructorComponent = class InstructorComponent {
     }
 };
 InstructorComponent = __decorate([
-    core_1.Pipe({
-        name: "specializationfilter",
-        pure: false
-    })
-    /* export class SpecializationFilterPipe implements PipeTransform{
-    transform(value: Instructor[],spcl:string) {
-         return value.filter(inst => inst.specialized.toLowerCase().indexOf(spcl) !== -1);
-     }
- 
-     }*/
-    ,
     core_1.Component({
         moduleId: module.id,
         templateUrl: './instructor.component.html',

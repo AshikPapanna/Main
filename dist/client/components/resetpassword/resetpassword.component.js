@@ -11,21 +11,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const resetpassword_service_1 = require("./resetpassword.service");
-let ResetPasswordComponent = class ResetPasswordComponent {
-    constructor(resetpasswordService) {
+const forms_1 = require("@angular/forms");
+const router_1 = require("@angular/router");
+let ResetpasswordComponent = class ResetpasswordComponent {
+    constructor(resetpasswordService, fb, route, router, ngzone) {
         this.resetpasswordService = resetpasswordService;
+        this.fb = fb;
+        this.route = route;
+        this.router = router;
+        this.ngzone = ngzone;
+        this.createform();
+    }
+    createform() {
+        this.loginform = this.fb.group({
+            password: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8), forms_1.Validators.maxLength(12)]],
+            confirmpassword: ['', [forms_1.Validators.required, this.checkpasswordmatches.bind(this)]]
+        });
+    }
+    checkpasswordmatches(control) {
+        if (this.loginform)
+            return (control.value === this.loginform.get('password').value) ? null : { 'donotmatch': true };
+        else
+            return null;
+    }
+    isvalidfield(field) {
+        return this.loginform.get(field).invalid && this.loginform.get(field).touched;
     }
     ngOnInit() {
-        this.resetpasswordService.getresetpassword().subscribe(user => { }, err => { });
+        this.route.params.subscribe(params => {
+            this.token = params['tokenId'];
+        });
+        console.log(this.token);
+        if (this.token) {
+            this.resetpasswordService.getresetpassword(this.token).subscribe(user => { }, err => {
+                this.err = true;
+            });
+        }
+        else {
+            this.err = true;
+        }
+        if (this.err) {
+            this.ngzone.run(() => this.router.navigateByUrl['/error']);
+        }
+    }
+    onSubmit() {
+        this.resetpasswordService.postresetpassword(this.loginform.value, this.token).subscribe(user => {
+            window.location.replace(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''));
+        });
     }
 };
-ResetPasswordComponent = __decorate([
+ResetpasswordComponent = __decorate([
     core_1.Component({
         templateUrl: './resetpassword.component.html',
-        providers: [resetpassword_service_1.ResetpasswordService]
+        providers: [resetpassword_service_1.ResetpasswordService],
+        moduleId: module.id
     }),
-    __metadata("design:paramtypes", [resetpassword_service_1.ResetpasswordService])
-], ResetPasswordComponent);
-exports.ResetPasswordComponent = ResetPasswordComponent;
+    __metadata("design:paramtypes", [resetpassword_service_1.ResetpasswordService, forms_1.FormBuilder, router_1.ActivatedRoute,
+        router_1.Router,
+        core_1.NgZone])
+], ResetpasswordComponent);
+exports.ResetpasswordComponent = ResetpasswordComponent;
 
 //# sourceMappingURL=resetpassword.component.js.map

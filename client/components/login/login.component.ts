@@ -1,7 +1,7 @@
-import {Component} from '@angular/core'
-import {Login} from '../../../models/login'
+import {Component,OnInit} from '@angular/core'
 import {LoginService} from './login.service'
 import{Router} from '@angular/router'
+import {FormBuilder,FormGroup,Validators,AbstractControl} from '@angular/forms'
 
 @Component({
     moduleId:module.id,
@@ -10,47 +10,29 @@ import{Router} from '@angular/router'
    styleUrls:['./login.component.css'],
    providers:[LoginService]
 })
-export class LoginComponent{
-    constructor(private loginservice:LoginService,
-    private route:Router){};
-    loginForm:any;
-     emailvalidateclass:string='';
-      passwordclass:string='';  
-    login=new Login('','','');
-   /* closeNav(){
-        document.getElementById("mySidenav").style.width = "0%";        
+export class LoginComponent implements OnInit{
+    loginForm:FormGroup;
+    ngOnInit(): void {
+         if(this.loginservice.islogedin()){
+       window.location.replace(location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: ''));
+             }
     }
-    registerclick(){
-        document.getElementById("mySidenav").style.width = "0%";
-        document.getElementById("mySidenavforregister").style.width = "30%";
-    }*/
-     validateemail(email:string):boolean{
-            if(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-                this.emailvalidateclass='valid'
-                return true;
-            }
-        else{
-            this.emailvalidateclass='invalid'
-            return false;
-        }
-     }
-    Validatepasswordlength(password:string):boolean
- {
-      if( password.length<8||password.length>20)
-                {
-                 
-                    this.passwordclass='invalid';
-                    return false;
-                }
-                else{
-                   
-                    this.passwordclass='valid';
-                    return true;
-                }
- }
-    onSubmit(){
-        console.log(this.login);
-        this.loginservice.login(this.login).subscribe(
+    constructor(private loginservice: LoginService,
+    private route:Router,private fb:FormBuilder ){
+        this.createform();
+    };
+    createform(){
+        this.loginForm=this.fb.group({
+            email:['',[Validators.required,Validators.email]],
+            password:['',[Validators.required,Validators.minLength(8),Validators.maxLength(12)]]
+        })
+    } 
+     isvalidfield(field:string){  
+      return  this.loginForm.get(field).invalid &&  this.loginForm.get(field).touched;
+    } 
+  
+    onSubmit(){       
+        this.loginservice.login(this.loginForm.value).subscribe(
             user=>
             {
                 console.log(user);
@@ -59,11 +41,12 @@ export class LoginComponent{
             err=>{
                 console.log(err);
                 if(err._body&& JSON.parse(err._body).message&& JSON.parse(err._body).message.email ){
-                this.emailvalidateclass='invalid';  
+                this.loginForm.controls['email'].setErrors({'invalid':true});  
                    
              }
             if(err._body&& JSON.parse(err._body).message&& JSON.parse(err._body).message.password ){
-                this.passwordclass='invalid';  
+             
+                  this.loginForm.controls['password'].setErrors({'invalid':true});  
                    
              }
             }

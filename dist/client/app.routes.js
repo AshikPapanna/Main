@@ -10,6 +10,8 @@ const faqs_component_1 = require("./components/faqs/faqs.component");
 const instructor_component_1 = require("./components/instructors/instructor.component");
 const aboutus_component_1 = require("./components/aboutus/aboutus.component");
 const registersuccessfull_component_1 = require("./components/registersuccessfull/registersuccessfull.component");
+const resetpassword_component_1 = require("./components/resetpassword/resetpassword.component");
+const error_component_1 = require("./error.component");
 const approutes = [
     {
         path: 'home',
@@ -37,7 +39,7 @@ const approutes = [
         data: { state: 'register' }
     },
     {
-        path: 'forgotpassword/:emailid',
+        path: 'forgotpassword',
         component: forgotpassword_component_1.ForgotpasswordComponent
     },
     {
@@ -61,12 +63,20 @@ const approutes = [
         component: profile_component_1.ProfileComponent
     },
     {
+        path: 'resetpassword/:tokenId',
+        component: resetpassword_component_1.ResetpasswordComponent
+    },
+    {
         path: 'aboutus',
         component: aboutus_component_1.AboutusComponent
     },
     {
         path: 'registersuccessfull',
         component: registersuccessfull_component_1.RegistersuccessfullComponent
+    },
+    {
+        path: 'error',
+        component: error_component_1.ErrorComponent
     },
     {
         path: '',

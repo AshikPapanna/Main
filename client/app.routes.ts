@@ -15,6 +15,9 @@ import{AppComponent} from './app.component'
 import{AboutusComponent} from './components/aboutus/aboutus.component';
 import{RegistersuccessfullComponent} from './components/registersuccessfull/registersuccessfull.component';
 
+import{ResetpasswordComponent} from './components/resetpassword/resetpassword.component';
+import{ErrorComponent}from './error.component'
+
 
 
 
@@ -49,7 +52,7 @@ const approutes:Routes=[
         data:{state:'register'}
     },
     {
-        path:'forgotpassword/:emailid',
+        path:'forgotpassword',
         component:ForgotpasswordComponent
     },
     {
@@ -73,6 +76,10 @@ component:ProfileComponent
         component:ProfileComponent
     },
      {
+        path:'resetpassword/:tokenId',
+        component:ResetpasswordComponent
+    },
+     {
         path:'aboutus',
         component:AboutusComponent
     },
@@ -80,6 +87,11 @@ component:ProfileComponent
         path:'registersuccessfull',
         component:RegistersuccessfullComponent
     },
+     {
+        path:'error',
+        component:ErrorComponent
+    },
+    
       
     {
         path:'',

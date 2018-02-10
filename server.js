@@ -51,6 +51,7 @@ app.use(function (req, res, next) {
             next();
         })
     }
+   
     else {
         console.log('no auth pro');
         req.user = undefined;

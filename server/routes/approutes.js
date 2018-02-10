@@ -21,6 +21,8 @@ module.exports=function(app){
     //router.get('/home',homehandler.gethome);
     router.post('/auth/users',userHandler.userslist);
     router.post('/ip',currencyconverter.logip);
+    router.get('/resetpassword/:tokenid',userHandler.getresetpassword);
+    router.post('/resetpassword/:tokenid',userHandler.updatepassword);
     router.get('/',function(req,res){  
         console.log('base');      
         res.sendFile(__base+'index.html');

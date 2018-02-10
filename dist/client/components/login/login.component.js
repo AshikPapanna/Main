@@ -10,57 +10,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
-const login_1 = require("../../../models/login");
 const login_service_1 = require("./login.service");
 const router_1 = require("@angular/router");
+const forms_1 = require("@angular/forms");
 let LoginComponent = class LoginComponent {
-    constructor(loginservice, route) {
+    constructor(loginservice, route, fb) {
         this.loginservice = loginservice;
         this.route = route;
-        this.emailvalidateclass = '';
-        this.passwordclass = '';
-        this.login = new login_1.Login('', '', '');
+        this.fb = fb;
+        this.createform();
+    }
+    ngOnInit() {
+        if (this.loginservice.islogedin()) {
+            window.location.replace(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''));
+        }
     }
     ;
-    /* closeNav(){
-         document.getElementById("mySidenav").style.width = "0%";
-     }
-     registerclick(){
-         document.getElementById("mySidenav").style.width = "0%";
-         document.getElementById("mySidenavforregister").style.width = "30%";
-     }*/
-    validateemail(email) {
-        if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
-            this.emailvalidateclass = 'valid';
-            return true;
-        }
-        else {
-            this.emailvalidateclass = 'invalid';
-            return false;
-        }
+    createform() {
+        this.loginForm = this.fb.group({
+            email: ['', [forms_1.Validators.required, forms_1.Validators.email]],
+            password: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8), forms_1.Validators.maxLength(12)]]
+        });
     }
-    Validatepasswordlength(password) {
-        if (password.length < 8 || password.length > 20) {
-            this.passwordclass = 'invalid';
-            return false;
-        }
-        else {
-            this.passwordclass = 'valid';
-            return true;
-        }
+    isvalidfield(field) {
+        return this.loginForm.get(field).invalid && this.loginForm.get(field).touched;
     }
     onSubmit() {
-        console.log(this.login);
-        this.loginservice.login(this.login).subscribe(user => {
+        this.loginservice.login(this.loginForm.value).subscribe(user => {
             console.log(user);
             window.location.replace(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''));
         }, err => {
             console.log(err);
             if (err._body && JSON.parse(err._body).message && JSON.parse(err._body).message.email) {
-                this.emailvalidateclass = 'invalid';
+                this.loginForm.controls['email'].setErrors({ 'invalid': true });
             }
             if (err._body && JSON.parse(err._body).message && JSON.parse(err._body).message.password) {
-                this.passwordclass = 'invalid';
+                this.loginForm.controls['password'].setErrors({ 'invalid': true });
             }
         });
     }
@@ -74,7 +59,7 @@ LoginComponent = __decorate([
         providers: [login_service_1.LoginService]
     }),
     __metadata("design:paramtypes", [login_service_1.LoginService,
-        router_1.Router])
+        router_1.Router, forms_1.FormBuilder])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 

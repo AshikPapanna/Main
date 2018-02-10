@@ -1,87 +1,49 @@
 import {Component,OnInit} from '@angular/core'
-import {ActivatedRoute,Params} from '@angular/router'
+import {Router} from '@angular/router'
 import 'rxjs/add/operator/switchMap'
 import {ForgotpasswordService} from './forgotpassword.service';
-import {Register} from '../../../models/registration'
 
-@Component({
-    selector:'sa-forgotpassword',
+import {FormBuilder,FormGroup,Validators,AbstractControl} from '@angular/forms'
+
+
+@Component({  
     moduleId:module.id,
     templateUrl:'./forgotpassword.component.html',
     styleUrls:['./forgotpassword.component.css'],
     providers:[ForgotpasswordService]
 })
 export class ForgotpasswordComponent {
-  
+   fpform:FormGroup;
     emailmodel: string;
 
-    register=new Register('','','','','','','','');
-constructor(private forgotpasswordService:ForgotpasswordService ,private route:ActivatedRoute){}
-  confirmpasswordclass:string='';
-    passwordclass:string='';
-       IsSuccess:boolean=false;
-       emailvalidateclass:string='';
-        a:string;
-       
-ngOnInit()
-{
-   
-    this.route.queryParams.subscribe((par:Params)=>{this.register.email= par['emailid']})
+constructor(private forgotpasswordService:ForgotpasswordService ,private fb:FormBuilder,private router:Router){
+    this.createform();
+}
+createform(){
+  this.fpform=this.fb.group(
+      {
+          email:['',[Validators.required,Validators.email]]
+      }
+  )
+}
+  isvalidfield(field:string){  
+      return  this.fpform.get(field).invalid &&  this.fpform.get(field).touched;
+    }
+ 
 
-}
-  validateemail(email:string):boolean{
-            if(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-                this.emailvalidateclass='valid'
-                return true;
-            }
-        else{
-            this.emailvalidateclass='invalid'
-            return false;
-        }}
-comparePassword(password:string,confirmpassword:string):boolean{
-    if(password!==confirmpassword)
-        {          
-this.confirmpasswordclass='invalid';
-return false;
-        }
-else{     
-   this.confirmpasswordclass='valid';
-   return true;
-}
-}
-Validatepasswordlength(password:string):boolean
- {
-      if( password.length<8||password.length>20)
-                {
-                 
-                    this.passwordclass='invalid';
-                    return false;
-                }
-                else{
-                   
-                    this.passwordclass='valid';
-                    return true;
-                }
- }
-             onSubmit(){
+
+ onSubmit(){
             
-if(!(
- this.Validatepasswordlength(this.register.password)
-&& this.comparePassword(this.register.password,this.register.confirmpassword)
-) )
-{
-    return false;    
-}
-         this.forgotpasswordService.forgotpassword(this.register).subscribe(
+
+         this.forgotpasswordService.forgotpassword(this.fpform.value).subscribe(
             user=>
             {
-              this.IsSuccess=true;
+             this.router.navigate(['/registersuccessfull']);
              },
             err=>{
              console.log(err);
              if(err._body&& JSON.parse(err._body).email&& JSON.parse(err._body).email ){   
-                this.emailvalidateclass='invalid';            
-                this.IsSuccess=false;            
+                  this.fpform.controls['email'].setErrors({'invalid':true});     
              }
                 
                

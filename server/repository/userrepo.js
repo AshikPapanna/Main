@@ -49,9 +49,9 @@ exports.register = function (req, res, next) {
 }
 
 exports.signin = function (req, res) {
-    User.findOne({ email: req.body.emailId, isemailverified: true }, function (err, user) {
+    User.findOne({ email: req.body.email, isemailverified: true }, function (err, user) {
 
-        if (err) { console.log(err); }
+        if (err) {  return res.sendFile(__base+'error.html');     }
         if (!user) {
             console.log("no user");
             return res.status(401).json({ message: { 'email': "Email is Invalid" } });
@@ -83,48 +83,45 @@ exports.userslist = function (req, res, next) {
         return res.status(401).json({ message: 'Unauthorized user!' });
     }
 }
-exports.forgotpassword = function (req, res) {
-    console.log(req.body);
+exports.forgotpassword = function (req, res) { 
     User.findOne({ email: req.body.email }, function (err, user) {
         if (!err) {
             if (!user) {
                 return res.status(401).json({ email: "Email is not registered" });
             }
             else {
-                user.hash_password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-                user.save(function (err, user) {
-                    if (!err) {
-                        var error = forgotmailhelper.sendconfirmationmail(user.email, user.firstname, jwt.sign({
-                            email: user.email,
-                            fullname: user.fullname,
-                            _id: user._id
-                        }
-                           , process.env.JWT_KEY || require('../../appconfig.js').secrete
-                           , {
-                               expiresIn: 250
-                           }));
-
-                        return res.json({ email: user.email });
+                var error = confirmmailhelper.sendconfirmationmail(user.email, user.firstname, jwt.sign({
+                email: user.email,
+                fullname: user.fullname,
+                role: user.role,
+                _id: user._id
+            }
+                                        , process.env.JWT_KEY || require('../../appconfig.js').secrete
+                                        , {
+                                            expiresIn: 250
+                                        }));      
+                
+                user.isemailverified = false;
+                user.save(function (err, usr) {
+                    if (!err) {                       
                     }
                     else {
-                        return res.status(401).json({ message: 'Inavlid opertion!' });
+                         return res.sendFile(__base+'error.html');
                     }
-
-                });
-
+                });           
+            return res.json(user);
+          }         
             }
+        else{
+          return res.sendFile(__base+'error.html');    
         }
-        else {
-            return res.status(401).json({ message: 'Inavlid opertion!' });
-        }
+      })
 
-
-    });
 
 
 }
 exports.checkisemailunique = function (req, res) {
-    User.findOne({ email: req.body.email }, function (err, user) {
+    User.findOne({ email: req.body.email.toLowerCase() }, function (err, user) {
         if (user) {
             return res.send({ "message": "failed" });
         }
@@ -134,7 +131,8 @@ exports.checkisemailunique = function (req, res) {
         }
     });
 }
-exports.updatepassword = function (req, res) {
+exports.updatepassword1 = function (req, res) {
+
     console.log(req.body);
     User.findOne({ email: req.body.email }, function (err, user) {
         if (!err) {
@@ -152,11 +150,21 @@ exports.updatepassword = function (req, res) {
 
 }
 exports.updatepassword = function (req, res) {
-    console.log(req.body);
-    User.findOne({ email: req.body.email }, function (err, user) {
+        if(req.params ){    
+        jwt.verify(req.params.tokenid, process.env.JWT_KEY || require('../../appconfig.js').secrete
+        , function (err, decode) {
+            if (err) {
+                console.log(err);
+                return res.sendFile(__base+'error.html');
+            } 
+           req.user=decode;
+           
+        })  
+    }
+    User.findOne({ email: req.user.email }, function (err, user) {
         if (!err) {
             if (!user) {
-                return res.status(401).json({ email: "Email is not registered" });
+                return res.sendFile(__base+'error.html');
             }
             else {
                 user.hash_password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
@@ -176,7 +184,7 @@ exports.updatepassword = function (req, res) {
                         });
                     }
                     else {
-                        return res.status(401).json({ message: 'Inavlid opertion!' });
+                                  return res.sendFile(__base+'error.html');
                     }
                 });
             }
@@ -185,6 +193,20 @@ exports.updatepassword = function (req, res) {
             return res.status(401).json({ message: 'Inavlid opertion!' });
         }
     });
+}
+exports.getresetpassword=function(req,res){
+      if(req.params ){    
+        jwt.verify(req.params.tokenid, process.env.JWT_KEY || require('../../appconfig.js').secrete
+        , function (err, decode) {
+            if (err) {
+                console.log(err);
+                return res.sendFile(__base+'error.html');
+            } 
+            return   res.sendFile(__base+'index.html');
+           
+        })  
+    }
+ 
 }
 
 

@@ -12,11 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const http_1 = require("@angular/http");
 const Rx_1 = require("rxjs/Rx");
+const common_1 = require("@angular/common");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 let LoginService = class LoginService {
-    constructor(http) {
+    constructor(http, location) {
         this.http = http;
+        this.location = location;
         var user = JSON.parse(localStorage.getItem('user'));
         this.token = user && user.token;
     }
@@ -24,19 +26,23 @@ let LoginService = class LoginService {
         let bodyString = JSON.stringify(body); // Stringify payload
         let headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new http_1.RequestOptions({ headers: headers }); // Create a request optio
-        return this.http.post('http://ashikp.herokuapp.com/login', body, options)
+        return this.http.post(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/login/', body, options)
             .map((res) => {
             let token = res.json() && res.json().token;
+            let usr = res.json() && res.json().user;
             if (token) {
                 this.token = token;
-                localStorage.setItem('user', JSON.stringify({ user: body.emailId, token: token }));
+                localStorage.setItem('user', JSON.stringify({ user: usr, token: token }));
                 return res;
             }
             else {
                 return res;
             }
         })
-            .catch((error) => Rx_1.Observable.throw(error.json().error || 'server error'));
+            .catch((error) => {
+            console.log(error);
+            return Rx_1.Observable.throw(error || 'server error');
+        });
     }
     logout() {
         this.token = null;
@@ -53,7 +59,7 @@ let LoginService = class LoginService {
 };
 LoginService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, common_1.Location])
 ], LoginService);
 exports.LoginService = LoginService;
 

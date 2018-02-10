@@ -27,6 +27,8 @@ const instructor_component_1 = require("./components/instructors/instructor.comp
 const instructordetail_component_1 = require("./components/instructors/instructordetail/instructordetail.component");
 const aboutus_component_1 = require("./components/aboutus/aboutus.component");
 const registersuccessfull_component_1 = require("./components/registersuccessfull/registersuccessfull.component");
+const resetpassword_component_1 = require("./components/resetpassword/resetpassword.component");
+const error_component_1 = require("./error.component");
 const angular2_materialize_1 = require("angular2-materialize");
 let AppModule = class AppModule {
 };
@@ -47,7 +49,9 @@ AppModule = __decorate([
             instructor_component_1.InstructorComponent,
             instructordetail_component_1.InstructordetailComponent,
             aboutus_component_1.AboutusComponent,
-            registersuccessfull_component_1.RegistersuccessfullComponent
+            registersuccessfull_component_1.RegistersuccessfullComponent,
+            resetpassword_component_1.ResetpasswordComponent,
+            error_component_1.ErrorComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     })

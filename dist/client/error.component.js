@@ -7,16 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
-let RegistersuccessfullComponent = class RegistersuccessfullComponent {
+let ErrorComponent = class ErrorComponent {
 };
-RegistersuccessfullComponent = __decorate([
+ErrorComponent = __decorate([
     core_1.Component({
-        selector: 'sa-regsuccess',
         template: `
     <div class="row sa-center" >
        <div class="col 12">
          <p style="font-size:2em;color:white;">
-           You've successfully registered to S&#x0101;RANG academy. An email has been sent your mail ID, please confirm your registration
+          Oops!!! something went wrong.
          </p>
          <div>
     </div>
@@ -36,7 +35,7 @@ RegistersuccessfullComponent = __decorate([
       `
         ]
     })
-], RegistersuccessfullComponent);
-exports.RegistersuccessfullComponent = RegistersuccessfullComponent;
+], ErrorComponent);
+exports.ErrorComponent = ErrorComponent;
 
-//# sourceMappingURL=registersuccessfull.component.js.map
+//# sourceMappingURL=error.component.js.map
