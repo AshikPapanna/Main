@@ -11,21 +11,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const instructor_service_1 = require("./instructor.service");
+const router_1 = require("@angular/router");
 let InstructorComponent = class InstructorComponent {
-    constructor(instructorService) {
+    constructor(instructorService, route) {
         this.instructorService = instructorService;
+        this.route = route;
         this.distinctspecialization = [];
         this.specialization = [];
         this.showmodel = false;
     }
     ngOnInit() {
+        this.route.params.subscribe(par => {
+            this.id = par["id"];
+        });
+        if (this.id) {
+            this.instructorService.getinstructordetails(this.id).subscribe(details => {
+                this.data = details[0];
+                console.log(this.data);
+            }, err => {
+                console.log(err);
+            });
+        }
         this.instructorService.getinstructors().subscribe(instructors => {
             this.instructors = instructors;
-            console.log(this.instructors);
-            /*this.instructors.forEach(element => {
-                 this.specialization.push(element.specialized);
-                })
-           this.distinctspecialization=  this.specialization.filter((v, i, a) => a.indexOf(v) === i);*/
         }, err => { console.log(err); });
     }
     ngAfterViewInit() {
@@ -59,7 +67,7 @@ InstructorComponent = __decorate([
         styleUrls: ['./instructor.component.css'],
         providers: [instructor_service_1.InstructorService],
     }),
-    __metadata("design:paramtypes", [instructor_service_1.InstructorService])
+    __metadata("design:paramtypes", [instructor_service_1.InstructorService, router_1.ActivatedRoute])
 ], InstructorComponent);
 exports.InstructorComponent = InstructorComponent;
 

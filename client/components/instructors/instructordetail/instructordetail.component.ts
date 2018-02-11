@@ -15,8 +15,8 @@ export class InstructordetailComponent implements OnInit{
     instructordetail:InstructorDetails;
 
     ngOnInit(): void {
-       
-        this.instructorService.getinstructordetails(this.instructordetails).subscribe(
+       console.log(this.instructordetail);
+      /*  this.instructorService.getinstructordetails(this.instructordetails).subscribe(
             details=>{
                 this.instructordetail=details[0];
                 console.log(this.instructordetail);
@@ -24,7 +24,7 @@ export class InstructordetailComponent implements OnInit{
             err=>{
                 console.log(err);
             }
-        )
+        )*/
     }
 
     closemodal(){

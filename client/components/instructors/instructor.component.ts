@@ -4,6 +4,7 @@ import {InstructorService} from './instructor.service'
 import {Instructor,InstructorDetails} from '../../../models/instructor'
 
 import {InstructordetailComponent} from './instructordetail/instructordetail.component'
+import {ActivatedRoute}from '@angular/router'
 
 @Component({
     
@@ -22,17 +23,31 @@ export class InstructorComponent implements AfterViewInit,OnInit{
     distinctspecializationdetials:Instructor[];     
     distinctspecialization:string[]=[];
     data:string;
+    id:string;
     specialization:string[]=[];
     showmodel:boolean=false;
     ngOnInit(): void {
+        this.route.params.subscribe(par=>{
+            this.id=par["id"];
+        }
+
+        )
+    if( this.id)
+        {
+      this.instructorService.getinstructordetails(this.id).subscribe(
+            details=>{
+                this.data=details[0];
+                console.log(this.data);
+            },
+            err=>{
+                console.log(err);
+            }
+        )
+        }
+    
        this.instructorService.getinstructors().subscribe(
          instructors=>{
-           this.instructors=instructors ;   
-           console.log( this.instructors);       
-           /*this.instructors.forEach(element => {   
-                this.specialization.push(element.specialized);
-               })
-          this.distinctspecialization=  this.specialization.filter((v, i, a) => a.indexOf(v) === i);*/
+           this.instructors=instructors ;          
             } , 
           err=>{console.log(err);}      
        )
@@ -41,7 +56,7 @@ export class InstructorComponent implements AfterViewInit,OnInit{
 
     }
 
-    constructor(private instructorService:InstructorService){
+    constructor(private instructorService:InstructorService,private route:ActivatedRoute){
 
     }
    

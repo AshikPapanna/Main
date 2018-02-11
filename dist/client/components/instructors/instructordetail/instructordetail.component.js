@@ -17,12 +17,16 @@ let InstructordetailComponent = class InstructordetailComponent {
         this.close = new core_1.EventEmitter();
     }
     ngOnInit() {
-        this.instructorService.getinstructordetails(this.instructordetails).subscribe(details => {
-            this.instructordetail = details[0];
-            console.log(this.instructordetail);
-        }, err => {
-            console.log(err);
-        });
+        console.log(this.instructordetail);
+        /*  this.instructorService.getinstructordetails(this.instructordetails).subscribe(
+              details=>{
+                  this.instructordetail=details[0];
+                  console.log(this.instructordetail);
+              },
+              err=>{
+                  console.log(err);
+              }
+          )*/
     }
     closemodal() {
         this.close.emit(null);

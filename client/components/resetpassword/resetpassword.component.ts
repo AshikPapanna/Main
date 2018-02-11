@@ -1,4 +1,4 @@
-import {Component, OnInit,NgZone,AfterViewInit} from '@angular/core'
+    import {Component, OnInit,NgZone,AfterViewInit} from '@angular/core'
 import {ResetpasswordService} from './resetpassword.service'
 
 

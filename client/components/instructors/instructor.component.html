@@ -17,7 +17,7 @@
                 </a>
              </div>
             <div style="padding-bottom: 8%">
-             <a class=" sa-instructor-text"  (click)="getspecializationdetails(instructorbrief._id)">{{instructorbrief.firstname+" "+instructorbrief.lastname}}</a>
+             <a class=" sa-instructor-text"  [routerLink]="['/instructors', instructorbrief._id]">{{instructorbrief.firstname+" "+instructorbrief.lastname}}</a>
             </div>
             </div>
    
@@ -111,7 +111,7 @@
             </div>-->
      
        <!-- Modal Structure -->
-      <sa-instructormodal *ngIf="showmodel" [data]="data" (close)="closemodal()"></sa-instructormodal>
+      <sa-instructormodal *ngIf="data" [data]="data" (close)="closemodal()"></sa-instructormodal>
     
     <sa-footer></sa-footer>
      

@@ -15,12 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const http_1 = require("@angular/http");
 const Rx_1 = require("rxjs/Rx");
+const common_1 = require("@angular/common");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 const platform_browser_1 = require("@angular/platform-browser");
 let InstructorService = class InstructorService {
-    constructor(http, document) {
+    constructor(http, document, location) {
         this.http = http;
+        this.location = location;
     }
     ;
     getinstructors() {
@@ -29,15 +31,16 @@ let InstructorService = class InstructorService {
             .catch((err) => Rx_1.Observable.throw(err));
     }
     getinstructordetails(id) {
-        return this.http.get(document.location.href + "/getinstructordetails/" + id)
-            .map((res) => res.json())
-            .catch((err) => Rx_1.Observable.throw(err));
+        console.log(id);
+        return this.http.get(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/getinstructors/' + id)
+            .map((res) => { console.log(res); return res.json(); })
+            .catch((err) => { console.log(err); return Rx_1.Observable.throw(err); });
     }
 };
 InstructorService = __decorate([
     core_1.Injectable(),
     __param(1, core_1.Inject(platform_browser_1.DOCUMENT)),
-    __metadata("design:paramtypes", [http_1.Http, Object])
+    __metadata("design:paramtypes", [http_1.Http, Object, common_1.Location])
 ], InstructorService);
 exports.InstructorService = InstructorService;
 
